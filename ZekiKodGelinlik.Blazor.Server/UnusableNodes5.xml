@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SiparisKarti_DetailView_Prakende">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Autod360a902-0529-4633-bc72-8c9c82354bf7">
+              <TabbedGroup Id="Item9">
+                <LayoutGroup Id="SiparisKarti_Group">
+                  <LayoutGroup Id="SiparisKarti_Group_col1">
+                    <LayoutGroup Id="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5">
+                      <LayoutGroup Id="Item13">
+                        <LayoutItem Id="Adres" ViewItem="Adres" />
+                        <LayoutItem Id="Telefon" ViewItem="Telefon" />
+                        <LayoutItem Id="TC" ViewItem="TC" />
+                        <LayoutItem Id="AdSoyad" ViewItem="AdSoyad" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

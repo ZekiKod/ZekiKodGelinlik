@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="SiparisKarti_ListView_Prakende">
+      <Columns Id="Columns">
+        <ColumnInfo Id="SterlinKuru" PropertyName="SterlinKuru" Index="-1" />
+        <ColumnInfo Id="SiparisKarti" PropertyName="SiparisKarti" Index="-1" />
+        <ColumnInfo Id="P_YikamaTL" PropertyName="P_YikamaTL" Index="-1" />
+        <ColumnInfo Id="P_YikamaDvz" PropertyName="P_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarTL" PropertyName="P_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarDoviz" PropertyName="P_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_TestTL" PropertyName="P_TestTL" Index="-1" />
+        <ColumnInfo Id="P_TestDvz" PropertyName="P_TestDvz" Index="-1" />
+        <ColumnInfo Id="P_NavlunTL" PropertyName="P_NavlunTL" Index="-1" />
+        <ColumnInfo Id="P_NavlunDvz" PropertyName="P_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="P_MalzemeTL" PropertyName="P_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="P_MalzemeDvz" PropertyName="P_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarTL" PropertyName="P_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarDoviz" PropertyName="P_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlTL" PropertyName="P_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlDvz" PropertyName="P_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="P_iscilikTL" PropertyName="P_iscilikTL" Index="-1" />
+        <ColumnInfo Id="P_iscilikDoviz" PropertyName="P_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderTL" PropertyName="P_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderDvz" PropertyName="P_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliTL" PropertyName="P_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliDvz" PropertyName="P_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasTL" PropertyName="P_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasDvz" PropertyName="P_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="M_ParaBirimi" PropertyName="M_ParaBirimi" Index="-1" />
+        <ColumnInfo Id="KurTarihİ" PropertyName="KurTarihİ" Index="-1" />
+        <ColumnInfo Id="G_YikamaTL" PropertyName="G_YikamaTL" Index="-1" />
+        <ColumnInfo Id="G_YikamaDvz" PropertyName="G_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarTL" PropertyName="G_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarDoviz" PropertyName="G_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_TestTL" PropertyName="G_TestTL" Index="-1" />
+        <ColumnInfo Id="G_TestDvz" PropertyName="G_TestDvz" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonTL" PropertyName="G_ReklamasyonTL" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonDvz" PropertyName="G_ReklamasyonDvz" Index="-1" />
+        <ColumnInfo Id="G_NavlunTL" PropertyName="G_NavlunTL" Index="-1" />
+        <ColumnInfo Id="G_NavlunDvz" PropertyName="G_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="G_MalzemeTL" PropertyName="G_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="G_MalzemeDvz" PropertyName="G_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarTL" PropertyName="G_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarDoviz" PropertyName="G_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlTL" PropertyName="G_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlDvz" PropertyName="G_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="G_iscilikTL" PropertyName="G_iscilikTL" Index="-1" />
+        <ColumnInfo Id="G_iscilikDoviz" PropertyName="G_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderTL" PropertyName="G_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderDvz" PropertyName="G_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliTL" PropertyName="G_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliDvz" PropertyName="G_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasTL" PropertyName="G_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasDvz" PropertyName="G_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="EuroKuru" PropertyName="EuroKuru" Index="-1" />
+        <ColumnInfo Id="DolarKuru" PropertyName="DolarKuru" Index="-1" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_ListView_Kesim">
+      <Columns Id="Columns">
+        <ColumnInfo Id="SterlinKuru" PropertyName="SterlinKuru" Index="-1" />
+        <ColumnInfo Id="SiparisKarti" PropertyName="SiparisKarti" Index="-1" />
+        <ColumnInfo Id="P_YikamaTL" PropertyName="P_YikamaTL" Index="-1" />
+        <ColumnInfo Id="P_YikamaDvz" PropertyName="P_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarTL" PropertyName="P_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarDoviz" PropertyName="P_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_TestTL" PropertyName="P_TestTL" Index="-1" />
+        <ColumnInfo Id="P_TestDvz" PropertyName="P_TestDvz" Index="-1" />
+        <ColumnInfo Id="P_NavlunTL" PropertyName="P_NavlunTL" Index="-1" />
+        <ColumnInfo Id="P_NavlunDvz" PropertyName="P_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="P_MalzemeTL" PropertyName="P_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="P_MalzemeDvz" PropertyName="P_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarTL" PropertyName="P_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarDoviz" PropertyName="P_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlTL" PropertyName="P_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlDvz" PropertyName="P_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="P_iscilikTL" PropertyName="P_iscilikTL" Index="-1" />
+        <ColumnInfo Id="P_iscilikDoviz" PropertyName="P_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderTL" PropertyName="P_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderDvz" PropertyName="P_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliTL" PropertyName="P_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliDvz" PropertyName="P_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasTL" PropertyName="P_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasDvz" PropertyName="P_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="M_ParaBirimi" PropertyName="M_ParaBirimi" Index="-1" />
+        <ColumnInfo Id="KurTarihİ" PropertyName="KurTarihİ" Index="-1" />
+        <ColumnInfo Id="G_YikamaTL" PropertyName="G_YikamaTL" Index="-1" />
+        <ColumnInfo Id="G_YikamaDvz" PropertyName="G_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarTL" PropertyName="G_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarDoviz" PropertyName="G_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_TestTL" PropertyName="G_TestTL" Index="-1" />
+        <ColumnInfo Id="G_TestDvz" PropertyName="G_TestDvz" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonTL" PropertyName="G_ReklamasyonTL" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonDvz" PropertyName="G_ReklamasyonDvz" Index="-1" />
+        <ColumnInfo Id="G_NavlunTL" PropertyName="G_NavlunTL" Index="-1" />
+        <ColumnInfo Id="G_NavlunDvz" PropertyName="G_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="G_MalzemeTL" PropertyName="G_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="G_MalzemeDvz" PropertyName="G_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarTL" PropertyName="G_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarDoviz" PropertyName="G_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlTL" PropertyName="G_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlDvz" PropertyName="G_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="G_iscilikTL" PropertyName="G_iscilikTL" Index="-1" />
+        <ColumnInfo Id="G_iscilikDoviz" PropertyName="G_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderTL" PropertyName="G_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderDvz" PropertyName="G_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliTL" PropertyName="G_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliDvz" PropertyName="G_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasTL" PropertyName="G_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasDvz" PropertyName="G_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="EuroKuru" PropertyName="EuroKuru" Index="-1" />
+        <ColumnInfo Id="DolarKuru" PropertyName="DolarKuru" Index="-1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SiparisKarti_DetailView_Prakende">
+      <Items Id="Items">
+        <PropertyEditor Id="SterlinKuru" PropertyName="SterlinKuru" />
+        <PropertyEditor Id="SiparisKarti" PropertyName="SiparisKarti" />
+        <PropertyEditor Id="P_YikamaTL" PropertyName="P_YikamaTL" />
+        <PropertyEditor Id="P_YikamaDvz" PropertyName="P_YikamaDvz" />
+        <PropertyEditor Id="P_ToplamTutarTL" PropertyName="P_ToplamTutarTL" />
+        <PropertyEditor Id="P_ToplamTutarDoviz" PropertyName="P_ToplamTutarDoviz" />
+        <PropertyEditor Id="P_TestTL" PropertyName="P_TestTL" />
+        <PropertyEditor Id="P_TestDvz" PropertyName="P_TestDvz" />
+        <PropertyEditor Id="P_NavlunTL" PropertyName="P_NavlunTL" />
+        <PropertyEditor Id="P_NavlunDvz" PropertyName="P_NavlunDvz" />
+        <PropertyEditor Id="P_MalzemeTL" PropertyName="P_MalzemeTL" />
+        <PropertyEditor Id="P_MalzemeDvz" PropertyName="P_MalzemeDvz" />
+        <PropertyEditor Id="P_KumasTutarTL" PropertyName="P_KumasTutarTL" />
+        <PropertyEditor Id="P_KumasTutarDoviz" PropertyName="P_KumasTutarDoviz" />
+        <PropertyEditor Id="P_KomisyonBdlTL" PropertyName="P_KomisyonBdlTL" />
+        <PropertyEditor Id="P_KomisyonBdlDvz" PropertyName="P_KomisyonBdlDvz" />
+        <PropertyEditor Id="P_iscilikTL" PropertyName="P_iscilikTL" />
+        <PropertyEditor Id="P_iscilikDoviz" PropertyName="P_iscilikDoviz" />
+        <PropertyEditor Id="P_GenelGiderTL" PropertyName="P_GenelGiderTL" />
+        <PropertyEditor Id="P_GenelGiderDvz" PropertyName="P_GenelGiderDvz" />
+        <PropertyEditor Id="P_FinansBedeliTL" PropertyName="P_FinansBedeliTL" />
+        <PropertyEditor Id="P_FinansBedeliDvz" PropertyName="P_FinansBedeliDvz" />
+        <PropertyEditor Id="P_BaskiNakisTasTL" PropertyName="P_BaskiNakisTasTL" />
+        <PropertyEditor Id="P_BaskiNakisTasDvz" PropertyName="P_BaskiNakisTasDvz" />
+        <PropertyEditor Id="M_ParaBirimi" PropertyName="M_ParaBirimi" />
+        <PropertyEditor Id="KurTarihİ" PropertyName="KurTarihİ" />
+        <PropertyEditor Id="G_YikamaTL" PropertyName="G_YikamaTL" />
+        <PropertyEditor Id="G_YikamaDvz" PropertyName="G_YikamaDvz" />
+        <PropertyEditor Id="G_ToplamTutarTL" PropertyName="G_ToplamTutarTL" />
+        <PropertyEditor Id="G_ToplamTutarDoviz" PropertyName="G_ToplamTutarDoviz" />
+        <PropertyEditor Id="G_TestTL" PropertyName="G_TestTL" />
+        <PropertyEditor Id="G_TestDvz" PropertyName="G_TestDvz" />
+        <PropertyEditor Id="G_ReklamasyonTL" PropertyName="G_ReklamasyonTL" />
+        <PropertyEditor Id="G_ReklamasyonDvz" PropertyName="G_ReklamasyonDvz" />
+        <PropertyEditor Id="G_NavlunTL" PropertyName="G_NavlunTL" />
+        <PropertyEditor Id="G_NavlunDvz" PropertyName="G_NavlunDvz" />
+        <PropertyEditor Id="G_MalzemeTL" PropertyName="G_MalzemeTL" />
+        <PropertyEditor Id="G_MalzemeDvz" PropertyName="G_MalzemeDvz" />
+        <PropertyEditor Id="G_KumasTutarTL" PropertyName="G_KumasTutarTL" />
+        <PropertyEditor Id="G_KumasTutarDoviz" PropertyName="G_KumasTutarDoviz" />
+        <PropertyEditor Id="G_KomisyonBdlTL" PropertyName="G_KomisyonBdlTL" />
+        <PropertyEditor Id="G_KomisyonBdlDvz" PropertyName="G_KomisyonBdlDvz" />
+        <PropertyEditor Id="G_iscilikTL" PropertyName="G_iscilikTL" />
+        <PropertyEditor Id="G_iscilikDoviz" PropertyName="G_iscilikDoviz" />
+        <PropertyEditor Id="G_GenelGiderTL" PropertyName="G_GenelGiderTL" />
+        <PropertyEditor Id="G_GenelGiderDvz" PropertyName="G_GenelGiderDvz" />
+        <PropertyEditor Id="G_FinansBedeliTL" PropertyName="G_FinansBedeliTL" />
+        <PropertyEditor Id="G_FinansBedeliDvz" PropertyName="G_FinansBedeliDvz" />
+        <PropertyEditor Id="G_BaskiNakisTasTL" PropertyName="G_BaskiNakisTasTL" />
+        <PropertyEditor Id="G_BaskiNakisTasDvz" PropertyName="G_BaskiNakisTasDvz" />
+        <PropertyEditor Id="EuroKuru" PropertyName="EuroKuru" />
+        <PropertyEditor Id="DolarKuru" PropertyName="DolarKuru" />
+      </Items>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView_Kesim">
+      <Items Id="Items">
+        <PropertyEditor Id="SterlinKuru" PropertyName="SterlinKuru" />
+        <PropertyEditor Id="SiparisKarti" PropertyName="SiparisKarti" />
+        <PropertyEditor Id="P_YikamaTL" PropertyName="P_YikamaTL" />
+        <PropertyEditor Id="P_YikamaDvz" PropertyName="P_YikamaDvz" />
+        <PropertyEditor Id="P_ToplamTutarTL" PropertyName="P_ToplamTutarTL" />
+        <PropertyEditor Id="P_ToplamTutarDoviz" PropertyName="P_ToplamTutarDoviz" />
+        <PropertyEditor Id="P_TestTL" PropertyName="P_TestTL" />
+        <PropertyEditor Id="P_TestDvz" PropertyName="P_TestDvz" />
+        <PropertyEditor Id="P_NavlunTL" PropertyName="P_NavlunTL" />
+        <PropertyEditor Id="P_NavlunDvz" PropertyName="P_NavlunDvz" />
+        <PropertyEditor Id="P_MalzemeTL" PropertyName="P_MalzemeTL" />
+        <PropertyEditor Id="P_MalzemeDvz" PropertyName="P_MalzemeDvz" />
+        <PropertyEditor Id="P_KumasTutarTL" PropertyName="P_KumasTutarTL" />
+        <PropertyEditor Id="P_KumasTutarDoviz" PropertyName="P_KumasTutarDoviz" />
+        <PropertyEditor Id="P_KomisyonBdlTL" PropertyName="P_KomisyonBdlTL" />
+        <PropertyEditor Id="P_KomisyonBdlDvz" PropertyName="P_KomisyonBdlDvz" />
+        <PropertyEditor Id="P_iscilikTL" PropertyName="P_iscilikTL" />
+        <PropertyEditor Id="P_iscilikDoviz" PropertyName="P_iscilikDoviz" />
+        <PropertyEditor Id="P_GenelGiderTL" PropertyName="P_GenelGiderTL" />
+        <PropertyEditor Id="P_GenelGiderDvz" PropertyName="P_GenelGiderDvz" />
+        <PropertyEditor Id="P_FinansBedeliTL" PropertyName="P_FinansBedeliTL" />
+        <PropertyEditor Id="P_FinansBedeliDvz" PropertyName="P_FinansBedeliDvz" />
+        <PropertyEditor Id="P_BaskiNakisTasTL" PropertyName="P_BaskiNakisTasTL" />
+        <PropertyEditor Id="P_BaskiNakisTasDvz" PropertyName="P_BaskiNakisTasDvz" />
+        <PropertyEditor Id="M_ParaBirimi" PropertyName="M_ParaBirimi" />
+        <PropertyEditor Id="KurTarihİ" PropertyName="KurTarihİ" />
+        <PropertyEditor Id="G_YikamaTL" PropertyName="G_YikamaTL" />
+        <PropertyEditor Id="G_YikamaDvz" PropertyName="G_YikamaDvz" />
+        <PropertyEditor Id="G_ToplamTutarTL" PropertyName="G_ToplamTutarTL" />
+        <PropertyEditor Id="G_ToplamTutarDoviz" PropertyName="G_ToplamTutarDoviz" />
+        <PropertyEditor Id="G_TestTL" PropertyName="G_TestTL" />
+        <PropertyEditor Id="G_TestDvz" PropertyName="G_TestDvz" />
+        <PropertyEditor Id="G_ReklamasyonTL" PropertyName="G_ReklamasyonTL" />
+        <PropertyEditor Id="G_ReklamasyonDvz" PropertyName="G_ReklamasyonDvz" />
+        <PropertyEditor Id="G_NavlunTL" PropertyName="G_NavlunTL" />
+        <PropertyEditor Id="G_NavlunDvz" PropertyName="G_NavlunDvz" />
+        <PropertyEditor Id="G_MalzemeTL" PropertyName="G_MalzemeTL" />
+        <PropertyEditor Id="G_MalzemeDvz" PropertyName="G_MalzemeDvz" />
+        <PropertyEditor Id="G_KumasTutarTL" PropertyName="G_KumasTutarTL" />
+        <PropertyEditor Id="G_KumasTutarDoviz" PropertyName="G_KumasTutarDoviz" />
+        <PropertyEditor Id="G_KomisyonBdlTL" PropertyName="G_KomisyonBdlTL" />
+        <PropertyEditor Id="G_KomisyonBdlDvz" PropertyName="G_KomisyonBdlDvz" />
+        <PropertyEditor Id="G_iscilikTL" PropertyName="G_iscilikTL" />
+        <PropertyEditor Id="G_iscilikDoviz" PropertyName="G_iscilikDoviz" />
+        <PropertyEditor Id="G_GenelGiderTL" PropertyName="G_GenelGiderTL" />
+        <PropertyEditor Id="G_GenelGiderDvz" PropertyName="G_GenelGiderDvz" />
+        <PropertyEditor Id="G_FinansBedeliTL" PropertyName="G_FinansBedeliTL" />
+        <PropertyEditor Id="G_FinansBedeliDvz" PropertyName="G_FinansBedeliDvz" />
+        <PropertyEditor Id="G_BaskiNakisTasTL" PropertyName="G_BaskiNakisTasTL" />
+        <PropertyEditor Id="G_BaskiNakisTasDvz" PropertyName="G_BaskiNakisTasDvz" />
+        <PropertyEditor Id="EuroKuru" PropertyName="EuroKuru" />
+        <PropertyEditor Id="DolarKuru" PropertyName="DolarKuru" />
+      </Items>
+    </DetailView>
+    <ListView Id="SiparisFoy_SiparisKartis_ListView_Prakende">
+      <Columns Id="Columns">
+        <ColumnInfo Id="SterlinKuru" PropertyName="SterlinKuru" Index="-1" />
+        <ColumnInfo Id="SiparisKarti" PropertyName="SiparisKarti" Index="-1" />
+        <ColumnInfo Id="P_YikamaTL" PropertyName="P_YikamaTL" Index="-1" />
+        <ColumnInfo Id="P_YikamaDvz" PropertyName="P_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarTL" PropertyName="P_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="P_ToplamTutarDoviz" PropertyName="P_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_TestTL" PropertyName="P_TestTL" Index="-1" />
+        <ColumnInfo Id="P_TestDvz" PropertyName="P_TestDvz" Index="-1" />
+        <ColumnInfo Id="P_NavlunTL" PropertyName="P_NavlunTL" Index="-1" />
+        <ColumnInfo Id="P_NavlunDvz" PropertyName="P_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="P_MalzemeTL" PropertyName="P_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="P_MalzemeDvz" PropertyName="P_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarTL" PropertyName="P_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="P_KumasTutarDoviz" PropertyName="P_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlTL" PropertyName="P_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="P_KomisyonBdlDvz" PropertyName="P_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="P_iscilikTL" PropertyName="P_iscilikTL" Index="-1" />
+        <ColumnInfo Id="P_iscilikDoviz" PropertyName="P_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderTL" PropertyName="P_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="P_GenelGiderDvz" PropertyName="P_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliTL" PropertyName="P_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="P_FinansBedeliDvz" PropertyName="P_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasTL" PropertyName="P_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="P_BaskiNakisTasDvz" PropertyName="P_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="M_ParaBirimi" PropertyName="M_ParaBirimi" Index="-1" />
+        <ColumnInfo Id="KurTarihİ" PropertyName="KurTarihİ" Index="-1" />
+        <ColumnInfo Id="G_YikamaTL" PropertyName="G_YikamaTL" Index="-1" />
+        <ColumnInfo Id="G_YikamaDvz" PropertyName="G_YikamaDvz" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarTL" PropertyName="G_ToplamTutarTL" Index="-1" />
+        <ColumnInfo Id="G_ToplamTutarDoviz" PropertyName="G_ToplamTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_TestTL" PropertyName="G_TestTL" Index="-1" />
+        <ColumnInfo Id="G_TestDvz" PropertyName="G_TestDvz" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonTL" PropertyName="G_ReklamasyonTL" Index="-1" />
+        <ColumnInfo Id="G_ReklamasyonDvz" PropertyName="G_ReklamasyonDvz" Index="-1" />
+        <ColumnInfo Id="G_NavlunTL" PropertyName="G_NavlunTL" Index="-1" />
+        <ColumnInfo Id="G_NavlunDvz" PropertyName="G_NavlunDvz" Index="-1" />
+        <ColumnInfo Id="G_MalzemeTL" PropertyName="G_MalzemeTL" Index="-1" />
+        <ColumnInfo Id="G_MalzemeDvz" PropertyName="G_MalzemeDvz" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarTL" PropertyName="G_KumasTutarTL" Index="-1" />
+        <ColumnInfo Id="G_KumasTutarDoviz" PropertyName="G_KumasTutarDoviz" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlTL" PropertyName="G_KomisyonBdlTL" Index="-1" />
+        <ColumnInfo Id="G_KomisyonBdlDvz" PropertyName="G_KomisyonBdlDvz" Index="-1" />
+        <ColumnInfo Id="G_iscilikTL" PropertyName="G_iscilikTL" Index="-1" />
+        <ColumnInfo Id="G_iscilikDoviz" PropertyName="G_iscilikDoviz" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderTL" PropertyName="G_GenelGiderTL" Index="-1" />
+        <ColumnInfo Id="G_GenelGiderDvz" PropertyName="G_GenelGiderDvz" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliTL" PropertyName="G_FinansBedeliTL" Index="-1" />
+        <ColumnInfo Id="G_FinansBedeliDvz" PropertyName="G_FinansBedeliDvz" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasTL" PropertyName="G_BaskiNakisTasTL" Index="-1" />
+        <ColumnInfo Id="G_BaskiNakisTasDvz" PropertyName="G_BaskiNakisTasDvz" Index="-1" />
+        <ColumnInfo Id="EuroKuru" PropertyName="EuroKuru" Index="-1" />
+        <ColumnInfo Id="DolarKuru" PropertyName="DolarKuru" Index="-1" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

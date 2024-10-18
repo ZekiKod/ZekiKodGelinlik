@@ -1,0 +1,237 @@
+﻿using System;
+using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
+using DevExpress.Data.Filtering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+
+    public partial class Bedenler
+    {
+        public Bedenler(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+
+        protected override void OnSaving()
+        {
+            Aciklama = "";
+            if (BedenGrubu!=null)
+            {
+                Aciklama = BedenGrubu.BedenGrup;
+            }
+           
+                if ( XXS == true)
+                {
+                    Aciklama = Aciklama + " " + "- XXS";
+                }
+
+                if ( XS == true)
+                {
+                    Aciklama = Aciklama + " " + "- XS";
+                }
+
+                if ( S == true)
+                {
+                    Aciklama = Aciklama + " " + "- S";
+                }
+
+                if ( M == true)
+                {
+                    Aciklama = Aciklama + " " + "- M";
+                }
+
+
+                if ( L == true)
+                {
+                    Aciklama = Aciklama + " " + "- L";
+                }
+
+                if ( XL == true)
+                {
+                    Aciklama = Aciklama + " " + "- XL";
+                }
+
+                if ( XXL == true)
+                {
+                    Aciklama = Aciklama + " " + "- XXL";
+                }
+
+                if ( B3XL == true)
+                {
+                    Aciklama = Aciklama + " " + "- 3XL";
+                }
+
+                if ( B4XL == true)
+                {
+                    Aciklama = Aciklama + " " + "- 4XL";
+                }
+
+                if ( B5XL == true)
+                {
+                    Aciklama = Aciklama + " " + "- 5XL";
+                }
+
+                if ( B6XL == true)
+                {
+                    Aciklama = Aciklama + " " + "- 6XL";
+                }
+
+                if ( B4 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 4";
+                }
+
+                if ( B6 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 6";
+                }
+
+                if ( B8 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 8";
+                }
+
+                if ( B10 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 10";
+                }
+
+
+                if ( B12 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 12";
+                }
+
+                if ( B14 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 14";
+                }
+
+                if ( B16 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 16";
+                }
+
+                if ( B18 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 18";
+                }
+
+                if ( B20 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 20";
+                }
+
+                if ( B22 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 22";
+                }
+
+                if ( B24 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 24";
+                }
+
+                if ( B26 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 26";
+                }
+
+                if ( B28 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 28";
+                }
+
+                if ( B30 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 30";
+                }
+
+                if ( B32 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 32";
+                }
+
+
+                if ( B34 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 34";
+                }
+
+                if ( B36 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 36";
+                }
+
+                if ( B56 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 56";
+                }
+
+                if ( B62 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 62";
+                }
+
+                if ( B68 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 68";
+                }
+
+                if ( B74 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 74";
+                }
+
+                if ( B80 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 80";
+                }
+
+                if ( B86 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 86";
+                }
+
+                if ( B92 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 92";
+                }
+
+                if ( B98 == true)
+                {
+                    Aciklama = Aciklama + " " + "- 98";
+                }
+
+                if ( Y5_6 == true)
+                {
+                    Aciklama = Aciklama + " " + "- Y5_6";
+                }
+
+                if ( Y7_8 == true)
+                {
+                    Aciklama = Aciklama + " " + "- Y7_8";
+                }
+
+                if ( Y9_10 == true)
+                {
+                    Aciklama = Aciklama + " " + "- Y9_10";
+                }
+
+                if ( Y11_12 == true)
+                {
+                    Aciklama = Aciklama + " " + "- Y11_12";
+                }
+
+                if ( Y13 == true)
+                {
+                    Aciklama = Aciklama + " " + "- Y13";
+                }
+
+            
+            base.OnSaving();    
+        }
+    }
+
+}

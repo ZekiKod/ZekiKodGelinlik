@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="ModelKarti_SiparisKartis_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Musteri" Index="0" Width="97" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SiparisFoy_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SiparisKartis_Group" Direction="Vertical" RelativeSize="81.16883116883118">
+            <LayoutItem Id="SiparisKartis" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SiparisFoy">
+              <LayoutItem Id="Temsilci" Index="1" RelativeSize="28.91566265060241" />
+              <LayoutItem Id="Tarih" Index="2" RelativeSize="32.53012048192771" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item9">
+              <LayoutGroup Id="SiparisKarti_Group">
+                <LayoutGroup Id="SiparisKarti_Group_col1">
+                  <LayoutGroup Id="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5">
+                    <LayoutGroup Id="Item13">
+                      <LayoutItem Id="Musteri" ViewItem="Musteri" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

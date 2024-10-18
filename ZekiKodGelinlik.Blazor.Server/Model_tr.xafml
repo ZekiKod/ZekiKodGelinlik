@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.MaliyetKumas">
+      <OwnMembers>
+        <Member Name="BirimGramaj" Caption="Birim" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="@Depo" Caption="Depo" />
+      <Item Id="Magaza" Caption="Mağaza">
+        <Items>
+          <Item Id="Kiralama_Satis_ListView" Caption="Kiralama Satış" />
+        </Items>
+      </Item>
+      <Item Id="ToptanSiparisTakip" Caption="ToptanSiparisTakip" />
+    </Items>
+  </NavigationItems>
+  <Views>
+    <DetailView Id="Kiralama_Satis_DetailView">
+      <Items>
+        <PropertyEditor Id="MusteriAdi" Caption="Adı Soyadı" />
+        <PropertyEditor Id="Oid" Caption="Föy No" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Kiralama_Satis">
+              <LayoutGroup Id="Auto464e5cc5-6969-4d44-a2de-aafef6605616" Caption="Auto464e5cc5-6969-4d44-a2de-aafef6605616(4)" />
+              <LayoutGroup Id="Autod6358d7b-6120-409d-8d80-919c66b292a9" Caption="Autod6358d7b-6120-409d-8d80-919c66b292a9(5)">
+                <LayoutGroup Id="Auto58a8e7fc-98aa-4c2e-9b3e-b15e9c351d7b" Caption="">
+                  <LayoutGroup Id="Kiralama_Satis_col1">
+                    <LayoutGroup Id="Item1" Caption="MüşteriBilgileri">
+                      <LayoutGroup Id="Autof0c225e0-bb97-4582-af08-b486cd5cf3c4" Caption="Autof0c225e0-bb97-4582-af08-b486cd5cf3c4(8)" />
+                      <LayoutGroup Id="Autod234c57c-ca31-4fdc-8d39-d666f21a785d" Caption="Autod234c57c-ca31-4fdc-8d39-d666f21a785d(11)">
+                        <LayoutGroup Id="Auto2e3fe554-a4b2-4684-826e-7a96ad29e865" Caption="Auto2e3fe554-a4b2-4684-826e-7a96ad29e865(13)" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item5" Caption="Yetkili Bilgileri">
+                      <LayoutGroup Id="Auto86f7ac31-d6a7-4b95-b1b6-ba7103b603b7" Caption="Auto86f7ac31-d6a7-4b95-b1b6-ba7103b603b7(18)" />
+                      <LayoutGroup Id="Auto36ca6890-4d36-4a6f-bad5-d9e06190ccc1" Caption="Auto36ca6890-4d36-4a6f-bad5-d9e06190ccc1(21)" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutGroup Id="Kiralama_Satis_col2">
+                    <LayoutGroup Id="Item2" Caption="Gelinlik">
+                      <LayoutGroup Id="Auto67791f30-c489-4213-ae5e-36ee245a26d6" Caption="Auto67791f30-c489-4213-ae5e-36ee245a26d6(26)" />
+                      <LayoutGroup Id="Auto22c226f9-8f06-4dcd-8541-41ab497ac09b" Caption="Auto22c226f9-8f06-4dcd-8541-41ab497ac09b(29)" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item3" Caption="Nişanlık Bilgileri">
+                      <LayoutGroup Id="Auto7161b401-2c64-45c2-895c-d6b8a41c96ba" Caption="Auto7161b401-2c64-45c2-895c-d6b8a41c96ba(33)" />
+                      <LayoutGroup Id="Auto5096d0e6-6635-4ce4-b28d-860b6db16656" Caption="Auto5096d0e6-6635-4ce4-b28d-860b6db16656(36)" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item4" Caption="Kınalık Bilgileri">
+                      <LayoutGroup Id="Autoed8f7c80-0d21-4805-befc-ce6806bde01a" Caption="Autoed8f7c80-0d21-4805-befc-ce6806bde01a(40)" />
+                      <LayoutGroup Id="Auto46f42654-8889-4181-9fb5-f2985488319f" Caption="Auto46f42654-8889-4181-9fb5-f2985488319f(43)" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item6" Caption="Aksesuar">
+                  <LayoutGroup Id="Auto76fc5e7a-ca0f-418e-bbca-98d3607ba6d7" Caption="Auto76fc5e7a-ca0f-418e-bbca-98d3607ba6d7(50)" />
+                  <LayoutGroup Id="Auto6863cde4-a05e-4222-abab-1f89eaf648c1" Caption="Auto6863cde4-a05e-4222-abab-1f89eaf648c1(53)">
+                    <LayoutGroup Id="Auto806d77ca-bc0b-4881-ab01-846663551686" Caption="Auto806d77ca-bc0b-4881-ab01-846663551686(54)" />
+                    <LayoutGroup Id="Auto5ca9c65d-d568-4e56-b7fc-e46989b13e61" Caption="Auto5ca9c65d-d568-4e56-b7fc-e46989b13e61(57)">
+                      <LayoutGroup Id="Auto3ddd3599-129f-4838-b6fe-c0f4b62fd337" Caption="Auto3ddd3599-129f-4838-b6fe-c0f4b62fd337(58)" />
+                      <LayoutGroup Id="Auto7eef0b88-57ab-4704-a9f3-b18600c81e02" Caption="Auto7eef0b88-57ab-4704-a9f3-b18600c81e02(61)" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_Satis_col1">
+                <LayoutGroup Id="Item1" Caption="MüşteriBilgileri">
+                  <LayoutGroup Id="Auto01095ab3-8c3f-48b0-98f8-3409c993f4c6" Caption="" />
+                  <LayoutGroup Id="Auto254c7a12-3001-4a40-a265-bb0775840ced" Caption="">
+                    <LayoutGroup Id="Auto81c46f81-6fa3-4c60-b325-e63c41d56ae4" Caption="" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item5" Caption="Yetkili Bilgileri">
+                  <LayoutGroup Id="Auto38faa373-e424-430f-a340-6cfe2a9d89fb" Caption="" />
+                  <LayoutGroup Id="Auto0ce9eb8c-1720-49a5-b8f9-7e624288f8c2" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_Satis_col2">
+                <LayoutGroup Id="Item2" Caption="Gelinlik">
+                  <LayoutGroup Id="Autoc1e991c4-0f32-4154-be46-137de4626d43" Caption="" />
+                  <LayoutGroup Id="Autoaa40ceb2-86a4-4183-8ba9-a779cd61153f" Caption="" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" Caption="Nişanlık Bilgileri">
+                  <LayoutGroup Id="Autoc3d2495c-9b95-4e39-8b74-076383fbc9bd" Caption="" />
+                  <LayoutGroup Id="Auto935aa3d5-6ff9-46cb-84a0-8156bcf12fad" Caption="" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item4" Caption="Kınalık Bilgileri">
+                  <LayoutGroup Id="Auto25ba41ca-6229-45a5-a6f0-509712ca126e" Caption="" />
+                  <LayoutGroup Id="Autobb93f881-4f24-4240-8bfd-2d6ce1992a8c" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" />
+          </LayoutGroup>
+          <LayoutGroup Id="KuaforTablosus" Caption="Kuaför İşlemleri" />
+          <LayoutGroup Id="ProvaTakips" Caption="Prova Takips" />
+          <LayoutGroup Id="SizeableEditors" Caption="Adresi" />
+          <LayoutGroup Id="Item7" Caption="Ödeme Planı" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Model_Maliyet_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Model_Maliyet">
+              <LayoutGroup Id="Model_Maliyet_col1">
+                <LayoutGroup Id="Auto61a40c3f-f7f6-43aa-93b2-05b34379c303">
+                  <LayoutGroup Id="Auto3dfc1a41-4c27-41aa-963b-6afb64898265">
+                    <LayoutGroup Id="Auto8c1f9e77-ab11-4c1a-afb0-c65865ecc67f" Caption="">
+                      <LayoutGroup Id="MaliyetMalzemes" Caption="Maliyet Malzemes" />
+                      <LayoutGroup Id="Item1" Caption="Genel Gider Oranları" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="ModelFiyatlandirmas" Caption="Model Fiyatlandirmas" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisFoy_DetailView_Prakende">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SiparisFoy">
+              <LayoutGroup Id="Auto82d70385-651e-43e5-8111-c8d76b99e5b5" Caption="Auto82d70385-651e-43e5-8111-c8d76b99e5b5(4)" />
+              <LayoutGroup Id="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d" Caption="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d(7)" />
+              <LayoutGroup Id="Auto8b7a0fec-796e-4a40-a727-deb815c63b6b" Caption="Auto8b7a0fec-796e-4a40-a727-deb815c63b6b(12)" />
+            </LayoutGroup>
+            <LayoutGroup Id="Auto09ca6c16-06a5-43b7-8172-294f21318961" Caption="Auto09ca6c16-06a5-43b7-8172-294f21318961(13)">
+              <LayoutGroup Id="Item2">
+                <LayoutGroup Id="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c" Caption="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c(18)" />
+                <LayoutGroup Id="Autod5b5979c-29d6-4e47-bc96-131253500751" Caption="Autod5b5979c-29d6-4e47-bc96-131253500751(21)">
+                  <LayoutGroup Id="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea" Caption="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea(23)" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView_Kesim" CaptionColon=":" RequiredFieldMark="*" Caption="KesimHane Detay">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item9">
+              <LayoutGroup Id="SiparisKarti_Group">
+                <LayoutGroup Id="SiparisKarti_Group_col1">
+                  <LayoutGroup Id="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5">
+                    <LayoutGroup Id="Item13">
+                      <LayoutGroup Id="Item14" Caption="Prova Tarihleri" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="ACIKLAMA">
+            <LayoutGroup Id="Item8" Caption="Beden Ölçüleri">
+              <LayoutGroup Id="Autocbe70316-a561-491a-9d62-8d49505914d4" Caption="" />
+              <LayoutGroup Id="Auto512a4557-a807-46b3-b830-013f6258d21f" Caption="">
+                <LayoutGroup Id="Auto352e9d1d-f84f-41fc-b90d-ed23edfa37f2" Caption="" />
+                <LayoutGroup Id="Autocb91162b-1205-4614-9185-496db3fc9014" Caption="">
+                  <LayoutGroup Id="Auto2c4dea4c-655a-474d-9eac-b640ca07f6ca" Caption="" />
+                  <LayoutGroup Id="Auto327ffefb-9583-487e-99c5-12c88c182ed2" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item6" Caption="Kesim Bilgileri" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView_Prakende">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="Autod360a902-0529-4633-bc72-8c9c82354bf7" Caption="Autod360a902-0529-4633-bc72-8c9c82354bf7(3)">
+              <LayoutGroup Id="Auto6262efcf-9938-41d6-a4b1-21b77ba9c93b" Caption="Auto6262efcf-9938-41d6-a4b1-21b77ba9c93b(8)">
+                <LayoutGroup Id="Autoc0478d9b-7790-4754-bea4-ab1321e214eb" Caption="Autoc0478d9b-7790-4754-bea4-ab1321e214eb(5)" />
+                <LayoutGroup Id="Autod7ba43fc-f6ea-4622-ac69-a2232aa423d5" Caption="Autod7ba43fc-f6ea-4622-ac69-a2232aa423d5(13)">
+                  <LayoutGroup Id="Autoe60be59d-73a0-4d6f-a4c3-0a768c16752b" Caption="Autoe60be59d-73a0-4d6f-a4c3-0a768c16752b(10)" />
+                  <LayoutGroup Id="Autoeded242e-2def-45d7-a194-ff56a1602ff4" Caption="Autoeded242e-2def-45d7-a194-ff56a1602ff4(24)">
+                    <TabbedGroup Id="Item10">
+                      <LayoutGroup Id="Item8" Caption="BEDEN ÖLÇÜLERİ">
+                        <LayoutGroup Id="Autof4096578-e8e8-48f7-936a-2a79c752bacc" Caption="Autof4096578-e8e8-48f7-936a-2a79c752bacc(44)" />
+                        <LayoutGroup Id="Auto8eac69b2-1625-4aca-9fd6-dfa74b8e0a4e" Caption="Auto8eac69b2-1625-4aca-9fd6-dfa74b8e0a4e(47)">
+                          <LayoutGroup Id="Autofd82ca75-64fd-4bf4-b097-7bd11b53ed05" Caption="Autofd82ca75-64fd-4bf4-b097-7bd11b53ed05(51)" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Auto72c3ffbc-525d-4afa-a32c-f5a9e3adcf3f" Caption="Auto72c3ffbc-525d-4afa-a32c-f5a9e3adcf3f(30)" />
+                      </LayoutGroup>
+                    </TabbedGroup>
+                    <LayoutGroup Id="Auto8164e146-06ec-4ef2-b91e-fc1fc85659fe" Caption="Auto8164e146-06ec-4ef2-b91e-fc1fc85659fe(26)">
+                      <LayoutGroup Id="Auto5c1b374f-5d8a-40f3-8571-9ef27ce9781e" Caption="Auto5c1b374f-5d8a-40f3-8571-9ef27ce9781e(37)">
+                        <LayoutGroup Id="Auto4871aa34-61a2-4cb5-a53b-385479e4fe96" Caption="Auto4871aa34-61a2-4cb5-a53b-385479e4fe96(39)">
+                          <TabbedGroup Id="Item6">
+                            <LayoutGroup Id="Item4" Caption="Prova Takips" />
+                          </TabbedGroup>
+                          <TabbedGroup Id="Item2">
+                            <LayoutGroup Id="Item1" Caption="On Resim" />
+                            <LayoutGroup Id="Item3" Caption="Arka Resim" />
+                            <LayoutGroup Id="Item5" Caption="Teknik Resim 1" />
+                            <LayoutGroup Id="Item7" Caption="Teknik Resim 2" />
+                          </TabbedGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SiparisKarti_ListView_Kesim" Caption="KesimHane" />
+  </Views>
+</Application>

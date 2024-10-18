@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Musterler_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="86.3431151241535">
+            <LayoutGroup Id="Musterler" RelativeSize="8.104575163398692">
+              <LayoutItem Id="CariKodu" RelativeSize="51.61290322580645" />
+              <LayoutItem Id="MusteriAdi" RelativeSize="48.38709677419355" />
+            </LayoutGroup>
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="1" RelativeSize="87.7124183006536">
+              <LayoutGroup Id="SiparisKarti_Group" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100">
+                <LayoutGroup Id="SiparisKarti_Group_col1" ShowCaption="False" Index="0" RelativeSize="50">
+                  <LayoutItem Id="icSiparisNo" ViewItem="icSiparisNo" Index="0" RelativeSize="5" />
+                  <LayoutItem Id="MusteriSiparisNo" ViewItem="MusteriSiparisNo" Index="1" RelativeSize="3.75" />
+                  <LayoutItem Id="ModelKarti" ViewItem="ModelKarti" Index="2" RelativeSize="3.75" />
+                  <LayoutItem Id="SiparisAdet" ViewItem="SiparisAdet" Index="3" RelativeSize="3.75" />
+                  <LayoutItem Id="Fiyat" ViewItem="Fiyat" Index="4" RelativeSize="3.75" />
+                  <LayoutItem Id="ToplamTutar" ViewItem="ToplamTutar" Index="5" RelativeSize="3.75" />
+                  <LayoutItem Id="Musteri" ViewItem="Musteri" Index="6" RelativeSize="3.75" />
+                  <LayoutItem Id="ParaBirimi" ViewItem="ParaBirimi" Index="7" RelativeSize="3.75" />
+                  <LayoutItem Id="Temsilci" ViewItem="Temsilci" Index="8" RelativeSize="3.75" />
+                  <LayoutItem Id="icTermin" ViewItem="icTermin" Index="9" RelativeSize="3.75" />
+                  <LayoutItem Id="MusteriTermin" ViewItem="MusteriTermin" Index="10" RelativeSize="61.25" />
+                </LayoutGroup>
+                <LayoutGroup Id="SiparisKarti_Group_col2" ShowCaption="False" Index="1" RelativeSize="50">
+                  <LayoutItem Id="Siparis" ViewItem="Siparis" Index="0" RelativeSize="5" />
+                  <LayoutItem Id="BedenGrubu" ViewItem="BedenGrubu" Index="1" RelativeSize="3.75" />
+                  <LayoutItem Id="Article" ViewItem="Article" Index="2" RelativeSize="3.75" />
+                  <LayoutItem Id="OnaylanmısModel" ViewItem="OnaylanmısModel" Index="3" RelativeSize="3.75" />
+                  <LayoutItem Id="KesimlenToplam" ViewItem="KesimlenToplam" Index="4" RelativeSize="3.75" />
+                  <LayoutItem Id="DikimToplam" ViewItem="DikimToplam" Index="5" RelativeSize="3.75" />
+                  <LayoutItem Id="PaketToplam" ViewItem="PaketToplam" Index="6" RelativeSize="3.75" />
+                  <LayoutItem Id="Hatali" ViewItem="Hatali" Index="7" RelativeSize="3.75" />
+                  <LayoutItem Id="iade" ViewItem="iade" Index="8" RelativeSize="3.75" />
+                  <LayoutItem Id="Reklamasyon" ViewItem="Reklamasyon" Index="9" RelativeSize="65" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="TumMaliyetTablosu" ShowCaption="True" Caption="Tum Maliyet Tablosu" Direction="Horizontal" Index="1" RelativeSize="100">
+                <LayoutGroup Id="TumMaliyetTablosu_col1" ShowCaption="False" Index="0" RelativeSize="50">
+                  <LayoutItem Id="SiparisKarti" ViewItem="SiparisKarti" Index="0" RelativeSize="5" />
+                  <LayoutItem Id="P_KumasTutarDoviz" ViewItem="P_KumasTutarDoviz" Index="1" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KumasTutarTL" ViewItem="P_KumasTutarTL" Index="2" RelativeSize="3.75" />
+                  <LayoutItem Id="P_iscilikDoviz" ViewItem="P_iscilikDoviz" Index="3" RelativeSize="3.75" />
+                  <LayoutItem Id="P_iscilikTL" ViewItem="P_iscilikTL" Index="4" RelativeSize="3.75" />
+                  <LayoutItem Id="P_BaskiNakisTasDvz" ViewItem="P_BaskiNakisTasDvz" Index="5" RelativeSize="3.75" />
+                  <LayoutItem Id="P_BaskiNakisTasTL" ViewItem="P_BaskiNakisTasTL" Index="6" RelativeSize="3.75" />
+                  <LayoutItem Id="P_YikamaDvz" ViewItem="P_YikamaDvz" Index="7" RelativeSize="3.75" />
+                  <LayoutItem Id="P_YikamaTL" ViewItem="P_YikamaTL" Index="8" RelativeSize="3.75" />
+                  <LayoutItem Id="P_MalzemeDvz" ViewItem="P_MalzemeDvz" Index="9" RelativeSize="3.75" />
+                  <LayoutItem Id="P_MalzemeTL" ViewItem="P_MalzemeTL" Index="10" RelativeSize="3.75" />
+                  <LayoutItem Id="P_NavlunDvz" ViewItem="P_NavlunDvz" Index="11" RelativeSize="3.75" />
+                  <LayoutItem Id="P_NavlunTL" ViewItem="P_NavlunTL" Index="12" RelativeSize="3.75" />
+                  <LayoutItem Id="P_TestDvz" ViewItem="P_TestDvz" Index="13" RelativeSize="3.75" />
+                  <LayoutItem Id="P_TestTL" ViewItem="P_TestTL" Index="14" RelativeSize="3.75" />
+                  <LayoutItem Id="P_GenelGiderDvz" ViewItem="P_GenelGiderDvz" Index="15" RelativeSize="3.75" />
+                  <LayoutItem Id="P_GenelGiderTL" ViewItem="P_GenelGiderTL" Index="16" RelativeSize="3.75" />
+                  <LayoutItem Id="P_FinansBedeliDvz" ViewItem="P_FinansBedeliDvz" Index="17" RelativeSize="3.75" />
+                  <LayoutItem Id="P_FinansBedeliTL" ViewItem="P_FinansBedeliTL" Index="18" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KomisyonBdlDvz" ViewItem="P_KomisyonBdlDvz" Index="19" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KomisyonBdlTL" ViewItem="P_KomisyonBdlTL" Index="20" RelativeSize="3.75" />
+                  <LayoutItem Id="P_ToplamTutarDoviz" ViewItem="P_ToplamTutarDoviz" Index="21" RelativeSize="3.75" />
+                  <LayoutItem Id="P_ToplamTutarTL" ViewItem="P_ToplamTutarTL" Index="22" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KumasTutarDoviz" ViewItem="G_KumasTutarDoviz" Index="23" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KumasTutarTL" ViewItem="G_KumasTutarTL" Index="24" RelativeSize="3.75" />
+                  <LayoutItem Id="G_iscilikDoviz" ViewItem="G_iscilikDoviz" Index="25" RelativeSize="5" />
+                </LayoutGroup>
+                <LayoutGroup Id="TumMaliyetTablosu_col2" ShowCaption="False" Index="1" RelativeSize="50">
+                  <LayoutItem Id="G_iscilikTL" ViewItem="G_iscilikTL" Index="0" RelativeSize="5" />
+                  <LayoutItem Id="G_BaskiNakisTasDvz" ViewItem="G_BaskiNakisTasDvz" Index="1" RelativeSize="3.75" />
+                  <LayoutItem Id="G_BaskiNakisTasTL" ViewItem="G_BaskiNakisTasTL" Index="2" RelativeSize="3.75" />
+                  <LayoutItem Id="G_YikamaDvz" ViewItem="G_YikamaDvz" Index="3" RelativeSize="3.75" />
+                  <LayoutItem Id="G_YikamaTL" ViewItem="G_YikamaTL" Index="4" RelativeSize="3.75" />
+                  <LayoutItem Id="G_MalzemeDvz" ViewItem="G_MalzemeDvz" Index="5" RelativeSize="3.75" />
+                  <LayoutItem Id="G_MalzemeTL" ViewItem="G_MalzemeTL" Index="6" RelativeSize="3.75" />
+                  <LayoutItem Id="G_NavlunDvz" ViewItem="G_NavlunDvz" Index="7" RelativeSize="3.75" />
+                  <LayoutItem Id="G_NavlunTL" ViewItem="G_NavlunTL" Index="8" RelativeSize="3.75" />
+                  <LayoutItem Id="G_TestDvz" ViewItem="G_TestDvz" Index="9" RelativeSize="3.75" />
+                  <LayoutItem Id="G_TestTL" ViewItem="G_TestTL" Index="10" RelativeSize="3.75" />
+                  <LayoutItem Id="G_GenelGiderDvz" ViewItem="G_GenelGiderDvz" Index="11" RelativeSize="3.75" />
+                  <LayoutItem Id="G_GenelGiderTL" ViewItem="G_GenelGiderTL" Index="12" RelativeSize="3.75" />
+                  <LayoutItem Id="G_FinansBedeliDvz" ViewItem="G_FinansBedeliDvz" Index="13" RelativeSize="3.75" />
+                  <LayoutItem Id="G_FinansBedeliTL" ViewItem="G_FinansBedeliTL" Index="14" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KomisyonBdlDvz" ViewItem="G_KomisyonBdlDvz" Index="15" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KomisyonBdlTL" ViewItem="G_KomisyonBdlTL" Index="16" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ReklamasyonDvz" ViewItem="G_ReklamasyonDvz" Index="17" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ReklamasyonTL" ViewItem="G_ReklamasyonTL" Index="18" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ToplamTutarDoviz" ViewItem="G_ToplamTutarDoviz" Index="19" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ToplamTutarTL" ViewItem="G_ToplamTutarTL" Index="20" RelativeSize="3.75" />
+                  <LayoutItem Id="KurTarihİ" ViewItem="KurTarihİ" Index="21" RelativeSize="3.75" />
+                  <LayoutItem Id="M_ParaBirimi" ViewItem="M_ParaBirimi" Index="22" RelativeSize="3.75" />
+                  <LayoutItem Id="EuroKuru" ViewItem="EuroKuru" Index="23" RelativeSize="3.75" />
+                  <LayoutItem Id="DolarKuru" ViewItem="DolarKuru" Index="24" RelativeSize="3.75" />
+                  <LayoutItem Id="SterlinKuru" ViewItem="SterlinKuru" Index="25" RelativeSize="5" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="2" RelativeSize="4.052287581699346" />
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="0.13071895424836602">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisKarti_Group" RelativeSize="29.21455938697318" Removed="True">
+              <LayoutGroup Id="SiparisKarti_Group_col1" RelativeSize="50">
+                <LayoutItem Id="Fiyat" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="icSiparisNo" RelativeSize="11.428571428571429" />
+                <LayoutItem Id="icTermin" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="ModelKarti" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="Musteri" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="MusteriSiparisNo" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="MusteriTermin" RelativeSize="11.428571428571429" />
+                <LayoutItem Id="ParaBirimi" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="SiparisAdet" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="Temsilci" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="ToplamTutar" RelativeSize="8.571428571428571" />
+              </LayoutGroup>
+              <LayoutGroup Id="SiparisKarti_Group_col2" RelativeSize="50">
+                <LayoutItem Id="Article" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="BedenGrubu" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="DikimToplam" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="Hatali" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="iade" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="KesimlenToplam" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="OnaylanmısModel" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="PaketToplam" RelativeSize="8.571428571428571" />
+                <LayoutItem Id="Reklamasyon" RelativeSize="20" />
+                <LayoutItem Id="Siparis" RelativeSize="11.428571428571429" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="TumMaliyetTablosu" RelativeSize="64.3756050338819" Removed="True">
+              <LayoutGroup Id="TumMaliyetTablosu_col1" RelativeSize="50">
+                <LayoutItem Id="G_iscilikDoviz" RelativeSize="5" />
+                <LayoutItem Id="G_KumasTutarDoviz" RelativeSize="3.75" />
+                <LayoutItem Id="G_KumasTutarTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_BaskiNakisTasDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_BaskiNakisTasTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_FinansBedeliDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_FinansBedeliTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_GenelGiderDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_GenelGiderTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_iscilikDoviz" RelativeSize="3.75" />
+                <LayoutItem Id="P_iscilikTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_KomisyonBdlDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_KomisyonBdlTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_KumasTutarDoviz" RelativeSize="3.75" />
+                <LayoutItem Id="P_KumasTutarTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_MalzemeDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_MalzemeTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_NavlunDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_NavlunTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_TestDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_TestTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_ToplamTutarDoviz" RelativeSize="3.75" />
+                <LayoutItem Id="P_ToplamTutarTL" RelativeSize="3.75" />
+                <LayoutItem Id="P_YikamaDvz" RelativeSize="3.75" />
+                <LayoutItem Id="P_YikamaTL" RelativeSize="3.75" />
+                <LayoutItem Id="SiparisKarti" RelativeSize="5" />
+              </LayoutGroup>
+              <LayoutGroup Id="TumMaliyetTablosu_col2" RelativeSize="50">
+                <LayoutItem Id="DolarKuru" RelativeSize="3.75" />
+                <LayoutItem Id="EuroKuru" RelativeSize="3.75" />
+                <LayoutItem Id="G_BaskiNakisTasDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_BaskiNakisTasTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_FinansBedeliDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_FinansBedeliTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_GenelGiderDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_GenelGiderTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_iscilikTL" RelativeSize="5" />
+                <LayoutItem Id="G_KomisyonBdlDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_KomisyonBdlTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_MalzemeDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_MalzemeTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_NavlunDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_NavlunTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_ReklamasyonDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_ReklamasyonTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_TestDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_TestTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_ToplamTutarDoviz" RelativeSize="3.75" />
+                <LayoutItem Id="G_ToplamTutarTL" RelativeSize="3.75" />
+                <LayoutItem Id="G_YikamaDvz" RelativeSize="3.75" />
+                <LayoutItem Id="G_YikamaTL" RelativeSize="3.75" />
+                <LayoutItem Id="KurTarihİ" RelativeSize="3.75" />
+                <LayoutItem Id="M_ParaBirimi" RelativeSize="3.75" />
+                <LayoutItem Id="SterlinKuru" RelativeSize="5" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="13.656884875846501">
+            <LayoutGroup Id="Kumas_SatinAlmas" RelativeSize="100" Index="0">
+              <LayoutItem Id="Kumas_SatinAlmas" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Aksesuarlars" RelativeSize="100" Index="1">
+              <LayoutItem Id="Aksesuarlars" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisDetays" RelativeSize="100" Index="2">
+              <LayoutItem Id="SiparisDetays" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="MusteriTermins" RelativeSize="100" Index="3">
+              <LayoutItem Id="MusteriTermins" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Faturalars" RelativeSize="100" Index="4">
+              <LayoutItem Id="Faturalars" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="GunlukKesims" RelativeSize="100" Index="5">
+              <LayoutItem Id="GunlukKesims" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="AksesuarSiparisCollection" RelativeSize="100" Index="6">
+              <LayoutItem Id="AksesuarSiparisCollection" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Etiketlers" RelativeSize="100" Index="7">
+              <LayoutItem Id="Etiketlers" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Baskis" RelativeSize="100" Index="8">
+              <LayoutItem Id="Baskis" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="NakisCollection" RelativeSize="100" Index="9">
+              <LayoutItem Id="NakisCollection" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Siparisislemlers" RelativeSize="100">
+              <LayoutItem Id="Siparisislemlers" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisEkDosyalaris" RelativeSize="100">
+              <LayoutItem Id="SiparisEkDosyalaris" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="irsaliyelers" RelativeSize="100">
+              <LayoutItem Id="irsaliyelers" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Dikims" RelativeSize="100">
+              <LayoutItem Id="Dikims" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="MusteriTemsilcisi">
+        <Items Id="Items">
+          <Item Id="Musterler_ListView" ViewId="Musterler_ListView" />
+        </Items>
+      </Item>
+      <Item Id="Default">
+        <Items Id="Items">
+          <Item Id="Musterler_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>

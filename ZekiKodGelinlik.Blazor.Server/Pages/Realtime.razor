@@ -1,0 +1,27 @@
+﻿@page "/Realtime"
+@using System.Threading.Tasks
+@using ZekiKodGelinlik.Blazor.Server.Controllers;
+
+
+<h3>OpenAI Realtime API'ye Bağlan ve Komut Gönder</h3>
+
+<textarea id="speechTextBox"></textarea>
+<button @onclick="StartListening">Mikrofonu Başlat</button>
+
+<p>@status</p>
+
+@code {
+    private string status = "Hazır";
+
+    private async Task StartListening()
+    {
+        var client = new OpenAIRealTimeClient();
+        status = "Bağlanılıyor...";
+        await client.ConnectAsync();
+        status = "Bağlandı! Komutlar dinleniyor...";
+
+        // Örnek bir komut gönder
+        await client.SendCommandAsync("Merhaba ZekiKod!");
+        await client.ReceiveMessagesAsync();
+    }
+}

@@ -1,0 +1,30 @@
+using System;
+using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
+using DevExpress.Data.Filtering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+
+    public partial class ModelEkstraIslemler
+    {
+        public ModelEkstraIslemler(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+            base.OnChanged(propertyName, oldValue, newValue);
+            if (propertyName == nameof(Fiyat))
+            {
+              fSiparisKarti.ToplamTutar = fSiparisKarti.Fiyat + fSiparisKarti.ModelEkstraIslemlers.Sum(x => x.Fiyat);
+                fSiparisKarti.SiparisFoy.ToplamTutar = fSiparisKarti.SiparisFoy.SiparisKartis.Sum(x => x.ToplamTutar);
+
+                base.OnChanged();
+            }
+        }
+
+
+    }
+
+}

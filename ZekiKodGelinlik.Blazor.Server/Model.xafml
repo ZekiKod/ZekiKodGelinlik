@@ -1,0 +1,1658 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application PreferredLanguage="tr-TR">
+  <BOModel>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.FoyOdemePlani">
+      <OwnMembers>
+        <Member Name="OdemeSekli" LookupProperty="OdemeTur" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Kiralama_Satis">
+      <OwnMembers>
+        <Member Name="Gelinlik" LookupProperty="ModelKarti.ModelAdi" />
+        <Member Name="Kinalik" LookupProperty="ModelKarti.ModelAdi" />
+        <Member Name="Nisanlik" LookupProperty="ModelKarti.ModelAdi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.KumasStok">
+      <OwnMembers>
+        <Member Name="Birim" LookupProperty="Birimi" />
+        <Member Name="Kumas" LookupProperty="Kumas" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.MaliyetKumas">
+      <OwnMembers>
+        <Member Name="Kumas" LookupProperty="Kumas" />
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.MaliyetMalzeme">
+      <OwnMembers>
+        <Member Name="Birim" LookupProperty="Birimi" />
+        <Member Name="Malzeme" LookupProperty="Malzeme" />
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Model_Maliyet">
+      <OwnMembers>
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+        <Member Name="StyleName" Caption="Stil Adı" />
+        <Member Name="StyleNo" Caption="Stil No" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.ModelKarti" Caption="Model Kartı">
+      <OwnMembers>
+        <Member Name="Aciklama" Caption="Açıklama" />
+        <Member Name="Model_Maliyets" Caption="Model Maliyeti" />
+        <Member Name="ModelAdi" Caption="Model Adı" />
+        <Member Name="ModelOperasyons" Caption="Model Operasyonları" />
+        <Member Name="ModelParcas" Caption="Model Parcaları" />
+        <Member Name="Musteri" Caption="Müşteri" />
+        <Member Name="SiparisKartis" Caption="Modelden Alınan Siparişler" />
+        <Member Name="Tasarimci" Caption="Tasarımcı" />
+        <Member Name="TasarimTarihi" Caption="Tasarım Tarihi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.ModelMaliyetKDA">
+      <OwnMembers>
+        <Member Name="Birim" LookupProperty="Birimi" />
+        <Member Name="islem" LookupProperty="islem" />
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.ModelParca">
+      <OwnMembers>
+        <Member Name="Bolgesi" Caption="Bölgesi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Musteriler" Caption="Müşteriler">
+      <OwnMembers>
+        <Member Name="MusteriAdi" Caption="Müşteri Adı" />
+        <Member Name="SiparisFoys" Caption="Sipariş Föyü" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Nakis" Caption="Nakış" />
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.NakisTakip">
+      <OwnMembers>
+        <Member Name="NakisciAdSoyad" LookupProperty="AdSoyad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.ProvaTakip">
+      <OwnMembers>
+        <Member Name="Durumu" LookupProperty="Durum" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisFoy" Caption="Şipariş Föyü">
+      <OwnMembers>
+        <Member Name="FoyOdemePlanis" Caption="Föy Odeme Planı" />
+        <Member Name="iskontoluToplamTutar" Caption="İskontolu Toplam Tutar" />
+        <Member Name="iskontoTutar" Caption="İskonto Tutarı" />
+        <Member Name="iskontoYuzde" Caption="İskonto Yüzdesi" />
+        <Member Name="KdvOranYuzde" Caption="Kdv Oran Yüzdesi" LookupProperty="Kdv" />
+        <Member Name="KdvTutar" Caption="Kdv Tutarı" />
+        <Member Name="ModelBarkod" ImmediatePostData="True" />
+        <Member Name="Musteriler" Caption="Müşteriler" />
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+        <Member Name="SiparisKartis" Caption="Sipariş Kartı" />
+        <Member Name="Temsilci" LookupProperty="AdSoyad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" Caption="Sipariş Kartı">
+      <OwnMembers>
+        <Member Name="Aksesuarlars" Caption="Aksesuarlar" />
+        <Member Name="AksesuarSiparisCollection" Caption="Aksesuar Siparişleri" />
+        <Member Name="Baskis" Caption="Baskı" />
+        <Member Name="Dikims" Caption="Dikim" />
+        <Member Name="Etiketlers" Caption="Etiketler" />
+        <Member Name="Faturalars" Caption="Faturalar" />
+        <Member Name="GunlukKesims" Caption="Günlük Kesim" />
+        <Member Name="Hatali" Caption="Hatalı " />
+        <Member Name="iade" Caption="İade" />
+        <Member Name="icSiparisNo" Caption="İç Sipariş No" />
+        <Member Name="icTermin" Caption="İç Termin" />
+        <Member Name="irsaliyelers" Caption="İrsaliyeler" />
+        <Member Name="KesimlenToplam" Caption="Kesilen Toplam" />
+        <Member Name="Kumas_SatinAlmas" Caption="Kumaş Satın Alma" />
+        <Member Name="ModelKarti" Caption="Model Kartı" />
+        <Member Name="MusteriSiparisNo" Caption="Müşteri Sipariş No" />
+        <Member Name="MusteriTermin" Caption="Müşteri Termin" />
+        <Member Name="MusteriTermins" Caption="Müşteri Terminleri" />
+        <Member Name="NakisCollection" Caption="Nakişlar" />
+        <Member Name="ParaBirimi" LookupProperty="P_Birimi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Stoklar">
+      <OwnMembers>
+        <Member Name="ModelKarti" LookupProperty="Model" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems NavigationStyle="NavBar" ShowImages="False" StartupNavigationItem="Siparisler">
+    <Items>
+      <Item Id="Stoklar_ListView" ViewId="Stoklar_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+      <Item Id="MusteriTemsilcisi" Index="2">
+        <Items>
+          <Item Id="ProvaTakip_ListView" ViewId="ProvaTakip_ListView" ObjectKey="" QuickAccessItem="False" ImageName="" IsNewNode="True" />
+          <Item Id="SiparisFoy_ListView_Prakende" ObjectKey="" ViewId="SiparisFoy_ListView_Prakende" Caption="Şipariş Föyü Prakende" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="SatinAlma" Index="3" />
+      <Item Id="Reports" Index="4">
+        <Items>
+          <Item Id="Analysis_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Default" Index="5">
+        <Items>
+          <Item Id="Kiralama_Satis_ListView" Removed="True" />
+          <Item Id="KuaforTablosu_ListView" Removed="True" />
+          <Item Id="KumasStok_ListView" Removed="True" />
+          <Item Id="ProvaTakip_ListView" Removed="True" />
+          <Item Id="Stoklar_ListView" Removed="True" />
+          <Item Id="Teklifler_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="insankaynaklari" Index="6" />
+      <Item Id="irsaliyevefaturalar" Index="7" />
+      <Item Id="@60fd1534-5fff-4b9b-a9a7-7c807c4eedd8" ViewId="SiparisKarti_ListView_Kesim" ImageName="" IsNewNode="True" />
+      <Item Id="@Depo" ImageName="" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="AksesuarKategori_ListView" ViewId="AksesuarKategori_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="Aksesuarlar_ListView" ViewId="Aksesuarlar_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="KumasKarti_ListView" ViewId="KumasKarti_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="KumasStok_ListView" ViewId="KumasStok_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="KPI" Removed="True" />
+      <Item Id="Magaza" ImageName="" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Kiralama_Satis_ListView" ViewId="Kiralama_Satis_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="KuaforTablosu_ListView" ViewId="KuaforTablosu_ListView" ObjectKey="" IsNewNode="True" />
+          <Item Id="ProvaTakip_ListView" ViewId="ProvaTakip_ListView" ObjectKey="" QuickAccessItem="True" ImageName="" IsNewNode="True" />
+          <Item Id="Teklifler_ListView" ViewId="Teklifler_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Siparisler" QuickAccessItem="True" ViewId="SipariBilgileri" IsNewNode="True" />
+      <Item Id="Tanimlar">
+        <Items>
+          <Item Id="AksesuarKategori_ListView" Removed="True" />
+          <Item Id="Aksesuarlar_ListView" Removed="True" />
+          <Item Id="KumasKarti_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="ToptanSiparisTakip" QuickAccessItem="True" ViewId="ToptanSiparisBilgileri" IsNewNode="True" />
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="24.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerBlazorModule" Version="24.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.1.3.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
+    <ListView Id="Aksesuarlar_SiparisKartis_ListView" IsFooterVisible="True" PreviewColumnName="ACIKLAMA">
+      <Columns>
+        <ColumnInfo Id="SiparisAdet">
+          <Summary>
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ToplamTutar">
+          <Summary>
+            <ColumnSummaryItem Id="TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <DetailView Id="Kiralama_Satis_DetailView" ImageName="">
+      <Items>
+        <PropertyEditor Id="Gelinlik" LookupProperty="ModelKarti.ModelAdi" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="54.83870967741935">
+            <LayoutGroup Id="Kiralama_Satis" RelativeSize="99.78991596638656" Direction="Vertical">
+              <LayoutGroup Id="Auto464e5cc5-6969-4d44-a2de-aafef6605616" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="7.918552036199095" IsNewNode="True">
+                <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="43.81188118811881" IsNewNode="True" />
+                <LayoutItem Id="Kiralik" ViewItem="Kiralik" Index="1" RelativeSize="30.940594059405942" IsNewNode="True" />
+                <LayoutItem Id="Satilik" ViewItem="Satilik" Index="2" RelativeSize="25.247524752475247" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Autod6358d7b-6120-409d-8d80-919c66b292a9" ShowCaption="False" Direction="Vertical" Index="1" RelativeSize="92.08144796380091" IsNewNode="True">
+                <LayoutGroup Id="Auto58a8e7fc-98aa-4c2e-9b3e-b15e9c351d7b" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="70.27027027027027" IsNewNode="True">
+                  <LayoutGroup Id="Kiralama_Satis_col1" ShowCaption="False" Index="0" RelativeSize="44.05940594059406" IsNewNode="True">
+                    <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="66.78321678321679" IsNewNode="True">
+                      <LayoutGroup Id="Autof0c225e0-bb97-4582-af08-b486cd5cf3c4" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="21.875" IsNewNode="True">
+                        <LayoutItem Id="MusteriAdi" ViewItem="MusteriAdi" Index="0" RelativeSize="49.557522123893804" IsNewNode="True" />
+                        <LayoutItem Id="TCNo" ViewItem="TCNo" Index="1" RelativeSize="50.442477876106196" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Autod234c57c-ca31-4fdc-8d39-d666f21a785d" ShowCaption="False" Index="1" RelativeSize="39.375" IsNewNode="True">
+                        <LayoutItem Id="Eposta" ViewItem="Eposta" Index="0" RelativeSize="42.857142857142854" IsNewNode="True" />
+                        <LayoutGroup Id="Auto2e3fe554-a4b2-4684-826e-7a96ad29e865" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="57.142857142857146" IsNewNode="True">
+                          <LayoutItem Id="Telefonu" ViewItem="Telefonu" Index="0" RelativeSize="49.557522123893804" IsNewNode="True" />
+                          <LayoutItem Id="Telefon2" ViewItem="Telefon2" Index="1" RelativeSize="50.442477876106196" IsNewNode="True" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                      <LayoutItem Id="Adresi" ViewItem="Adresi" Index="2" RelativeSize="38.75" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="33.21678321678322" IsNewNode="True">
+                      <LayoutGroup Id="Auto86f7ac31-d6a7-4b95-b1b6-ba7103b603b7" ShowCaption="False" Index="0" RelativeSize="49.852507374631266" IsNewNode="True">
+                        <LayoutItem Id="KiralayanYetkili" ViewItem="KiralayanYetkili" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="KayitTarihi" ViewItem="KayitTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto36ca6890-4d36-4a6f-bad5-d9e06190ccc1" ShowCaption="False" Index="1" RelativeSize="50.147492625368734" IsNewNode="True">
+                        <LayoutItem Id="iadeAlanYetkili" ViewItem="iadeAlanYetkili" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="TeslimAlinanTarih" ViewItem="TeslimAlinanTarih" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutGroup Id="Kiralama_Satis_col2" ShowCaption="False" Index="1" RelativeSize="55.94059405940594" IsNewNode="True">
+                    <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="33.21678321678322" IsNewNode="True">
+                      <LayoutGroup Id="Auto67791f30-c489-4213-ae5e-36ee245a26d6" ShowCaption="False" Index="0" RelativeSize="38.85057471264368" IsNewNode="True">
+                        <LayoutItem Id="Gelinlik" ViewItem="Gelinlik" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="GelinlikKTarihi" ViewItem="GelinlikKTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto22c226f9-8f06-4dcd-8541-41ab497ac09b" ShowCaption="False" Index="1" RelativeSize="61.14942528735632" IsNewNode="True">
+                        <LayoutItem Id="GelinlikFiyat" ViewItem="GelinlikFiyat" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="GelinlikKBitisTarihi" ViewItem="GelinlikKBitisTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="31.11888111888112" IsNewNode="True">
+                      <LayoutGroup Id="Auto7161b401-2c64-45c2-895c-d6b8a41c96ba" ShowCaption="False" Index="0" RelativeSize="38.85057471264368" IsNewNode="True">
+                        <LayoutItem Id="Nisanlik" ViewItem="Nisanlik" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="NisanlikKTarihi" ViewItem="NisanlikKTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto5096d0e6-6635-4ce4-b28d-860b6db16656" ShowCaption="False" Index="1" RelativeSize="61.14942528735632" IsNewNode="True">
+                        <LayoutItem Id="NisanlikFiyat" ViewItem="NisanlikFiyat" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="NisanlikKBitisTarihi" ViewItem="NisanlikKBitisTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="2" RelativeSize="35.66433566433567" IsNewNode="True">
+                      <LayoutGroup Id="Autoed8f7c80-0d21-4805-befc-ce6806bde01a" ShowCaption="False" Index="0" RelativeSize="38.85057471264368" IsNewNode="True">
+                        <LayoutItem Id="Kinalik" ViewItem="Kinalik" Index="0" RelativeSize="45.070422535211264" IsNewNode="True" />
+                        <LayoutItem Id="KinalikKTarihi" ViewItem="KinalikKTarihi" Index="1" RelativeSize="54.929577464788736" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto46f42654-8889-4181-9fb5-f2985488319f" ShowCaption="False" Index="1" RelativeSize="61.14942528735632" IsNewNode="True">
+                        <LayoutItem Id="KinalikFiyat" ViewItem="KinalikFiyat" Index="0" RelativeSize="45.070422535211264" IsNewNode="True" />
+                        <LayoutItem Id="KinalikKBitisTarihi" ViewItem="KinalikKBitisTarihi" Index="1" RelativeSize="54.929577464788736" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="21.867321867321866" IsNewNode="True">
+                  <LayoutGroup Id="Auto76fc5e7a-ca0f-418e-bbca-98d3607ba6d7" ShowCaption="False" Index="0" RelativeSize="22.264631043256998" IsNewNode="True">
+                    <LayoutItem Id="Cicek" ViewItem="Cicek" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="CicekFiyat" ViewItem="CicekFiyat" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto6863cde4-a05e-4222-abab-1f89eaf648c1" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="77.735368956743" IsNewNode="True">
+                    <LayoutGroup Id="Auto806d77ca-bc0b-4881-ab01-846663551686" ShowCaption="False" Index="0" RelativeSize="28.150572831423894" IsNewNode="True">
+                      <LayoutItem Id="Duvak" ViewItem="Duvak" Index="0" RelativeSize="50" IsNewNode="True" />
+                      <LayoutItem Id="DuvakFiyat" ViewItem="DuvakFiyat" Index="1" RelativeSize="50" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Auto5ca9c65d-d568-4e56-b7fc-e46989b13e61" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="71.8494271685761" IsNewNode="True">
+                      <LayoutGroup Id="Auto3ddd3599-129f-4838-b6fe-c0f4b62fd337" ShowCaption="False" Index="0" RelativeSize="41.00227790432802" IsNewNode="True">
+                        <LayoutItem Id="HayalTul" ViewItem="HayalTul" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="HayalTulFiyat" ViewItem="HayalTulFiyat" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto7eef0b88-57ab-4704-a9f3-b18600c81e02" ShowCaption="False" Index="1" RelativeSize="58.99772209567198" IsNewNode="True">
+                        <LayoutItem Id="Tac" ViewItem="Tac" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="TacFiyat" ViewItem="TacFiyat" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Aciklama" ViewItem="Aciklama" Index="2" RelativeSize="7.862407862407863" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_Satis_col1" RelativeSize="50" Removed="True">
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="65.7243816254417" Direction="Vertical" IsNewNode="True">
+                  <LayoutGroup Id="Auto01095ab3-8c3f-48b0-98f8-3409c993f4c6" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="20.915032679738562" IsNewNode="True">
+                    <LayoutItem Id="MusteriAdi" ViewItem="MusteriAdi" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="TCNo" ViewItem="TCNo" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto254c7a12-3001-4a40-a265-bb0775840ced" ShowCaption="False" Index="1" RelativeSize="31.372549019607842" IsNewNode="True">
+                    <LayoutItem Id="Eposta" ViewItem="Eposta" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutGroup Id="Auto81c46f81-6fa3-4c60-b325-e63c41d56ae4" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
+                      <LayoutItem Id="Telefonu" ViewItem="Telefonu" Index="0" RelativeSize="50" IsNewNode="True" />
+                      <LayoutItem Id="Telefon2" ViewItem="Telefon2" Index="1" RelativeSize="50" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutItem Id="Adresi" ViewItem="Adresi" Index="2" RelativeSize="47.712418300653596" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Aciklama" RelativeSize="8.108108108108109" Index="1" Removed="True" />
+                <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="34.275618374558306" Direction="Horizontal" IsNewNode="True">
+                  <LayoutGroup Id="Auto38faa373-e424-430f-a340-6cfe2a9d89fb" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="KiralayanYetkili" ViewItem="KiralayanYetkili" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="KayitTarihi" ViewItem="KayitTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto0ce9eb8c-1720-49a5-b8f9-7e624288f8c2" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="iadeAlanYetkili" ViewItem="iadeAlanYetkili" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="TeslimAlinanTarih" ViewItem="TeslimAlinanTarih" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Eposta" RelativeSize="7.4766355140186915" Index="2" Removed="True" />
+                <LayoutItem Id="GelinlikKBitisTarihi" RelativeSize="7.100591715976331" Index="2" Removed="True" />
+                <LayoutItem Id="GelinlikKTarihi" RelativeSize="7.100591715976331" Index="2" Removed="True" />
+                <LayoutItem Id="NisanlikKTarihi" RelativeSize="7.643312101910828" Index="2" Removed="True" />
+                <LayoutItem Id="Telefon2" RelativeSize="7.4766355140186915" Index="2" Removed="True" />
+                <LayoutItem Id="Telefonu" RelativeSize="7.4766355140186915" Index="2" Removed="True" />
+                <LayoutItem Id="KiralayanYetkili" RelativeSize="8.275862068965518" Index="3" Removed="True" />
+                <LayoutItem Id="iadeAlanYetkili" RelativeSize="9.667673716012084" Index="4" Removed="True" />
+                <LayoutItem Id="Gelinlik" RelativeSize="10.774410774410775" Removed="True" />
+                <LayoutItem Id="MusteriAdi" Removed="True" />
+                <LayoutItem Id="TCNo" RelativeSize="6.956521739130435" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_Satis_col2" RelativeSize="50" Removed="True">
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="34.275618374558306" IsNewNode="True">
+                  <LayoutGroup Id="Autoc1e991c4-0f32-4154-be46-137de4626d43" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="Gelinlik" ViewItem="Gelinlik" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="GelinlikKTarihi" ViewItem="GelinlikKTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autoaa40ceb2-86a4-4183-8ba9-a779cd61153f" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="GelinlikFiyat" ViewItem="GelinlikFiyat" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="GelinlikKBitisTarihi" ViewItem="GelinlikKBitisTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="31.448763250883392" Direction="Horizontal" IsNewNode="True">
+                  <LayoutGroup Id="Autoc3d2495c-9b95-4e39-8b74-076383fbc9bd" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="Nisanlik" ViewItem="Nisanlik" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="NisanlikKTarihi" ViewItem="NisanlikKTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto935aa3d5-6ff9-46cb-84a0-8156bcf12fad" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="NisanlikFiyat" ViewItem="NisanlikFiyat" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="NisanlikKBitisTarihi" ViewItem="NisanlikKBitisTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="34.275618374558306" Direction="Horizontal" IsNewNode="True">
+                  <LayoutGroup Id="Auto25ba41ca-6229-45a5-a6f0-509712ca126e" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="Kinalik" ViewItem="Kinalik" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="KinalikKTarihi" ViewItem="KinalikKTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autobb93f881-4f24-4240-8bfd-2d6ce1992a8c" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="KinalikFiyat" ViewItem="KinalikFiyat" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="KinalikKBitisTarihi" ViewItem="KinalikKBitisTarihi" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="KayitTarihi" RelativeSize="7.817589576547231" Index="2" Removed="True" />
+                <LayoutItem Id="KinalikKBitisTarihi" RelativeSize="7.643312101910828" Index="2" Removed="True" />
+                <LayoutItem Id="TeslimAlinanTarih" RelativeSize="7.2507552870090635" Index="2" Removed="True" />
+                <LayoutItem Id="ToplamFiyat" RelativeSize="43.80664652567976" Index="2" Removed="True" />
+                <LayoutItem Id="KinalikFiyat" RelativeSize="8.275862068965518" Index="4" Removed="True" />
+                <LayoutItem Id="NisanlikFiyat" RelativeSize="7.4766355140186915" Index="7" Removed="True" />
+                <LayoutItem Id="GelinlikFiyat" RelativeSize="7.643312101910828" Removed="True" />
+                <LayoutItem Id="Kinalik" RelativeSize="8.275862068965518" Removed="True" />
+                <LayoutItem Id="KinalikKTarihi" RelativeSize="7.643312101910828" Removed="True" />
+                <LayoutItem Id="Nisanlik" RelativeSize="10.19108280254777" Removed="True" />
+                <LayoutItem Id="NisanlikKBitisTarihi" RelativeSize="8.080808080808081" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" RelativeSize="0.21008403361344538" Index="1">
+              <LayoutItem Id="Oid" RelativeSize="50" Index="1" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="KuaforTablosus" ShowCaption="True" Index="1" RelativeSize="13.824884792626728" IsNewNode="True">
+            <LayoutItem Id="KuaforTablosus" ShowCaption="False" ViewItem="KuaforTablosus" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="ProvaTakips" ShowCaption="True" Index="2" RelativeSize="13.824884792626728" IsNewNode="True">
+            <LayoutItem Id="ProvaTakips" ShowCaption="False" ViewItem="ProvaTakips" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="12.024539877300613" Index="3" Removed="True">
+            <LayoutItem Id="Adresi" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="20.736196319018404" Index="3" Removed="True">
+            <LayoutGroup Id="ProvaTakips" RelativeSize="100" Index="0" Removed="True">
+              <LayoutItem Id="ProvaTakips" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="KuaforTablosus" RelativeSize="100" Removed="True">
+              <LayoutItem Id="KuaforTablosus" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutItem Id="ToplamFiyat" ViewItem="ToplamFiyat" Index="3" RelativeSize="2.7649769585253456" IsNewNode="True" />
+          <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Index="4" RelativeSize="14.746543778801843" IsNewNode="True">
+            <LayoutItem Id="FoyOdemePlanis" ViewItem="FoyOdemePlanis" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Kiralama_Satis_KuaforTablosus_ListView" ImageName="" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="Yapilacakislem" LookupProperty="islemler" />
+      </Columns>
+    </ListView>
+    <ListView Id="Kiralama_Satis_ListView" ImageName="" />
+    <ListView Id="Kiralama_Satis_LookupListView" ImageName="" />
+    <ListView Id="Kiralama_Satis_ProvaTakips_ListView" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top" ImageName="" />
+    <DetailView Id="KuaforTablosu_DetailView" ImageName="" />
+    <ListView Id="KuaforTablosu_ListView" ImageName="" />
+    <ListView Id="KuaforTablosu_LookupListView" ImageName="" />
+    <ListView Id="KumasCinsi_LookupListView">
+      <Columns>
+        <ColumnInfo Id="KumasCins" Width="161" />
+      </Columns>
+    </ListView>
+    <ListView Id="KumasKarti_LookupListView" AllowDelete="False" ShowAutoFilterRow="True">
+      <Columns>
+        <ColumnInfo Id="Aciklama" Index="-1" />
+        <ColumnInfo Id="icerik" Index="-1" />
+        <ColumnInfo Id="ipliknumarasi" Index="-1" />
+        <ColumnInfo Id="K_KODU" Index="-1" Width="54" />
+        <ColumnInfo Id="K_RaporNo" Index="-1" />
+        <ColumnInfo Id="KumasCinsi" Index="-1" Width="126" />
+        <ColumnInfo Id="Kumas" Index="0" Width="212" />
+        <ColumnInfo Id="Renkler" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="KumasStok_ListView">
+      <Columns>
+        <ColumnInfo Id="Kumas" LookupProperty="Kumas" />
+        <ColumnInfo Id="Birim" LookupProperty="Birimi" />
+      </Columns>
+    </ListView>
+    <ListView Id="KumasStokKarti_ListView">
+      <Columns>
+        <ColumnInfo Id="KumasKarti" Width="197" />
+        <ColumnInfo Id="SiparistenKalan" Width="129" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Model_Maliyet_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Model_Maliyet">
+              <LayoutGroup Id="Model_Maliyet_col1" RelativeSize="68.42105263157895">
+                <LayoutGroup Id="Auto6d73c28e-c220-4df9-963a-95b4f51163af">
+                  <LayoutItem Id="StyleNo" RelativeSize="40.67796610169491" />
+                  <LayoutItem Id="StyleName" RelativeSize="59.32203389830509" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto61a40c3f-f7f6-43aa-93b2-05b34379c303">
+                  <LayoutGroup Id="MaliyetKumasCollection" RelativeSize="54.121306376360806">
+                    <LayoutItem Id="MaliyetKumasCollection" RelativeSize="43.125" />
+                    <LayoutGroup Id="ModelMaliyetKDAs" RelativeSize="56.875" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto3dfc1a41-4c27-41aa-963b-6afb64898265" Direction="Vertical" RelativeSize="45.878693623639194">
+                    <LayoutGroup Id="Auto8c1f9e77-ab11-4c1a-afb0-c65865ecc67f" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="56.610169491525426" IsNewNode="True">
+                      <LayoutGroup Id="MaliyetMalzemes" ShowCaption="True" Index="0" RelativeSize="76.66232073011734" IsNewNode="True">
+                        <LayoutItem Id="MaliyetMalzemes" ViewItem="MaliyetMalzemes" Index="0" RelativeSize="100" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="23.33767926988266" IsNewNode="True">
+                        <LayoutItem Id="GenelGider" ViewItem="GenelGider" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                        <LayoutItem Id="KesimFazlasi" ViewItem="KesimFazlasi" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                        <LayoutItem Id="FinansBedeli" ViewItem="FinansBedeli" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                        <LayoutItem Id="KazancBedeli" ViewItem="KazancBedeli" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                        <LayoutItem Id="Komisyon" ViewItem="Komisyon" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="ModelFiyatlandirmas" ShowCaption="True" Index="1" RelativeSize="43.389830508474574" IsNewNode="True">
+                      <LayoutItem Id="ModelFiyatlandirmas" ViewItem="ModelFiyatlandirmas" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item1" Removed="True" />
+                    <LayoutGroup Id="MaliyetMalzemes" Removed="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Model_Maliyet_col2" RelativeSize="31.57894736842105">
+                <LayoutGroup Id="Item2">
+                  <LayoutGroup Id="Auto4b7828ee-1ae2-4e85-8aa1-c228230fc174">
+                    <LayoutGroup Id="Autocb234ccc-08cc-4326-9f3f-9e3a88b2621c" RelativeSize="50.74183976261128" />
+                    <LayoutGroup Id="Auto3f24fee6-6ba5-460f-90e1-73bbc81146bf" RelativeSize="49.25816023738872" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto180172dd-cb4e-43c5-9b4e-c0fb0b926f50" RelativeSize="51.038575667655785" />
+                  <LayoutGroup Id="Auto6a0b6e60-19aa-4867-abc5-b286c56e340f" RelativeSize="48.961424332344215" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item4">
+                  <LayoutGroup Id="Auto08b4a29b-a3a8-4cc6-9504-132b46144179" RelativeSize="51.92878338278932" />
+                  <LayoutGroup Id="Autodf4dd0ec-382a-47f9-981d-e36474a03dd8" RelativeSize="48.07121661721068" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item5">
+                  <LayoutGroup Id="Auto0545905c-8c18-4274-9c94-385fc21b9a68">
+                    <LayoutGroup Id="Autob0bd610e-87ef-4982-b979-dd425d2671e9" RelativeSize="51.92878338278932" />
+                    <LayoutGroup Id="Auto860ddb33-a22d-4890-bfc5-dbd31997c450" RelativeSize="48.07121661721068" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Autob686563e-3222-4365-bc0d-c8e5ae6af0a5">
+                  <LayoutItem Id="ParaBirimi" RelativeSize="52.259887005649716" />
+                  <LayoutItem Id="Onayli" RelativeSize="47.740112994350284" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="ModelFiyatlandirmas" Removed="True" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Model_Maliyet_MaliyetKumasCollection_ListView" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="Kumas" LookupProperty="Kumas" />
+      </Columns>
+    </ListView>
+    <ListView Id="Model_Maliyet_MaliyetMalzemes_ListView" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="Malzeme" LookupProperty="Malzeme" />
+      </Columns>
+    </ListView>
+    <ListView Id="Model_Maliyet_ModelFiyatlandirmas_ListView" NewItemRowPosition="Top" AllowEdit="True" InlineEditMode="Batch">
+      <Columns>
+        <ColumnInfo Id="Fiyattur" Index="0" />
+        <ColumnInfo Id="Tarih" Index="1" />
+        <ColumnInfo Id="P_Birimi" Index="2" />
+        <ColumnInfo Id="Fiyat" Index="3" />
+      </Columns>
+    </ListView>
+    <ListView Id="Model_Maliyet_ModelMaliyetKDAs_ListView" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="islem" LookupProperty="islem" />
+        <ColumnInfo Id="Birim" LookupProperty="Birimi" />
+        <ColumnInfo Id="ParaBirimi" LookupProperty="P_Birimi" />
+      </Columns>
+    </ListView>
+    <ListView Id="ModelEkstraIslemler_ListView">
+      <Columns>
+        <ColumnInfo Id="Model" LookupProperty="ModelAdi" />
+        <ColumnInfo Id="Islem" LookupProperty="Islem" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ModelKarti_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="53.026315789473685">
+            <LayoutGroup Id="ModelKarti" RelativeSize="67.24565756823822">
+              <LayoutGroup Id="ModelKarti_col1" RelativeSize="49.9302649930265">
+                <LayoutItem Id="ModelNo" RelativeSize="13.445378151260504" />
+                <LayoutItem Id="ModelAdi" RelativeSize="10.084033613445378" />
+                <LayoutItem Id="ModelGrubu" RelativeSize="10.084033613445378" />
+                <LayoutItem Id="Sezonu" RelativeSize="10.084033613445378" />
+                <LayoutItem Id="Musteri" RelativeSize="10.084033613445378" />
+                <LayoutItem Id="TasarimTarihi" ViewItem="TasarimTarihi" Index="5" RelativeSize="10.084033613445378" IsNewNode="True" />
+                <LayoutItem Id="Tasarimci" RelativeSize="10.084033613445378" Index="6" />
+                <LayoutItem Id="Aciklama" ViewItem="Aciklama" Index="7" RelativeSize="26.050420168067227" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ModelKarti_col2" RelativeSize="50.0697350069735">
+                <TabbedGroup Id="Item2" Index="0" RelativeSize="26.470588235294116" />
+                <LayoutItem Id="Model" RelativeSize="73.52941176470588" Index="1" />
+                <LayoutItem Id="TasarimTarihi" RelativeSize="20" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Auto6469a3b8-44b8-4581-9928-a2cdfff967ca" ShowCaption="False" Caption="Auto6469a3b8-44b8-4581-9928-a2cdfff967ca(23)" Direction="Horizontal" Index="1" RelativeSize="32.754342431761785" IsNewNode="True">
+              <LayoutGroup Id="ModelParcas" ShowCaption="True" Caption="Model Parcas" Index="0" RelativeSize="50.06765899864682" IsNewNode="True">
+                <LayoutItem Id="ModelParcas" ViewItem="ModelParcas" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ModelOperasyons" ShowCaption="True" Caption="Model Operasyons" Index="1" RelativeSize="49.93234100135318" IsNewNode="True">
+                <LayoutItem Id="ModelOperasyons" ViewItem="ModelOperasyons" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="46.973684210526315" Index="1">
+            <LayoutGroup Id="Model_Maliyets" RelativeSize="100" Index="0">
+              <LayoutItem Id="Model_Maliyets" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ModelParcas" RelativeSize="100" Index="0" Removed="True">
+              <LayoutItem Id="ModelParcas" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisKartis" RelativeSize="100" Index="1">
+              <LayoutItem Id="SiparisKartis" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ModelOperasyons" RelativeSize="100" Removed="True">
+              <LayoutItem Id="ModelOperasyons" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="8.157894736842104" Caption="SizeableEditors" Removed="True">
+            <LayoutItem Id="Aciklama" RelativeSize="100" Index="0" Removed="True" />
+            <LayoutItem Id="ArkaResimPath" Index="0" RelativeSize="56.58914728682171" Removed="True" />
+            <LayoutItem Id="ArkaResimThumbPath" Index="0" RelativeSize="42.63565891472868" Removed="True" />
+            <LayoutItem Id="OnResimPath" Index="0" RelativeSize="28.68217054263566" Removed="True" />
+            <LayoutItem Id="TeknikResim1Path" Index="0" RelativeSize="70.54263565891473" Removed="True" />
+            <LayoutItem Id="TeknikResim2Path" Index="0" RelativeSize="84.49612403100775" Removed="True" />
+            <LayoutItem Id="OnResimThumbPath" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ModelKarti_ListView" AllowEdit="True" Caption="Model Kartı" />
+    <ListView Id="Musteriler_ListView" AllowEdit="True" NewItemRowPosition="Top" />
+    <ListView Id="Musteriler_SiparisFoys_ListView" InlineEditMode="Batch" />
+    <DetailView Id="ProvaDetay_DetailView" ImageName="" />
+    <ListView Id="ProvaDetay_ListView" ImageName="" />
+    <ListView Id="ProvaDetay_LookupListView" ImageName="" />
+    <DetailView Id="ProvaTakip_DetailView" ImageName="" />
+    <ListView Id="ProvaTakip_ListView" ImageName="">
+      <Columns>
+        <ColumnInfo Id="SiparisKarti" LookupProperty="SiparisFoy.AdSoyad" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProvaTakip_LookupListView" ImageName="" />
+    <ListView Id="ProvaTakip_ProvaDetays_ListView" ImageName="" />
+    <DashboardView Id="SipariBilgileri" IsNewNode="True">
+      <Items IsNewNode="True">
+        <BarcodeCamViewItem Id="@84c0f43e-93a8-46e1-bb0d-a4c26d1015ea" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" IsNewNode="True">
+          <LayoutItem Id="@8034236a-e1b2-4050-bb70-e69f22cfd7f1" ViewItem="@84c0f43e-93a8-46e1-bb0d-a4c26d1015ea" IsNewNode="True" />
+        </LayoutGroup>
+      </Layout>
+    </DashboardView>
+    <DetailView Id="SiparisFoy_DetailView" EnableCaptionColon="True" DefaultFocusedItem="ModelBarkod">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="75.12254901960785">
+            <LayoutGroup Id="SiparisFoy" RelativeSize="20.717781402936378">
+              <LayoutGroup Id="Auto0879fe8d-e0dc-457b-b9cc-433a592eec71" ShowCaption="False" Caption="" Index="0" RelativeSize="27.064803049555273" IsNewNode="True">
+                <LayoutGroup Id="Auto82d70385-651e-43e5-8111-c8d76b99e5b5" ShowCaption="False" Caption="Auto82d70385-651e-43e5-8111-c8d76b99e5b5(4)" Index="0" RelativeSize="65.95744680851064" IsNewNode="True">
+                  <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
+                  <LayoutItem Id="Musteriler" ViewItem="Musteriler" Index="1" RelativeSize="48.38709677419355" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="OtoSiparisEkle" ViewItem="OtoSiparisEkle" Index="1" RelativeSize="34.04255319148936" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto80d0218d-2d55-460e-b89f-b10264e94b74" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="72.93519695044472" IsNewNode="True">
+                <LayoutGroup Id="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d" ShowCaption="False" Caption="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d(7)" Index="0" RelativeSize="37.10801393728223" IsNewNode="True">
+                  <LayoutItem Id="Temsilci" ViewItem="Temsilci" Index="0" RelativeSize="34.04255319148936" IsNewNode="True" />
+                  <LayoutItem Id="Tarih" ViewItem="Tarih" Index="1" RelativeSize="65.95744680851064" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto9f169771-3142-435c-a304-4bbdf3993d32" ShowCaption="False" Caption="" Index="1" RelativeSize="62.89198606271777" IsNewNode="True">
+                  <LayoutItem Id="KurTarihi" ViewItem="KurTarihi" Index="0" RelativeSize="34.04255319148936" IsNewNode="True" />
+                  <LayoutGroup Id="Autoa6e5dc25-deb5-41c6-bc57-19e56c9ee214" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="65.95744680851064" IsNewNode="True">
+                    <LayoutGroup Id="Auto0c9175ee-f83e-494d-9d64-74cfaa8977b6" ShowCaption="False" Caption="" Index="0" RelativeSize="49.307479224376735" IsNewNode="True">
+                      <LayoutItem Id="DolarKuru" ViewItem="DolarKuru" Index="0" RelativeSize="38.70967741935484" IsNewNode="True" />
+                      <LayoutItem Id="EuroKuru" ViewItem="EuroKuru" Index="1" RelativeSize="61.29032258064516" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Autodb456712-858e-48d4-9825-6421d04639ff" ShowCaption="False" Caption="" Index="1" RelativeSize="50.692520775623265" IsNewNode="True">
+                      <LayoutItem Id="DolarSabitKur" ViewItem="DolarSabitKur" Index="0" RelativeSize="38.70967741935484" IsNewNode="True" />
+                      <LayoutItem Id="EuroSabitKur" ViewItem="EuroSabitKur" Index="1" RelativeSize="61.29032258064516" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="SiparisFoy_col1" Index="1" RelativeSize="14.917606244579359" Caption="SiparisFoy_col1" Removed="True">
+                <LayoutItem Id="iskontoTutar" Index="0" RelativeSize="100" Removed="True" />
+                <LayoutItem Id="iskontoYuzde" Index="0" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="ToplamTutar" Index="0" RelativeSize="28.571428571428573" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SiparisFoy_col2" Index="1" RelativeSize="29.835212489158717" Caption="SiparisFoy_col2" Removed="True">
+                <LayoutItem Id="GenelToplam" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="KdvOranYuzde" RelativeSize="36.36363636363637" Index="0" Removed="True" />
+                <LayoutItem Id="KdvTutar" RelativeSize="50" Index="0" Removed="True" />
+                <LayoutItem Id="iskontoluToplamTutar" RelativeSize="28.571428571428573" Removed="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Musteriler" RelativeSize="27.40676496097138" Removed="True" />
+            </LayoutGroup>
+            <LayoutItem Id="ModelBarkod" ViewItem="ModelBarkod" Index="1" RelativeSize="3.9151712887438825" IsNewNode="True" />
+            <LayoutGroup Id="SiparisKartis" ShowCaption="True" Index="2" RelativeSize="19.575856443719413" Caption="SiparisKartis" IsNewNode="True">
+              <LayoutItem Id="SiparisKartis" ViewItem="SiparisKartis" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="FoyOdemePlanis" ShowCaption="True" Caption="Foy Odeme Planis" Index="3" RelativeSize="19.73898858075041" IsNewNode="True">
+              <LayoutItem Id="FoyOdemePlanis" ViewItem="FoyOdemePlanis" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Auto09ca6c16-06a5-43b7-8172-294f21318961" ShowCaption="False" Caption="Auto09ca6c16-06a5-43b7-8172-294f21318961(13)" Direction="Vertical" Index="4" RelativeSize="36.052202283849915" IsNewNode="True">
+              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Bakiye" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="ParaBirimi" ViewItem="ParaBirimi" Index="0" RelativeSize="17.391304347826086" IsNewNode="True" />
+                <LayoutItem Id="ToplamTutar" ViewItem="ToplamTutar" Index="1" RelativeSize="13.043478260869565" IsNewNode="True" />
+                <LayoutGroup Id="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c" ShowCaption="False" Caption="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c(18)" Direction="Horizontal" Index="2" RelativeSize="17.934782608695652" IsNewNode="True">
+                  <LayoutItem Id="iskontoYuzde" ViewItem="iskontoYuzde" Index="0" RelativeSize="42.69377382465057" IsNewNode="True" />
+                  <LayoutItem Id="iskontoTutar" ViewItem="iskontoTutar" Index="1" RelativeSize="57.30622617534943" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autod5b5979c-29d6-4e47-bc96-131253500751" ShowCaption="False" Caption="Autod5b5979c-29d6-4e47-bc96-131253500751(21)" Index="3" RelativeSize="34.23913043478261" IsNewNode="True">
+                  <LayoutItem Id="iskontoluToplamTutar" ViewItem="iskontoluToplamTutar" Index="0" RelativeSize="42.857142857142854" IsNewNode="True" />
+                  <LayoutGroup Id="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea" ShowCaption="False" Caption="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea(23)" Direction="Horizontal" Index="1" RelativeSize="57.142857142857146" IsNewNode="True">
+                    <LayoutItem Id="KdvOranYuzde" ViewItem="KdvOranYuzde" Index="0" RelativeSize="42.69377382465057" IsNewNode="True" />
+                    <LayoutItem Id="KdvTutar" ViewItem="KdvTutar" Index="1" RelativeSize="57.30622617534943" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="GenelToplam" ViewItem="GenelToplam" Index="4" RelativeSize="17.391304347826086" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" RelativeSize="19.88950276243094" Caption="Föy No" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="24.877450980392158">
+            <LayoutItem Id="Adres" RelativeSize="100" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="50.12722646310433" Index="2" Removed="True">
+            <LayoutGroup Id="FoyOdemePlanis" RelativeSize="100" Index="0" Removed="True">
+              <LayoutItem Id="FoyOdemePlanis" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisKartis" RelativeSize="100" Caption="SiparisKartis" Removed="True">
+              <LayoutItem Id="SiparisKartis" ViewItem="SiparisKartis" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisFoy_DetailView_Prakende" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" RequiredFieldMark="*" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisFoy" DefaultFocusedItem="Musteriler" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Adres" PropertyName="Adres" IsNewNode="True" />
+        <PropertyEditor Id="AdSoyad" PropertyName="AdSoyad" IsNewNode="True" />
+        <PropertyEditor Id="DugunTarihi" PropertyName="DugunTarihi" IsNewNode="True" />
+        <PropertyEditor Id="FoyOdemePlanis" PropertyName="FoyOdemePlanis" View="SiparisFoy_FoyOdemePlanis_ListView" IsNewNode="True" />
+        <PropertyEditor Id="GenelToplam" PropertyName="GenelToplam" IsNewNode="True" />
+        <PropertyEditor Id="iskontoluToplamTutar" PropertyName="iskontoluToplamTutar" IsNewNode="True" />
+        <PropertyEditor Id="iskontoTutar" PropertyName="iskontoTutar" IsNewNode="True" />
+        <PropertyEditor Id="iskontoYuzde" PropertyName="iskontoYuzde" IsNewNode="True" />
+        <PropertyEditor Id="KalanOdeme" PropertyName="KalanOdeme" IsNewNode="True" />
+        <PropertyEditor Id="KdvOranYuzde" PropertyName="KdvOranYuzde" IsNewNode="True" />
+        <PropertyEditor Id="KdvTutar" PropertyName="KdvTutar" IsNewNode="True" />
+        <PropertyEditor Id="Musteriler" PropertyName="Musteriler" IsNewNode="True" />
+        <PropertyEditor Id="MusteriTermin" PropertyName="MusteriTermin" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" Caption="Föy No" IsNewNode="True" />
+        <PropertyEditor Id="SiparisKartis" PropertyName="SiparisKartis" LinkView="SiparisKarti_ListView_Prakende" View="SiparisKarti_ListView_Prakende" IsNewNode="True" />
+        <PropertyEditor Id="Tarih" PropertyName="Tarih" IsNewNode="True" />
+        <PropertyEditor Id="TC" PropertyName="TC" IsNewNode="True" />
+        <PropertyEditor Id="Telefon" PropertyName="Telefon" IsNewNode="True" />
+        <PropertyEditor Id="Temsilci" PropertyName="Temsilci" IsNewNode="True" />
+        <PropertyEditor Id="ToplamTutar" PropertyName="ToplamTutar" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="SiparisFoy" Index="0" Direction="Horizontal" ShowCaption="True" Caption="Siparis Foy" RelativeSize="18.52760736196319" IsNewNode="True">
+              <LayoutGroup Id="Auto82d70385-651e-43e5-8111-c8d76b99e5b5" ShowCaption="False" Caption="Auto82d70385-651e-43e5-8111-c8d76b99e5b5(4)" Index="0" RelativeSize="31.363636363636363" IsNewNode="True">
+                <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="27.11864406779661" IsNewNode="True" />
+                <LayoutItem Id="AdSoyad" ViewItem="AdSoyad" Index="1" RelativeSize="20.338983050847457" IsNewNode="True" />
+                <LayoutItem Id="TC" ViewItem="TC" Index="2" RelativeSize="52.54237288135593" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d" ShowCaption="False" Caption="Auto8ad9f6ff-d627-4c31-a71b-17269faf1e6d(8)" Index="1" RelativeSize="39" IsNewNode="True">
+                <LayoutItem Id="Temsilci" ViewItem="Temsilci" Index="0" RelativeSize="27.11864406779661" IsNewNode="True" />
+                <LayoutItem Id="Telefon" ViewItem="Telefon" Index="1" RelativeSize="20.338983050847457" IsNewNode="True" />
+                <LayoutItem Id="Adres" ViewItem="Adres" Index="2" RelativeSize="52.54237288135593" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto8b7a0fec-796e-4a40-a727-deb815c63b6b" ShowCaption="False" Index="2" RelativeSize="29.636363636363637" IsNewNode="True">
+                <LayoutItem Id="Tarih" ViewItem="Tarih" Index="0" RelativeSize="27.11864406779661" IsNewNode="True" />
+                <LayoutItem Id="MusteriTermin" ViewItem="MusteriTermin" Index="1" RelativeSize="20.338983050847457" IsNewNode="True" />
+                <LayoutItem Id="Item1" Index="2" RelativeSize="25.423728813559322" IsNewNode="True" />
+                <LayoutItem Id="DugunTarihi" ViewItem="DugunTarihi" Index="3" RelativeSize="27.11864406779661" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SiparisKartis" ShowCaption="True" Index="1" RelativeSize="54.11042944785276" Caption="Sipariş Kartı" IsNewNode="True">
+              <LayoutItem Id="SiparisKartis" ViewItem="SiparisKartis" Index="0" RelativeSize="69.23076923076923" IsNewNode="True" />
+              <LayoutGroup Id="FoyOdemePlanis" ShowCaption="True" Caption="Foy Odeme Planis" Index="1" RelativeSize="30.76923076923077" IsNewNode="True">
+                <LayoutItem Id="FoyOdemePlanis" ViewItem="FoyOdemePlanis" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Auto09ca6c16-06a5-43b7-8172-294f21318961" ShowCaption="False" Caption="Auto09ca6c16-06a5-43b7-8172-294f21318961(19)" Direction="Vertical" Index="2" RelativeSize="27.36196319018405" IsNewNode="True">
+              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Bakiye" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="ToplamTutar" ViewItem="ToplamTutar" Index="0" RelativeSize="17.391304347826086" IsNewNode="True" />
+                <LayoutGroup Id="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c" ShowCaption="False" Caption="Auto1d182973-dbd8-4e9c-bcd3-02e519b3246c(24)" Direction="Horizontal" Index="1" RelativeSize="17.934782608695652" IsNewNode="True">
+                  <LayoutItem Id="iskontoYuzde" ViewItem="iskontoYuzde" Index="0" RelativeSize="49.72727272727273" IsNewNode="True" />
+                  <LayoutItem Id="iskontoTutar" ViewItem="iskontoTutar" Index="1" RelativeSize="50.27272727272727" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autod5b5979c-29d6-4e47-bc96-131253500751" ShowCaption="False" Caption="Autod5b5979c-29d6-4e47-bc96-131253500751(27)" Index="2" RelativeSize="34.23913043478261" IsNewNode="True">
+                  <LayoutItem Id="iskontoluToplamTutar" ViewItem="iskontoluToplamTutar" Index="0" RelativeSize="42.857142857142854" IsNewNode="True" />
+                  <LayoutGroup Id="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea" ShowCaption="False" Caption="Auto47f1122c-64ee-40ea-bfea-717d4f4a73ea(29)" Direction="Horizontal" Index="1" RelativeSize="57.142857142857146" IsNewNode="True">
+                    <LayoutItem Id="KdvOranYuzde" ViewItem="KdvOranYuzde" Index="0" RelativeSize="49.72727272727273" IsNewNode="True" />
+                    <LayoutItem Id="KdvTutar" ViewItem="KdvTutar" Index="1" RelativeSize="50.27272727272727" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="GenelToplam" ViewItem="GenelToplam" Index="3" RelativeSize="13.043478260869565" IsNewNode="True" />
+                <LayoutItem Id="KalanOdeme" ViewItem="KalanOdeme" Index="4" RelativeSize="17.391304347826086" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SiparisFoy_FoyOdemePlanis_ListView" ImageName="" IsFooterVisible="True" NewItemRowPosition="Top" AllowEdit="True" InlineEditMode="Batch">
+      <Columns>
+        <ColumnInfo Id="KiralamaSatis" Index="-1" />
+        <ColumnInfo Id="OdemeSekli" LookupProperty="OdemeTur" Width="143" />
+        <ColumnInfo Id="Belge" Width="130" />
+        <ColumnInfo Id="Tutar" Width="87">
+          <Summary>
+            <ColumnSummaryItem Id="@444eecaf-a5f3-4d60-abd9-cf4db5697da7" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisFoy_ListView" AllowEdit="True" IsFooterVisible="True" NewItemRowPosition="Top" InlineEditMode="Batch" Criteria="[Toptan] = True" ImageName="" ShowAllRows="False">
+      <Columns>
+        <ColumnInfo Id="ParaBirimi" LookupProperty="P_Birimi" />
+        <ColumnInfo Id="KdvOranYuzde" LookupProperty="Kdv" />
+      </Columns>
+      <BandsLayout Enable="True" />
+      <PivotSettings ShowChart="True" ShowColumnGrandTotals="True" ShowColumnTotals="True" ShowRowGrandTotals="True" ShowRowTotals="True" RemoveOldColumns="True" />
+    </ListView>
+    <ListView Id="SiparisFoy_ListView_Prakende" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisFoy" MasterDetailView="SiparisFoy_DetailView_Prakende" DetailViewID="SiparisFoy_DetailView_Prakende" MasterDetailMode="ListViewOnly" InlineEditMode="Batch" AllowEdit="True" NewItemRowPosition="Top" Criteria="[Toptan] &lt;&gt; True" ImageName="" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="iskontoYuzde" PropertyName="iskontoYuzde" Index="-1" Width="91" IsNewNode="True" />
+        <ColumnInfo Id="Musteriler" PropertyName="Musteriler" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Caption="Föy No" IsNewNode="True" />
+        <ColumnInfo Id="Tarih" PropertyName="Tarih" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Temsilci" PropertyName="Temsilci" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Toptan" PropertyName="Toptan" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="AdSoyad" PropertyName="AdSoyad" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="MusteriTermin" PropertyName="MusteriTermin" Index="1" Width="107" IsNewNode="True" />
+        <ColumnInfo Id="ToplamTutar" PropertyName="ToplamTutar" Index="2" Width="104" IsNewNode="True" />
+        <ColumnInfo Id="iskontoTutar" PropertyName="iskontoTutar" Index="3" Width="73" IsNewNode="True" />
+        <ColumnInfo Id="iskontoluToplamTutar" PropertyName="iskontoluToplamTutar" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="KdvOranYuzde" PropertyName="KdvOranYuzde" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="KdvTutar" PropertyName="KdvTutar" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="GenelToplam" PropertyName="GenelToplam" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="KalanOdeme" PropertyName="KalanOdeme" Index="8" Width="130" IsNewNode="True" />
+      </Columns>
+      <Filters CurrentFilterId="@02eaa6f0-6d56-450f-bd6c-01ffeabbed05" IsNewNode="True">
+        <Filter Id="@02eaa6f0-6d56-450f-bd6c-01ffeabbed05" Criteria="[Toptan] = False" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="SiparisFoy_SiparisKartis_ListView" IsFooterVisible="True" InlineEditMode="Batch" PreviewColumnName="ACIKLAMA">
+      <Columns>
+        <ColumnInfo Id="ARKAYAKADUS" Index="-1" />
+        <ColumnInfo Id="Article" Index="-1" />
+        <ColumnInfo Id="AYNA" Index="-1" />
+        <ColumnInfo Id="BASEN" Index="-1" />
+        <ColumnInfo Id="BedenOlcu" Index="-1" />
+        <ColumnInfo Id="BEL" Index="-1" />
+        <ColumnInfo Id="BILEK" Index="-1" />
+        <ColumnInfo Id="Bilekdirskarasi" Index="-1" />
+        <ColumnInfo Id="BOY" Index="-1" />
+        <ColumnInfo Id="DISOMUZ" Index="-1" />
+        <ColumnInfo Id="DikimToplam" Index="-1" />
+        <ColumnInfo Id="GOGUS" Index="-1" />
+        <ColumnInfo Id="GogusAcikligi" Index="-1" />
+        <ColumnInfo Id="GOGUSDUS" Index="-1" />
+        <ColumnInfo Id="Hatali" Index="-1" />
+        <ColumnInfo Id="iade" Index="-1" />
+        <ColumnInfo Id="icSiparisNo" Index="-1" />
+        <ColumnInfo Id="icTermin" Index="-1" />
+        <ColumnInfo Id="KesimlenToplam" Index="-1" />
+        <ColumnInfo Id="KOLBOYU" Index="-1" />
+        <ColumnInfo Id="MSube" Index="-1" />
+        <ColumnInfo Id="MusteriSiparisNo" Width="101" Index="-1" />
+        <ColumnInfo Id="OMUZ" Index="-1" />
+        <ColumnInfo Id="OMUZBOY" Index="-1" />
+        <ColumnInfo Id="OnaylanmısModel" Index="-1" />
+        <ColumnInfo Id="ONBEDENBOYU" Index="-1" />
+        <ColumnInfo Id="PaketToplam" Index="-1" />
+        <ColumnInfo Id="PAZU" Index="-1" />
+        <ColumnInfo Id="Reklamasyon" Index="-1" />
+        <ColumnInfo Id="Siparis" Index="-1" />
+        <ColumnInfo Id="SirtAcikligi" Index="-1" />
+        <ColumnInfo Id="SprTamamlanmis" Index="-1" />
+        <ColumnInfo Id="Temsilci" SortIndex="0" SortOrder="Ascending" Index="-1" />
+        <ColumnInfo Id="Toptan" Index="-1" />
+        <ColumnInfo Id="YAKADUS" Index="-1" />
+        <ColumnInfo Id="YANBEDBOYU" Index="-1" />
+        <ColumnInfo Id="ModelKarti" Index="0" Width="99" />
+        <ColumnInfo Id="BedenGrubu" Index="1" Width="117" />
+        <ColumnInfo Id="SiparisAdet" Index="2" Width="74">
+          <Summary>
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ParaBirimi" Index="3" />
+        <ColumnInfo Id="Fiyat" Index="4" />
+        <ColumnInfo Id="ToplamTutar" Index="5" Width="94">
+          <Summary>
+            <ColumnSummaryItem Id="TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="MusteriTermin" Index="6" />
+        <ColumnInfo Id="iskontoYuzde" Index="7" />
+        <ColumnInfo Id="iskontoTutar" Index="8" Width="88" />
+        <ColumnInfo Id="ACIKLAMA" Index="9" Width="150" />
+        <ColumnInfo Id="SprDurumu" Index="10" Width="113" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisFoy_SiparisKartis_ListView_Prakende" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" DataAccessMode="Client" AllowEdit="True" NewItemRowPosition="Top" DetailViewID="SiparisKarti_DetailView_Prakende" IsFooterVisible="True" InlineEditMode="Batch" PreviewColumnName="ACIKLAMA" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="ARKAYAKADUS" PropertyName="ARKAYAKADUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Article" PropertyName="Article" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BASEN" PropertyName="BASEN" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BedenGrubu" PropertyName="BedenGrubu" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BEL" PropertyName="BEL" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BILEK" PropertyName="BILEK" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DISOMUZ" PropertyName="DISOMUZ" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DikimToplam" PropertyName="DikimToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="GOGUS" PropertyName="GOGUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="GOGUSDUS" PropertyName="GOGUSDUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Hatali" PropertyName="Hatali" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="icSiparisNo" PropertyName="icSiparisNo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="icTermin" PropertyName="icTermin" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="KesimlenToplam" PropertyName="KesimlenToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="KOLBOYU" PropertyName="KOLBOYU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MusteriSiparisNo" PropertyName="MusteriSiparisNo" Index="-1" Width="135" IsNewNode="True" />
+        <ColumnInfo Id="MusteriTermin" PropertyName="MusteriTermin" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OMUZ" PropertyName="OMUZ" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OMUZBOY" PropertyName="OMUZBOY" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OnaylanmısModel" PropertyName="OnaylanmısModel" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ONBEDENBOYU" PropertyName="ONBEDENBOYU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaketToplam" PropertyName="PaketToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PAZU" PropertyName="PAZU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Reklamasyon" PropertyName="Reklamasyon" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SiparisFoy" PropertyName="SiparisFoy" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="YAKADUS" PropertyName="YAKADUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ModelKarti" PropertyName="ModelKarti" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="SiparisAdet" PropertyName="SiparisAdet" Index="1" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Fiyat" PropertyName="Fiyat" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="ToplamTutar" PropertyName="ToplamTutar" Index="3" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ParaBirimi" PropertyName="ParaBirimi" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="Temsilci" PropertyName="Temsilci" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Siparis" PropertyName="Siparis" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="iade" PropertyName="iade" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="ACIKLAMA" PropertyName="ACIKLAMA" Index="8" IsNewNode="True" />
+      </Columns>
+      <SplitLayout Direction="Vertical" IsNewNode="True" />
+    </ListView>
+    <DetailView Id="SiparisKarti_DetailView">
+      <Items>
+        <PropertyEditor Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="84.04907975460122">
+            <TabbedGroup Id="Item9">
+              <LayoutGroup Id="SiparisKarti_Group">
+                <LayoutGroup Id="SiparisKarti_Group_col1">
+                  <LayoutGroup Id="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5" RelativeSize="100" Direction="Vertical">
+                    <LayoutItem Id="Temsilci" ViewItem="Temsilci" Index="0" RelativeSize="5" IsNewNode="True" />
+                    <LayoutGroup Id="Autoe2db58ea-f38a-4744-97f3-9a07b4e05661" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="95" IsNewNode="True">
+                      <LayoutGroup Id="Item13" ShowCaption="False" CaptionLocation="Top" Index="0" RelativeSize="41.35188866799205" IsNewNode="True">
+                        <LayoutItem Id="SiparisFoy.Musteriler" ViewItem="SiparisFoy.Musteriler" Index="0" RelativeSize="4.934210526315789" IsNewNode="True" />
+                        <LayoutGroup Id="Auto09f68bf3-c1bf-441b-8b22-bf27ebf31fa4" ShowCaption="False" Caption="Auto09f68bf3-c1bf-441b-8b22-bf27ebf31fa4(12)" Index="1" RelativeSize="33.55263157894737" IsNewNode="True">
+                          <LayoutGroup Id="Autoef9e0e2a-f8d3-4785-a112-609026325947" ShowCaption="False" Caption="Autoef9e0e2a-f8d3-4785-a112-609026325947(13)" Index="0" RelativeSize="16.176470588235293" IsNewNode="True">
+                            <LayoutItem Id="ModelKarti" ViewItem="ModelKarti" Index="0" RelativeSize="100" IsNewNode="True" />
+                          </LayoutGroup>
+                          <LayoutGroup Id="Auto7cf11771-c0f3-4b91-8f00-09880726d281" ShowCaption="False" Caption="Auto7cf11771-c0f3-4b91-8f00-09880726d281(16)" Index="1" RelativeSize="83.82352941176471" IsNewNode="True">
+                            <LayoutGroup Id="Autoa94f4630-c647-4220-a89f-19333c09b52c" ShowCaption="False" Caption="Autoa94f4630-c647-4220-a89f-19333c09b52c(17)" Index="0" RelativeSize="61.40350877192982" IsNewNode="True">
+                              <LayoutItem Id="OnaylanmısModel" ViewItem="OnaylanmısModel" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                              <LayoutItem Id="ParaBirimi" ViewItem="ParaBirimi" Index="1" RelativeSize="22.857142857142858" IsNewNode="True" />
+                              <LayoutItem Id="SiparisAdet" ViewItem="SiparisAdet" Index="2" RelativeSize="22.857142857142858" IsNewNode="True" />
+                              <LayoutItem Id="Fiyat" ViewItem="Fiyat" Index="3" RelativeSize="25.714285714285715" IsNewNode="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Autob7650cc8-66d6-42d9-a89f-b88d989ad6b5" ShowCaption="False" Caption="Autob7650cc8-66d6-42d9-a89f-b88d989ad6b5(22)" Index="1" RelativeSize="38.59649122807018" IsNewNode="True">
+                              <LayoutGroup Id="Autoae308155-b835-479c-a7ef-faff2d8e78bb" ShowCaption="False" Caption="Autoae308155-b835-479c-a7ef-faff2d8e78bb(21)" Index="0" RelativeSize="50" IsNewNode="True">
+                                <LayoutItem Id="ToplamTutar" ViewItem="ToplamTutar" Index="0" RelativeSize="100" IsNewNode="True" />
+                              </LayoutGroup>
+                              <LayoutGroup Id="Autofe1abef5-e493-48da-bd00-a80432d51b60" ShowCaption="False" Caption="Autofe1abef5-e493-48da-bd00-a80432d51b60(24)" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
+                                <LayoutItem Id="MusteriTermin" ViewItem="MusteriTermin" Index="0" RelativeSize="46.63461538461539" IsNewNode="True" />
+                                <LayoutItem Id="icTermin" ViewItem="icTermin" Index="1" RelativeSize="53.36538461538461" IsNewNode="True" />
+                              </LayoutGroup>
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                        <LayoutItem Id="BedenGrubu" ViewItem="BedenGrubu" Index="2" RelativeSize="3.9473684210526314" IsNewNode="True" />
+                        <LayoutItem Id="ACIKLAMA" ShowCaption="False" ViewItem="ACIKLAMA" Index="3" RelativeSize="57.56578947368421" IsNewNode="True" />
+                      </LayoutGroup>
+                      <TabbedGroup Id="Item2" CaptionLocation="Top" Index="1" RelativeSize="58.64811133200795" IsNewNode="True">
+                        <LayoutGroup Id="Item1" ShowCaption="True" Caption="Ön Resim" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="ModelKarti.OnResim" ShowCaption="False" ViewItem="ModelKarti.OnResim" SizeConstraintsType="Custom" MinSize="573, 463" MaxSize="573, 463" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item3" ShowCaption="True" Caption="Arka Resim" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="ModelKarti.ArkaResim" ShowCaption="False" ViewItem="ModelKarti.ArkaResim" SizeConstraintsType="Custom" MinSize="573, 463" MaxSize="573, 463" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item5" ShowCaption="True" Caption="Teknik Resim 1" CaptionLocation="Top" Index="2" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="ModelKarti.TeknikResim1" ShowCaption="False" ViewItem="ModelKarti.TeknikResim1" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item7" ShowCaption="True" Caption="Teknik Resim 2" CaptionLocation="Top" Index="3" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="ModelKarti.TeknikResim2" ShowCaption="False" ViewItem="ModelKarti.TeknikResim2" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                      </TabbedGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item13" RelativeSize="41.35188866799205" Removed="True">
+                      <LayoutItem Id="SiparisFoy.Musteriler" ViewItem="SiparisFoy.Musteriler" Index="0" RelativeSize="5.342237061769616" IsNewNode="True" />
+                      <LayoutGroup Id="Auto09f68bf3-c1bf-441b-8b22-bf27ebf31fa4" Index="1" RelativeSize="39.065108514190314">
+                        <LayoutGroup Id="Auto7cf11771-c0f3-4b91-8f00-09880726d281" RelativeSize="85.8974358974359">
+                          <LayoutGroup Id="Autoa94f4630-c647-4220-a89f-19333c09b52c" RelativeSize="52.23880597014925" Direction="Vertical">
+                            <LayoutItem Id="OnaylanmısModel" ViewItem="OnaylanmısModel" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                            <LayoutItem Id="ParaBirimi" ViewItem="ParaBirimi" Index="1" RelativeSize="22.857142857142858" IsNewNode="True" />
+                            <LayoutItem Id="Fiyat" RelativeSize="22.857142857142858" Index="2" />
+                            <LayoutItem Id="SiparisAdet" ViewItem="SiparisAdet" Index="3" RelativeSize="25.714285714285715" IsNewNode="True" Removed="True" />
+                          </LayoutGroup>
+                          <LayoutGroup Id="Autob7650cc8-66d6-42d9-a89f-b88d989ad6b5" RelativeSize="47.76119402985075">
+                            <LayoutGroup Id="Autoae308155-b835-479c-a7ef-faff2d8e78bb" Direction="Vertical">
+                              <LayoutItem Id="ParaBirimi" RelativeSize="53.38345864661654" Removed="True" />
+                              <LayoutItem Id="ToplamTutar" RelativeSize="100" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Autofe1abef5-e493-48da-bd00-a80432d51b60">
+                              <LayoutItem Id="icTermin" RelativeSize="53.38345864661654" />
+                              <LayoutItem Id="MusteriTermin" RelativeSize="46.61654135338346" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                        <LayoutGroup Id="Autoef9e0e2a-f8d3-4785-a112-609026325947" Direction="Vertical" RelativeSize="14.102564102564102">
+                          <LayoutItem Id="ModelKarti" RelativeSize="100" />
+                          <LayoutItem Id="OnaylanmısModel" RelativeSize="53.38345864661654" Removed="True" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                      <LayoutGroup Id="Autodca98424-2fbe-4e98-b52b-a28ece344903" Index="2" RelativeSize="6.609808102345416" Direction="Horizontal" Removed="True">
+                        <LayoutItem Id="icSiparisNo" RelativeSize="100" Index="0" Removed="True" />
+                        <LayoutItem Id="MusteriSiparisNo" RelativeSize="46.927374301675975" Removed="True" />
+                      </LayoutGroup>
+                      <LayoutItem Id="BedenGrubu" Index="2" RelativeSize="55.59265442404007" />
+                      <LayoutGroup Id="Item4" Index="4" RelativeSize="62.771285475792986" Removed="True">
+                        <LayoutGroup Id="Autoa1d979c7-4af7-4bad-b57b-d3405ad58d46">
+                          <LayoutItem Id="Item12" RelativeSize="69.67930029154519" Index="2" />
+                          <LayoutGroup Id="Auto3a6c2895-6a8f-4259-9d4f-01738687ca86" RelativeSize="20.11661807580175">
+                            <LayoutGroup Id="Auto30304293-d3f0-476f-9c0e-01e976c7de12" RelativeSize="52.17391304347826">
+                              <LayoutGroup Id="Autoce5d1022-f611-4bdd-96df-5bc5483e1f93" Direction="Vertical" Index="0" RelativeSize="100">
+                                <LayoutItem Id="iade" RelativeSize="100" Index="0" />
+                                <LayoutItem Id="Hatali" RelativeSize="49.86737400530504" Removed="True" />
+                              </LayoutGroup>
+                              <LayoutItem Id="PaketToplam" Removed="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Autoa196bb03-d8b7-4816-975d-80d107bb6b20" RelativeSize="47.82608695652174" Direction="Horizontal">
+                              <LayoutItem Id="DikimToplam" RelativeSize="100" Index="0" Removed="True" />
+                              <LayoutItem Id="KesimlenToplam" RelativeSize="49.86737400530504" Removed="True" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                          <LayoutGroup Id="Autoc828f393-609c-419c-af2f-7d56c09e8a1b" RelativeSize="10.204081632653061">
+                            <LayoutItem Id="Article" RelativeSize="50.13262599469496" />
+                            <LayoutItem Id="Siparis" RelativeSize="49.86737400530504" />
+                          </LayoutGroup>
+                          <LayoutItem Id="Reklamasyon" RelativeSize="6.997084548104956" Removed="True" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                      <LayoutItem Id="Musteri" RelativeSize="63.60601001669449" Removed="True" />
+                    </LayoutGroup>
+                    <TabbedGroup Id="Item2" RelativeSize="58.64811133200795" Removed="True" />
+                  </LayoutGroup>
+                  <TabbedGroup Id="Tabs" RelativeSize="20.625" Removed="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="TumMaliyetTablosu">
+                <LayoutGroup Id="TumMaliyetTablosu_col1" RelativeSize="49.10536779324055">
+                  <LayoutItem Id="SiparisKarti" RelativeSize="5" />
+                  <LayoutItem Id="P_KumasTutarDoviz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KumasTutarTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_iscilikDoviz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_iscilikTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_BaskiNakisTasDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_BaskiNakisTasTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_YikamaDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_YikamaTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_MalzemeDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_MalzemeTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_NavlunDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_NavlunTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_TestDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_TestTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_GenelGiderDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_GenelGiderTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_FinansBedeliDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_FinansBedeliTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KomisyonBdlDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_KomisyonBdlTL" RelativeSize="3.75" />
+                  <LayoutItem Id="P_ToplamTutarDoviz" RelativeSize="3.75" />
+                  <LayoutItem Id="P_ToplamTutarTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KumasTutarDoviz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KumasTutarTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_iscilikDoviz" RelativeSize="5" />
+                </LayoutGroup>
+                <LayoutGroup Id="TumMaliyetTablosu_col2" RelativeSize="50.89463220675945">
+                  <LayoutItem Id="G_iscilikTL" RelativeSize="5" />
+                  <LayoutItem Id="G_BaskiNakisTasDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_BaskiNakisTasTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_YikamaDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_YikamaTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_MalzemeDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_MalzemeTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_NavlunDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_NavlunTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_TestDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_TestTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_GenelGiderDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_GenelGiderTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_FinansBedeliDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_FinansBedeliTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KomisyonBdlDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_KomisyonBdlTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ReklamasyonDvz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ReklamasyonTL" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ToplamTutarDoviz" RelativeSize="3.75" />
+                  <LayoutItem Id="G_ToplamTutarTL" RelativeSize="3.75" />
+                  <LayoutItem Id="KurTarihİ" RelativeSize="3.75" />
+                  <LayoutItem Id="M_ParaBirimi" RelativeSize="3.75" />
+                  <LayoutItem Id="EuroKuru" RelativeSize="3.75" />
+                  <LayoutItem Id="DolarKuru" RelativeSize="3.75" />
+                  <LayoutItem Id="SterlinKuru" RelativeSize="5" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="15.950920245398773" Caption="ACIKLAMA">
+            <LayoutItem Id="ACIKLAMA" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView_Kesim" EnableCaptionColon="False" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="ACIKLAMA" PropertyName="ACIKLAMA" IsNewNode="True" />
+        <PropertyEditor Id="Aksesuarlars" PropertyName="Aksesuarlars" View="SiparisKarti_Aksesuarlars_ListView" IsNewNode="True" />
+        <PropertyEditor Id="AksesuarSiparisCollection" PropertyName="AksesuarSiparisCollection" View="SiparisKarti_AksesuarSiparisCollection_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ARKAYAKADUS" PropertyName="ARKAYAKADUS" IsNewNode="True" />
+        <PropertyEditor Id="Article" PropertyName="Article" IsNewNode="True" />
+        <PropertyEditor Id="AYNA" PropertyName="AYNA" IsNewNode="True" />
+        <PropertyEditor Id="BASEN" PropertyName="BASEN" IsNewNode="True" />
+        <PropertyEditor Id="Baskis" PropertyName="Baskis" View="SiparisKarti_Baskis_ListView" IsNewNode="True" />
+        <PropertyEditor Id="BedenGrubu" PropertyName="BedenGrubu" IsNewNode="True" />
+        <PropertyEditor Id="BedenOlcu" PropertyName="BedenOlcu" IsNewNode="True" />
+        <PropertyEditor Id="BEL" PropertyName="BEL" IsNewNode="True" />
+        <PropertyEditor Id="BILEK" PropertyName="BILEK" IsNewNode="True" />
+        <PropertyEditor Id="Bilekdirskarasi" PropertyName="Bilekdirskarasi" IsNewNode="True" />
+        <PropertyEditor Id="BOY" PropertyName="BOY" IsNewNode="True" />
+        <PropertyEditor Id="DISOMUZ" PropertyName="DISOMUZ" IsNewNode="True" />
+        <PropertyEditor Id="Dikims" PropertyName="Dikims" View="SiparisKarti_Dikims_ListView" IsNewNode="True" />
+        <PropertyEditor Id="DikimToplam" PropertyName="DikimToplam" IsNewNode="True" />
+        <PropertyEditor Id="Etiketlers" PropertyName="Etiketlers" View="SiparisKarti_Etiketlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Faturalars" PropertyName="Faturalars" View="SiparisKarti_Faturalars_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Fiyat" PropertyName="Fiyat" IsNewNode="True" />
+        <PropertyEditor Id="GOGUS" PropertyName="GOGUS" IsNewNode="True" />
+        <PropertyEditor Id="GogusAcikligi" PropertyName="GogusAcikligi" IsNewNode="True" />
+        <PropertyEditor Id="GOGUSDUS" PropertyName="GOGUSDUS" IsNewNode="True" />
+        <PropertyEditor Id="GunlukKesims" PropertyName="GunlukKesims" View="SiparisKarti_GunlukKesims_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Hatali" PropertyName="Hatali" IsNewNode="True" />
+        <PropertyEditor Id="iade" PropertyName="iade" IsNewNode="True" />
+        <PropertyEditor Id="icSiparisNo" PropertyName="icSiparisNo" IsNewNode="True" />
+        <PropertyEditor Id="icTermin" PropertyName="icTermin" IsNewNode="True" />
+        <PropertyEditor Id="irsaliyelers" PropertyName="irsaliyelers" View="SiparisKarti_irsaliyelers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="iskontoTutar" PropertyName="iskontoTutar" IsNewNode="True" />
+        <PropertyEditor Id="iskontoYuzde" PropertyName="iskontoYuzde" IsNewNode="True" />
+        <PropertyEditor Id="KesimlenToplam" PropertyName="KesimlenToplam" IsNewNode="True" />
+        <PropertyEditor Id="KOLBOYU" PropertyName="KOLBOYU" IsNewNode="True" />
+        <PropertyEditor Id="Kumas_SatinAlmas" PropertyName="Kumas_SatinAlmas" View="SiparisKarti_Kumas_SatinAlmas_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ModelEkstraIslemlers" PropertyName="ModelEkstraIslemlers" View="SiparisKarti_ModelEkstraIslemlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti" PropertyName="ModelKarti" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.ArkaResim" PropertyName="ModelKarti.ArkaResim" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.OnResim" PropertyName="ModelKarti.OnResim" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.TeknikResim1" PropertyName="ModelKarti.TeknikResim1" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.TeknikResim2" PropertyName="ModelKarti.TeknikResim2" IsNewNode="True" />
+        <PropertyEditor Id="MSube" PropertyName="MSube" IsNewNode="True" />
+        <PropertyEditor Id="MusteriSiparisNo" PropertyName="MusteriSiparisNo" IsNewNode="True" />
+        <PropertyEditor Id="MusteriTermin" PropertyName="MusteriTermin" IsNewNode="True" />
+        <PropertyEditor Id="MusteriTermins" PropertyName="MusteriTermins" View="SiparisKarti_MusteriTermins_ListView" IsNewNode="True" />
+        <PropertyEditor Id="NakisCollection" PropertyName="NakisCollection" View="SiparisKarti_NakisCollection_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="OMUZ" PropertyName="OMUZ" IsNewNode="True" />
+        <PropertyEditor Id="OMUZBOY" PropertyName="OMUZBOY" IsNewNode="True" />
+        <PropertyEditor Id="OnaylanmısModel" PropertyName="OnaylanmısModel" IsNewNode="True" />
+        <PropertyEditor Id="ONBEDENBOYU" PropertyName="ONBEDENBOYU" IsNewNode="True" />
+        <PropertyEditor Id="PaketToplam" PropertyName="PaketToplam" IsNewNode="True" />
+        <PropertyEditor Id="ParaBirimi" PropertyName="ParaBirimi" IsNewNode="True" />
+        <PropertyEditor Id="PAZU" PropertyName="PAZU" IsNewNode="True" />
+        <PropertyEditor Id="ProvaTakips" PropertyName="ProvaTakips" View="SiparisKarti_ProvaTakips_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Reklamasyon" PropertyName="Reklamasyon" IsNewNode="True" />
+        <PropertyEditor Id="Siparis" PropertyName="Siparis" IsNewNode="True" />
+        <PropertyEditor Id="SiparisAdet" PropertyName="SiparisAdet" IsNewNode="True" />
+        <PropertyEditor Id="SiparisDetays" PropertyName="SiparisDetays" View="SiparisKarti_SiparisDetays_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisEkDosyalaris" PropertyName="SiparisEkDosyalaris" View="SiparisKarti_SiparisEkDosyalaris_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" IsNewNode="True" />
+        <PropertyEditor Id="Siparisislemlers" PropertyName="Siparisislemlers" View="SiparisKarti_Siparisislemlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisKesimTablosus" PropertyName="SiparisKesimTablosus" View="SiparisKarti_SiparisKesimTablosus_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisKontrolFormus" PropertyName="SiparisKontrolFormus" View="SiparisKarti_SiparisKontrolFormus_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SirtAcikligi" PropertyName="SirtAcikligi" IsNewNode="True" />
+        <PropertyEditor Id="SprDurumu" PropertyName="SprDurumu" IsNewNode="True" />
+        <PropertyEditor Id="SprTamamlanmis" PropertyName="SprTamamlanmis" IsNewNode="True" />
+        <PropertyEditor Id="Temsilci" PropertyName="Temsilci" IsNewNode="True" />
+        <PropertyEditor Id="ToplamTutar" PropertyName="ToplamTutar" IsNewNode="True" />
+        <PropertyEditor Id="Toptan" PropertyName="Toptan" IsNewNode="True" />
+        <PropertyEditor Id="YAKADUS" PropertyName="YAKADUS" IsNewNode="True" />
+        <PropertyEditor Id="YANBEDBOYU" PropertyName="YANBEDBOYU" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="63.1578947368421" IsNewNode="True">
+            <TabbedGroup Id="Item9" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="SiparisKarti_Group" ShowCaption="True" Index="0" RelativeSize="100" Caption="Sipariş Bilgileri" IsNewNode="True">
+                <LayoutGroup Id="SiparisKarti_Group_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5" ShowCaption="False" Caption="Autodaad06c2-9f9f-44ff-8d8d-a88cd5d05bf5(6)" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                    <LayoutGroup Id="Item13" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="37.5" IsNewNode="True">
+                      <LayoutGroup Id="Autodca98424-2fbe-4e98-b52b-a28ece344903" ShowCaption="False" Caption="Autodca98424-2fbe-4e98-b52b-a28ece344903(9)" Direction="Horizontal" Index="0" RelativeSize="7.462686567164179" IsNewNode="True">
+                        <LayoutItem Id="MusteriSiparisNo" ViewItem="MusteriSiparisNo" Index="0" RelativeSize="47.47774480712166" IsNewNode="True" />
+                        <LayoutItem Id="icSiparisNo" ViewItem="icSiparisNo" Index="1" RelativeSize="52.52225519287834" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto09f68bf3-c1bf-441b-8b22-bf27ebf31fa4" ShowCaption="False" Caption="Auto09f68bf3-c1bf-441b-8b22-bf27ebf31fa4(12)" Index="1" RelativeSize="21.108742004264393" IsNewNode="True">
+                        <LayoutGroup Id="Autoef9e0e2a-f8d3-4785-a112-609026325947" ShowCaption="False" Caption="Autoef9e0e2a-f8d3-4785-a112-609026325947(13)" Direction="Horizontal" Index="0" RelativeSize="33.333333333333336" IsNewNode="True">
+                          <LayoutItem Id="ModelKarti" ViewItem="ModelKarti" Index="0" RelativeSize="47.47774480712166" IsNewNode="True" />
+                          <LayoutItem Id="OnaylanmısModel" ViewItem="OnaylanmısModel" Index="1" RelativeSize="52.52225519287834" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Auto7cf11771-c0f3-4b91-8f00-09880726d281" ShowCaption="False" Caption="Auto7cf11771-c0f3-4b91-8f00-09880726d281(16)" Index="1" RelativeSize="66.66666666666667" IsNewNode="True">
+                          <LayoutGroup Id="Autob7650cc8-66d6-42d9-a89f-b88d989ad6b5" ShowCaption="False" Caption="Autob7650cc8-66d6-42d9-a89f-b88d989ad6b5(22)" Index="0" RelativeSize="100" IsNewNode="True">
+                            <LayoutItem Id="Temsilci" ViewItem="Temsilci" Index="0" RelativeSize="45.45454545454545" IsNewNode="True" />
+                            <LayoutGroup Id="Autofe1abef5-e493-48da-bd00-a80432d51b60" ShowCaption="False" Caption="Autofe1abef5-e493-48da-bd00-a80432d51b60(24)" Direction="Vertical" Index="1" RelativeSize="54.54545454545455" IsNewNode="True">
+                              <LayoutItem Id="icTermin" ViewItem="icTermin" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                      <LayoutItem Id="BedenGrubu" ViewItem="BedenGrubu" Index="2" RelativeSize="5.11727078891258" IsNewNode="True" />
+                      <LayoutGroup Id="Item14" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="66.31130063965885" IsNewNode="True">
+                        <LayoutItem Id="ProvaTakips" ViewItem="ProvaTakips" Index="0" RelativeSize="100" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <TabbedGroup Id="Item2" CaptionLocation="Top" Index="1" RelativeSize="62.5" IsNewNode="True">
+                      <LayoutGroup Id="Item1" ShowCaption="True" Caption="Ön Resim" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="ModelKarti.OnResim" ShowCaption="False" ViewItem="ModelKarti.OnResim" Index="0" RelativeSize="100" SizeConstraintsType="Custom" MinSize="573, 463" MaxSize="573, 463" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Item3" ShowCaption="True" Caption="Arka Resim" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="ModelKarti.ArkaResim" ShowCaption="False" ViewItem="ModelKarti.ArkaResim" Index="0" RelativeSize="100" SizeConstraintsType="Custom" MinSize="573, 463" MaxSize="573, 463" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Item5" ShowCaption="True" Caption="Teknik Resim 1" CaptionLocation="Top" Index="2" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="ModelKarti.TeknikResim1" ShowCaption="False" ViewItem="ModelKarti.TeknikResim1" Index="0" RelativeSize="100" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Item7" ShowCaption="True" Caption="Teknik Resim 2" CaptionLocation="Top" Index="3" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="ModelKarti.TeknikResim2" ShowCaption="False" ViewItem="ModelKarti.TeknikResim2" Index="0" RelativeSize="100" IsNewNode="True" />
+                      </LayoutGroup>
+                    </TabbedGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Index="1" ShowCaption="False" RelativeSize="36.8421052631579" IsNewNode="True">
+            <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="43.47826086956522" Direction="Horizontal" IsNewNode="True">
+              <LayoutGroup Id="Autocbe70316-a561-491a-9d62-8d49505914d4" ShowCaption="False" Index="0" RelativeSize="27.22457627118644" IsNewNode="True">
+                <LayoutItem Id="GOGUS" ViewItem="GOGUS" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutItem Id="GOGUSDUS" ViewItem="GOGUSDUS" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="BEL" ViewItem="BEL" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="OMUZ" ViewItem="OMUZ" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Auto512a4557-a807-46b3-b830-013f6258d21f" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="72.77542372881356" IsNewNode="True">
+                <LayoutGroup Id="Auto352e9d1d-f84f-41fc-b90d-ed23edfa37f2" ShowCaption="False" Index="0" RelativeSize="33.18777292576419" IsNewNode="True">
+                  <LayoutItem Id="AYNA" ViewItem="AYNA" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="YANBEDBOYU" ViewItem="YANBEDBOYU" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="KOLBOYU" ViewItem="KOLBOYU" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="PAZU" ViewItem="PAZU" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autocb91162b-1205-4614-9185-496db3fc9014" ShowCaption="False" Direction="Horizontal" Index="1" RelativeSize="66.8122270742358" IsNewNode="True">
+                  <LayoutGroup Id="Auto2c4dea4c-655a-474d-9eac-b640ca07f6ca" ShowCaption="False" Index="0" RelativeSize="48.148148148148145" IsNewNode="True">
+                    <LayoutItem Id="BILEK" ViewItem="BILEK" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                    <LayoutItem Id="Bilekdirskarasi" ViewItem="Bilekdirskarasi" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                    <LayoutItem Id="BOY" ViewItem="BOY" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                    <LayoutItem Id="GogusAcikligi" ViewItem="GogusAcikligi" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto327ffefb-9583-487e-99c5-12c88c182ed2" ShowCaption="False" Index="1" RelativeSize="51.851851851851855" IsNewNode="True">
+                    <LayoutItem Id="SirtAcikligi" ViewItem="SirtAcikligi" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                    <LayoutItem Id="BASEN" ViewItem="BASEN" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                    <LayoutItem Id="Item10" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                    <LayoutItem Id="Item11" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="37.267080745341616" IsNewNode="True">
+              <LayoutItem Id="SiparisKesimTablosus" ViewItem="SiparisKesimTablosus" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutItem Id="ACIKLAMA" ViewItem="ACIKLAMA" ShowCaption="" Index="2" RelativeSize="19.25465838509317" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SiparisKarti_DetailView_Prakende" CaptionColon=":" EnableCaptionColon="False" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" RequiredFieldMark="*" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" DefaultFocusedItem="" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="ACIKLAMA" PropertyName="ACIKLAMA" IsNewNode="True" />
+        <PropertyEditor Id="Aksesuarlars" PropertyName="Aksesuarlars" View="SiparisKarti_Aksesuarlars_ListView" IsNewNode="True" />
+        <PropertyEditor Id="AksesuarSiparisCollection" PropertyName="AksesuarSiparisCollection" View="SiparisKarti_AksesuarSiparisCollection_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ARKAYAKADUS" PropertyName="ARKAYAKADUS" IsNewNode="True" />
+        <PropertyEditor Id="Article" PropertyName="Article" IsNewNode="True" />
+        <PropertyEditor Id="AYNA" PropertyName="AYNA" IsNewNode="True" />
+        <PropertyEditor Id="BASEN" PropertyName="BASEN" IsNewNode="True" />
+        <PropertyEditor Id="Baskis" PropertyName="Baskis" View="SiparisKarti_Baskis_ListView" IsNewNode="True" />
+        <PropertyEditor Id="BedenGrubu" PropertyName="BedenGrubu" IsNewNode="True" />
+        <PropertyEditor Id="BEL" PropertyName="BEL" IsNewNode="True" />
+        <PropertyEditor Id="BILEK" PropertyName="BILEK" IsNewNode="True" />
+        <PropertyEditor Id="Bilekdirskarasi" PropertyName="Bilekdirskarasi" IsNewNode="True" />
+        <PropertyEditor Id="BOY" PropertyName="BOY" IsNewNode="True" />
+        <PropertyEditor Id="DISOMUZ" PropertyName="DISOMUZ" IsNewNode="True" />
+        <PropertyEditor Id="Dikims" PropertyName="Dikims" View="SiparisKarti_Dikims_ListView" IsNewNode="True" />
+        <PropertyEditor Id="DikimToplam" PropertyName="DikimToplam" IsNewNode="True" />
+        <PropertyEditor Id="Etiketlers" PropertyName="Etiketlers" View="SiparisKarti_Etiketlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Faturalars" PropertyName="Faturalars" View="SiparisKarti_Faturalars_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Fiyat" PropertyName="Fiyat" IsNewNode="True" />
+        <PropertyEditor Id="GOGUS" PropertyName="GOGUS" IsNewNode="True" />
+        <PropertyEditor Id="GogusAcikligi" PropertyName="GogusAcikligi" IsNewNode="True" />
+        <PropertyEditor Id="GOGUSDUS" PropertyName="GOGUSDUS" IsNewNode="True" />
+        <PropertyEditor Id="GunlukKesims" PropertyName="GunlukKesims" View="SiparisKarti_GunlukKesims_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Hatali" PropertyName="Hatali" IsNewNode="True" />
+        <PropertyEditor Id="iade" PropertyName="iade" IsNewNode="True" />
+        <PropertyEditor Id="icSiparisNo" PropertyName="icSiparisNo" IsNewNode="True" />
+        <PropertyEditor Id="icTermin" PropertyName="icTermin" IsNewNode="True" />
+        <PropertyEditor Id="irsaliyelers" PropertyName="irsaliyelers" View="SiparisKarti_irsaliyelers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="KesimlenToplam" PropertyName="KesimlenToplam" IsNewNode="True" />
+        <PropertyEditor Id="KOLBOYU" PropertyName="KOLBOYU" IsNewNode="True" />
+        <PropertyEditor Id="Kumas_SatinAlmas" PropertyName="Kumas_SatinAlmas" View="SiparisKarti_Kumas_SatinAlmas_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ModelEkstraIslemlers" PropertyName="ModelEkstraIslemlers" View="SiparisKarti_ModelEkstraIslemlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti" PropertyName="ModelKarti" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.ArkaResim" PropertyName="ModelKarti.ArkaResim" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.OnResim" PropertyName="ModelKarti.OnResim" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.TeknikResim1" PropertyName="ModelKarti.TeknikResim1" IsNewNode="True" />
+        <PropertyEditor Id="ModelKarti.TeknikResim2" PropertyName="ModelKarti.TeknikResim2" IsNewNode="True" />
+        <PropertyEditor Id="MusteriSiparisNo" PropertyName="MusteriSiparisNo" IsNewNode="True" />
+        <PropertyEditor Id="MusteriTermin" PropertyName="MusteriTermin" IsNewNode="True" />
+        <PropertyEditor Id="MusteriTermins" PropertyName="MusteriTermins" View="SiparisKarti_MusteriTermins_ListView" IsNewNode="True" />
+        <PropertyEditor Id="NakisCollection" PropertyName="NakisCollection" View="SiparisKarti_NakisCollection_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="OMUZ" PropertyName="OMUZ" IsNewNode="True" />
+        <PropertyEditor Id="OMUZBOY" PropertyName="OMUZBOY" IsNewNode="True" />
+        <PropertyEditor Id="OnaylanmısModel" PropertyName="OnaylanmısModel" IsNewNode="True" />
+        <PropertyEditor Id="ONBEDENBOYU" PropertyName="ONBEDENBOYU" IsNewNode="True" />
+        <PropertyEditor Id="PaketToplam" PropertyName="PaketToplam" IsNewNode="True" />
+        <PropertyEditor Id="ParaBirimi" PropertyName="ParaBirimi" IsNewNode="True" />
+        <PropertyEditor Id="PAZU" PropertyName="PAZU" IsNewNode="True" />
+        <PropertyEditor Id="ProvaTakips" PropertyName="ProvaTakips" View="SiparisKarti_ProvaTakips_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Reklamasyon" PropertyName="Reklamasyon" IsNewNode="True" />
+        <PropertyEditor Id="Siparis" PropertyName="Siparis" IsNewNode="True" />
+        <PropertyEditor Id="SiparisAdet" PropertyName="SiparisAdet" IsNewNode="True" />
+        <PropertyEditor Id="SiparisDetays" PropertyName="SiparisDetays" View="SiparisKarti_SiparisDetays_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisEkDosyalaris" PropertyName="SiparisEkDosyalaris" View="SiparisKarti_SiparisEkDosyalaris_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisEkResimlers" PropertyName="SiparisEkResimlers" View="SiparisKarti_SiparisEkResimlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" IsNewNode="True" />
+        <PropertyEditor Id="Siparisislemlers" PropertyName="Siparisislemlers" View="SiparisKarti_Siparisislemlers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="SirtAcikligi" PropertyName="SirtAcikligi" IsNewNode="True" />
+        <PropertyEditor Id="Temsilci" PropertyName="Temsilci" LookupProperty="AdSoyad" IsNewNode="True" />
+        <PropertyEditor Id="ToplamTutar" PropertyName="ToplamTutar" IsNewNode="True" />
+        <PropertyEditor Id="YAKADUS" PropertyName="YAKADUS" IsNewNode="True" />
+        <PropertyEditor Id="YANBEDBOYU" PropertyName="YANBEDBOYU" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+            <LayoutGroup Id="Autod360a902-0529-4633-bc72-8c9c82354bf7" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="Auto6262efcf-9938-41d6-a4b1-21b77ba9c93b" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Autoc0478d9b-7790-4754-bea4-ab1321e214eb" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="4.539877300613497" IsNewNode="True">
+                  <LayoutItem Id="ModelKarti" ViewItem="ModelKarti" SizeConstraintsType="Custom" MinSize="155, 33" Index="0" RelativeSize="30.311231393775373" IsNewNode="True" />
+                  <LayoutItem Id="OnaylanmısModel" ViewItem="OnaylanmısModel" SizeConstraintsType="Custom" MinSize="155, 33" Index="1" RelativeSize="69.68876860622463" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autod7ba43fc-f6ea-4622-ac69-a2232aa423d5" ShowCaption="False" Index="1" RelativeSize="95.4601226993865" IsNewNode="True">
+                  <LayoutGroup Id="Autoe60be59d-73a0-4d6f-a4c3-0a768c16752b" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="4.755784061696658" IsNewNode="True">
+                    <LayoutItem Id="ParaBirimi" ViewItem="ParaBirimi" SizeConstraintsType="Custom" MinSize="155, 36" Index="0" RelativeSize="22.32746955345061" IsNewNode="True" />
+                    <LayoutItem Id="Fiyat" ViewItem="Fiyat" SizeConstraintsType="Custom" MinSize="155, 33" Index="1" RelativeSize="22.46278755074425" IsNewNode="True" />
+                    <LayoutItem Id="Item9" Index="2" RelativeSize="55.20974289580514" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="ACIKLAMA" ViewItem="ACIKLAMA" Index="1" RelativeSize="6.940874035989717" IsNewNode="True" />
+                  <LayoutGroup Id="Autoeded242e-2def-45d7-a194-ff56a1602ff4" ShowCaption="False" Direction="Vertical" Index="2" RelativeSize="88.30334190231362" IsNewNode="True">
+                    <LayoutItem Id="ModelEkstraIslemlers" ViewItem="ModelEkstraIslemlers" Index="0" RelativeSize="12.663755458515285" IsNewNode="True" />
+                    <LayoutItem Id="SiparisEkDosyalaris" ViewItem="SiparisEkDosyalaris" Index="1" RelativeSize="11.499272197962155" IsNewNode="True" />
+                    <TabbedGroup Id="Item10" CaptionLocation="Top" Index="2" RelativeSize="19.941775836972344" IsNewNode="True">
+                      <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutGroup Id="Autof4096578-e8e8-48f7-936a-2a79c752bacc" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="33.0188679245283" IsNewNode="True">
+                          <LayoutItem Id="GOGUS" ViewItem="GOGUS" Index="0" RelativeSize="18.828451882845187" IsNewNode="True" />
+                          <LayoutItem Id="OMUZ" ViewItem="OMUZ" Index="1" RelativeSize="18.13110181311018" IsNewNode="True" />
+                          <LayoutItem Id="KOLBOYU" ViewItem="KOLBOYU" Index="2" RelativeSize="21.478382147838214" IsNewNode="True" />
+                          <LayoutItem Id="Bilekdirskarasi" ViewItem="Bilekdirskarasi" Index="3" RelativeSize="22.315202231520225" IsNewNode="True" />
+                          <LayoutItem Id="SirtAcikligi" ViewItem="SirtAcikligi" Index="4" RelativeSize="19.246861924686193" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Auto8eac69b2-1625-4aca-9fd6-dfa74b8e0a4e" ShowCaption="False" Index="1" RelativeSize="33.9622641509434" IsNewNode="True">
+                          <LayoutGroup Id="Autofd82ca75-64fd-4bf4-b097-7bd11b53ed05" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                            <LayoutItem Id="GOGUSDUS" ViewItem="GOGUSDUS" Index="0" RelativeSize="18.828451882845187" IsNewNode="True" />
+                            <LayoutItem Id="AYNA" ViewItem="AYNA" Index="1" RelativeSize="18.13110181311018" IsNewNode="True" />
+                            <LayoutItem Id="PAZU" ViewItem="PAZU" Index="2" RelativeSize="21.478382147838214" IsNewNode="True" />
+                            <LayoutItem Id="BOY" ViewItem="BOY" Index="3" RelativeSize="22.315202231520225" IsNewNode="True" />
+                            <LayoutItem Id="BASEN" ViewItem="BASEN" Index="4" RelativeSize="19.246861924686193" IsNewNode="True" />
+                          </LayoutGroup>
+                        </LayoutGroup>
+                        <LayoutGroup Id="Auto72c3ffbc-525d-4afa-a32c-f5a9e3adcf3f" ShowCaption="False" Direction="Horizontal" Index="2" RelativeSize="33.0188679245283" IsNewNode="True">
+                          <LayoutItem Id="BEL" ViewItem="BEL" Index="0" RelativeSize="18.828451882845187" IsNewNode="True" />
+                          <LayoutItem Id="YANBEDBOYU" ViewItem="YANBEDBOYU" Index="1" RelativeSize="18.13110181311018" IsNewNode="True" />
+                          <LayoutItem Id="BILEK" ViewItem="BILEK" Index="2" RelativeSize="21.478382147838214" IsNewNode="True" />
+                          <LayoutItem Id="GogusAcikligi" ViewItem="GogusAcikligi" Index="3" RelativeSize="22.315202231520225" IsNewNode="True" />
+                          <LayoutItem Id="Item11" Index="4" RelativeSize="19.246861924686193" IsNewNode="True" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </TabbedGroup>
+                    <LayoutGroup Id="Auto8164e146-06ec-4ef2-b91e-fc1fc85659fe" ShowCaption="False" Direction="Vertical" Index="3" RelativeSize="55.89519650655022" IsNewNode="True">
+                      <LayoutGroup Id="Auto5c1b374f-5d8a-40f3-8571-9ef27ce9781e" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutGroup Id="Auto4871aa34-61a2-4cb5-a53b-385479e4fe96" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="77.34375" IsNewNode="True">
+                          <TabbedGroup Id="Item6" CaptionLocation="Top" Index="0" RelativeSize="45.33152909336942" IsNewNode="True">
+                            <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="ProvaTakips" ViewItem="ProvaTakips" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                          </TabbedGroup>
+                          <TabbedGroup Id="Item2" CaptionLocation="Top" Index="1" RelativeSize="54.66847090663058" IsNewNode="True">
+                            <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="ModelKarti.OnResim" ShowCaption="False" ViewItem="ModelKarti.OnResim" SizeConstraintsType="Custom" MinSize="54, 24" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="ModelKarti.ArkaResim" ShowCaption="False" ViewItem="ModelKarti.ArkaResim" SizeConstraintsType="Custom" MinSize="54, 24" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="ModelKarti.TeknikResim1" ShowCaption="False" ViewItem="ModelKarti.TeknikResim1" SizeConstraintsType="Custom" MinSize="54, 24" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                            <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="100" IsNewNode="True">
+                              <LayoutItem Id="ModelKarti.TeknikResim2" ShowCaption="False" ViewItem="ModelKarti.TeknikResim2" SizeConstraintsType="Custom" MinSize="54, 24" Index="0" RelativeSize="100" IsNewNode="True" />
+                            </LayoutGroup>
+                          </TabbedGroup>
+                        </LayoutGroup>
+                        <LayoutItem Id="SiparisEkResimlers" ViewItem="SiparisEkResimlers" Index="1" RelativeSize="22.65625" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SiparisKarti_ListView" InlineEditMode="Batch" PreviewColumnName="ACIKLAMA">
+      <Columns>
+        <ColumnInfo Id="ARKAYAKADUS" Index="-1" />
+        <ColumnInfo Id="Article" Index="-1" />
+        <ColumnInfo Id="AYNA" Index="-1" />
+        <ColumnInfo Id="BASEN" Index="-1" />
+        <ColumnInfo Id="BedenOlcu" LookupProperty="Beden" Index="-1" />
+        <ColumnInfo Id="BEL" Index="-1" />
+        <ColumnInfo Id="BILEK" Index="-1" />
+        <ColumnInfo Id="Bilekdirskarasi" Index="-1" />
+        <ColumnInfo Id="BOY" Index="-1" />
+        <ColumnInfo Id="DISOMUZ" Index="-1" />
+        <ColumnInfo Id="DikimToplam" Index="-1" />
+        <ColumnInfo Id="GOGUS" Index="-1" />
+        <ColumnInfo Id="GogusAcikligi" Index="-1" />
+        <ColumnInfo Id="GOGUSDUS" Index="-1" />
+        <ColumnInfo Id="Hatali" Index="-1" />
+        <ColumnInfo Id="iade" Index="-1" />
+        <ColumnInfo Id="icSiparisNo" Index="-1" />
+        <ColumnInfo Id="icTermin" Index="-1" />
+        <ColumnInfo Id="KesimlenToplam" Index="-1" />
+        <ColumnInfo Id="KOLBOYU" Index="-1" />
+        <ColumnInfo Id="MSube" LookupProperty="SubeAdi" Index="-1" />
+        <ColumnInfo Id="MusteriSiparisNo" Index="-1" Width="99" />
+        <ColumnInfo Id="OMUZ" Index="-1" />
+        <ColumnInfo Id="OMUZBOY" Index="-1" />
+        <ColumnInfo Id="ONBEDENBOYU" Index="-1" />
+        <ColumnInfo Id="PaketToplam" Index="-1" />
+        <ColumnInfo Id="PAZU" Index="-1" />
+        <ColumnInfo Id="Reklamasyon" Index="-1" />
+        <ColumnInfo Id="Siparis" Index="-1" />
+        <ColumnInfo Id="SiparisFoy" Index="-1" />
+        <ColumnInfo Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SirtAcikligi" Index="-1" />
+        <ColumnInfo Id="Temsilci" Index="-1" />
+        <ColumnInfo Id="Toptan" Index="-1" />
+        <ColumnInfo Id="YAKADUS" Index="-1" />
+        <ColumnInfo Id="YANBEDBOYU" Index="-1" />
+        <ColumnInfo Id="ModelKarti" Index="0" />
+        <ColumnInfo Id="OnaylanmısModel" Index="1" Width="97" />
+        <ColumnInfo Id="BedenGrubu" Index="2" />
+        <ColumnInfo Id="SiparisAdet" Index="3" Width="85">
+          <Summary>
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ParaBirimi" Index="4" LookupProperty="P_Birimi" />
+        <ColumnInfo Id="Fiyat" Index="5" />
+        <ColumnInfo Id="ToplamTutar" Index="6" Width="89">
+          <Summary>
+            <ColumnSummaryItem Id="@TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ACIKLAMA" Index="7" Width="164" />
+        <ColumnInfo Id="MusteriTermin" Index="8" />
+        <ColumnInfo Id="iskontoYuzde" Index="9" Width="79" />
+        <ColumnInfo Id="iskontoTutar" Index="10" />
+        <ColumnInfo Id="SprDurumu" Index="11" Width="119" />
+        <ColumnInfo Id="SprTamamlanmis" Index="12" Width="99" />
+      </Columns>
+      <PivotSettings ShowRowTotals="True" ShowRowGrandTotals="True" ShowColumnTotals="True" ShowColumnGrandTotals="True" ShowChart="True" RemoveOldColumns="True" />
+    </ListView>
+    <ListView Id="SiparisKarti_ListView_Kesim" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" AllowEdit="True" NewItemRowPosition="Top" DetailViewID="SiparisKarti_DetailView_Kesim" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="ACIKLAMA" PropertyName="ACIKLAMA" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ARKAYAKADUS" PropertyName="ARKAYAKADUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Article" PropertyName="Article" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="AYNA" PropertyName="AYNA" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BASEN" PropertyName="BASEN" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BedenGrubu" PropertyName="BedenGrubu" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BedenOlcu" PropertyName="BedenOlcu" Index="-1" LookupProperty="Beden" IsNewNode="True" />
+        <ColumnInfo Id="BEL" PropertyName="BEL" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BILEK" PropertyName="BILEK" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Bilekdirskarasi" PropertyName="Bilekdirskarasi" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="BOY" PropertyName="BOY" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DISOMUZ" PropertyName="DISOMUZ" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DikimToplam" PropertyName="DikimToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Fiyat" PropertyName="Fiyat" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="GOGUS" PropertyName="GOGUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="GogusAcikligi" PropertyName="GogusAcikligi" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="GOGUSDUS" PropertyName="GOGUSDUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Hatali" PropertyName="Hatali" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="iade" PropertyName="iade" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="icSiparisNo" PropertyName="icSiparisNo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="iskontoTutar" PropertyName="iskontoTutar" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="iskontoYuzde" PropertyName="iskontoYuzde" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="KesimlenToplam" PropertyName="KesimlenToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="KOLBOYU" PropertyName="KOLBOYU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MSube" PropertyName="MSube" Index="-1" LookupProperty="SubeAdi" IsNewNode="True" />
+        <ColumnInfo Id="MusteriSiparisNo" PropertyName="MusteriSiparisNo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MusteriTermin" PropertyName="MusteriTermin" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OMUZ" PropertyName="OMUZ" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OMUZBOY" PropertyName="OMUZBOY" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="OnaylanmısModel" PropertyName="OnaylanmısModel" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ONBEDENBOYU" PropertyName="ONBEDENBOYU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PaketToplam" PropertyName="PaketToplam" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ParaBirimi" PropertyName="ParaBirimi" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="PAZU" PropertyName="PAZU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Reklamasyon" PropertyName="Reklamasyon" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SiparisAdet" PropertyName="SiparisAdet" Index="-1" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="SiparisFoy" PropertyName="SiparisFoy" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SirtAcikligi" PropertyName="SirtAcikligi" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SprDurumu" PropertyName="SprDurumu" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SprTamamlanmis" PropertyName="SprTamamlanmis" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ToplamTutar" PropertyName="ToplamTutar" Index="-1" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="@TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Toptan" PropertyName="Toptan" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="YAKADUS" PropertyName="YAKADUS" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="YANBEDBOYU" PropertyName="YANBEDBOYU" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Siparis" PropertyName="Siparis" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="ModelKarti" PropertyName="ModelKarti" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Temsilci" PropertyName="Temsilci" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="icTermin" PropertyName="icTermin" Index="3" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+      </Columns>
+      <PivotSettings ShowRowTotals="True" ShowRowGrandTotals="True" ShowColumnTotals="True" ShowColumnGrandTotals="True" ShowChart="True" RemoveOldColumns="True" IsNewNode="True" />
+    </ListView>
+    <ListView Id="SiparisKarti_ListView_Prakende" ClassName="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti" AllowEdit="True" NewItemRowPosition="Top" MasterDetailView="SiparisKarti_DetailView_Prakende" DetailViewID="SiparisKarti_DetailView_Prakende" IsFooterVisible="True" InlineEditMode="Batch" PreviewColumnName="ACIKLAMA" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="icSiparisNo" PropertyName="icSiparisNo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="icTermin" PropertyName="icTermin" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MusteriSiparisNo" PropertyName="MusteriSiparisNo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SiparisFoy.Musteriler" PropertyName="SiparisFoy.Musteriler" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ModelKarti" PropertyName="ModelKarti" Index="0" Width="139" IsNewNode="True" />
+        <ColumnInfo Id="OnaylanmısModel" PropertyName="OnaylanmısModel" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="SiparisAdet" PropertyName="SiparisAdet" Index="2" Width="86" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Fiyat" PropertyName="Fiyat" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="ToplamTutar" PropertyName="ToplamTutar" Index="4" IsNewNode="True">
+          <Summary IsNewNode="True">
+            <ColumnSummaryItem Id="@TTOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="ParaBirimi" PropertyName="ParaBirimi" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Temsilci" PropertyName="Temsilci" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="MusteriTermin" PropertyName="MusteriTermin" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="Siparis" PropertyName="Siparis" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="BedenGrubu" PropertyName="BedenGrubu" Index="9" IsNewNode="True" />
+        <ColumnInfo Id="Article" PropertyName="Article" Index="10" IsNewNode="True" />
+        <ColumnInfo Id="KesimlenToplam" PropertyName="KesimlenToplam" Index="11" IsNewNode="True" />
+        <ColumnInfo Id="DikimToplam" PropertyName="DikimToplam" Index="12" IsNewNode="True" />
+        <ColumnInfo Id="PaketToplam" PropertyName="PaketToplam" Index="13" IsNewNode="True" />
+        <ColumnInfo Id="Hatali" PropertyName="Hatali" Index="14" IsNewNode="True" />
+        <ColumnInfo Id="iade" PropertyName="iade" Index="15" IsNewNode="True" />
+        <ColumnInfo Id="Reklamasyon" PropertyName="Reklamasyon" Index="16" IsNewNode="True" />
+        <ColumnInfo Id="SiparisFoy" PropertyName="SiparisFoy" Index="17" IsNewNode="True" />
+        <ColumnInfo Id="OMUZBOY" PropertyName="OMUZBOY" Index="18" IsNewNode="True" />
+        <ColumnInfo Id="GOGUS" PropertyName="GOGUS" Index="19" IsNewNode="True" />
+        <ColumnInfo Id="BEL" PropertyName="BEL" Index="20" IsNewNode="True" />
+        <ColumnInfo Id="BASEN" PropertyName="BASEN" Index="21" IsNewNode="True" />
+        <ColumnInfo Id="GOGUSDUS" PropertyName="GOGUSDUS" Index="22" IsNewNode="True" />
+        <ColumnInfo Id="ONBEDENBOYU" PropertyName="ONBEDENBOYU" Index="23" IsNewNode="True" />
+        <ColumnInfo Id="ARKAYAKADUS" PropertyName="ARKAYAKADUS" Index="24" IsNewNode="True" />
+        <ColumnInfo Id="DISOMUZ" PropertyName="DISOMUZ" Index="25" IsNewNode="True" />
+        <ColumnInfo Id="OMUZ" PropertyName="OMUZ" Index="26" IsNewNode="True" />
+        <ColumnInfo Id="YAKADUS" PropertyName="YAKADUS" Index="27" IsNewNode="True" />
+        <ColumnInfo Id="KOLBOYU" PropertyName="KOLBOYU" Index="28" IsNewNode="True" />
+        <ColumnInfo Id="BILEK" PropertyName="BILEK" Index="29" IsNewNode="True" />
+        <ColumnInfo Id="PAZU" PropertyName="PAZU" Index="30" IsNewNode="True" />
+        <ColumnInfo Id="ACIKLAMA" PropertyName="ACIKLAMA" Index="31" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_LookupListView" IsFooterVisible="True">
+      <Columns>
+        <ColumnInfo Id="SiparisAdet">
+          <Summary>
+            <ColumnSummaryItem Id="@SPATOPLAM" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_ModelEkstraIslemlers_ListView" AllowEdit="True" InlineEditMode="Batch" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="Model" LookupProperty="ModelAdi" />
+        <ColumnInfo Id="Islem" LookupProperty="Islem" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_ProvaTakips_ListView" ImageName="">
+      <Columns>
+        <ColumnInfo Id="Durumu" LookupProperty="Durum" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_SiparisEkResimlers_ListView">
+      <Columns>
+        <ColumnInfo Id="Resim" Width="127" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_SiparisKesimTablosus_ListView">
+      <Columns>
+        <ColumnInfo Id="AltKesimci" Width="134" />
+        <ColumnInfo Id="AltKesimTarihi" Width="118" />
+        <ColumnInfo Id="UstKesimci" Width="121" />
+        <ColumnInfo Id="UstKesimTarihi" Width="139" />
+      </Columns>
+    </ListView>
+    <ListView Id="Stoklar_ListView">
+      <Columns>
+        <ColumnInfo Id="ModelKarti" LookupProperty="Model" />
+      </Columns>
+    </ListView>
+    <DashboardView Id="ToptanSiparisBilgileri" IsNewNode="True">
+      <Items IsNewNode="True">
+        <ToptanSiparisTakip Id="@a7d557e6-1f3c-44c3-88c7-924acd3a8c33" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" IsNewNode="True">
+          <LayoutItem Id="@a7d557e6-1f3c-44c3-88c7-924acd3a8c33" ViewItem="@a7d557e6-1f3c-44c3-88c7-924acd3a8c33" Index="0" IsNewNode="True" />
+        </LayoutGroup>
+      </Layout>
+    </DashboardView>
+  </Views>
+</Application>

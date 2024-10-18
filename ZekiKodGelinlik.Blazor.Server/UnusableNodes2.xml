@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SiparisFoy_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SiparisKartis_Group" ShowCaption="False" Caption="Siparis Kartis" Index="1" RelativeSize="50.25445292620865" Removed="True" />
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SiparisFoy">
+              <LayoutItem Id="Temsilci" Index="1" RelativeSize="49.69644405897658" Removed="True" />
+              <LayoutItem Id="Tarih" Index="2" RelativeSize="22.89679098005204" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

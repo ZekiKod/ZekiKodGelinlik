@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel Id="BOModel">
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="Musteri" Caption="Müşteri" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views Id="Views">
+    <ListView Id="KumasKarti_LookupListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Resim" Index="-1" />
+        <ColumnInfo Id="ResimThumb" Index="-1" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

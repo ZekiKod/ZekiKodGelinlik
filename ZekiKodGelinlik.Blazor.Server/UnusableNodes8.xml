@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel Id="BOModel">
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Kiralama">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="Stoklar" LookupProperty="ModelKarti.Model" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views Id="Views">
+    <ListView Id="Kiralama_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Stoklar" LookupProperty="ModelKarti.Model" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

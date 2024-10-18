@@ -1,0 +1,122 @@
+﻿@page "/"
+@namespace ZekiKodGelinlik.Blazor.Server
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using DevExpress.ExpressApp.Blazor.Components
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- meta name="theme-color" content="#000000" -->
+    <title>Seyhan Yücel</title>
+    <link href="../manifest.json" rel="manifest" />
+    <base href="~/" />
+    <component type="typeof(BootstrapThemeLink)" render-mode="Static" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="js/Mira.js"></script>
+
+
+
+</head>
+<body>
+    @{
+        string userAgent = Request.Headers["User-Agent"];
+        bool isIE = userAgent.Contains("MSIE") || userAgent.Contains("Trident");
+        <nav class="dxbl-accordion-items-container" role="tree">
+            <div class="dxbl-group-control dxbl-group dxbl-accordion-group expanded xaf-nav-item has-children dxbl-accordion-item">
+                <div class="flex">
+                    <textarea id="speechTextBox" class="form-control red-border" placeholder="Konuşma alanı" rows="1"></textarea>
+                    <textarea id="activeCommandsBox" class="form-control green-border" placeholder="Aktif Komutlar" rows="1" readonly></textarea>
+                </div>
+            </div>
+        </nav>
+
+    }
+    @if (isIE)
+    {
+        <link href="css/site.css" rel="stylesheet" />
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+            <div class="d-flex">
+                <img class="mt-2 mr-4" src="_content/DevExpress.ExpressApp.Blazor/images/Sad.svg" width="60" height="60" />
+                <div>
+                    <div class="h1">Internet Explorer is not supported.</div>
+                    <p style="font-size: 1rem; opacity: 0.75;" class="m-0">ZekiKodGelinlik cannot be loaded in Internet Explorer.<br>Please use a different browser.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <component type="typeof(SplashScreen)" render-mode="Static" param-Caption='"Seyhan Yücel"' param-ImagePath='"images/SplashScreen.svg"' />
+
+        <link href="_content/DevExpress.ExpressApp.Blazor/styles.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="_content/DevExpress.ExpressApp.Blazor/scripts.js"></script>
+
+        <app class="d-none">
+            <component type="typeof(App)" render-mode="Server" />
+        </app>
+
+        <component type="typeof(AlertsHandler)" render-mode="Server" />
+
+        <div id="blazor-error-ui">
+            <component type="typeof(BlazorError)" render-mode="Static" />
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+
+        <script>
+            window.downloadFileFromByteArray = function (options) {
+                var byteCharacters = atob(options.ByteArray);
+                var byteNumbers = new Array(byteCharacters.length);
+                for (var i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                var byteArray = new Uint8Array(byteNumbers);
+                var blob = new Blob([byteArray], { type: options.ContentType });
+
+                var url = URL.createObjectURL(blob);
+
+                var anchorElement = document.createElement('a');
+                anchorElement.href = url;
+                anchorElement.download = options.FileName || '';
+                anchorElement.click();
+
+                setTimeout(function () {
+                    URL.revokeObjectURL(url);
+                }, 100);
+            };
+        </script>
+
+
+
+
+        @*   <script>
+    window.registerBeforeUnloadEvent = function () {
+    window.addEventListener('beforeunload', function (event) {
+    DotNet.invokeMethodAsync('ZekiKodGelinlik.Blazor.Server', 'SaveChangesBeforeUnload');
+    });
+    };
+    </script> *@
+
+        <style>
+            /* Çerçeve renkleri için sınıflar */
+            .red-border {
+                border: 2px solid red;
+            }
+
+            .green-border {
+                border: 2px solid green;
+            }
+        </style>
+
+        <input type="text" placeholder="Mira'ya komut verin" />
+        <script>navigator.serviceWorker.register('../service-worker.js');</script>
+    }
+</body>
+</html>

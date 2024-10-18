@@ -1,0 +1,279 @@
+﻿using DevExpress.Xpo;
+using DevExpress.Data.Filtering;
+using DevExpress.Persistent.Base;
+using DevExpress.Persistent.BaseImpl;
+using System.Xml;
+using DevExpress.ExpressApp.ConditionalAppearance;
+
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+    [DefaultClassOptions]
+    public partial class Kumas_SatinAlma
+    {
+        public Kumas_SatinAlma(Session session) : base(session) { }
+        public override void AfterConstruction()
+        {
+
+
+            MaliyetParaBirimi = Session.FindObject<Parabirimi>(CriteriaOperator.Parse("P_Birimi = 'EUR'"));
+            MaliyetKurTarih = DateTime.Today;
+            FireOran = 5;
+            //if (!(Session is NestedUnitOfWork) && Session.DataLayer != null && Session.IsNewObject(this) && string.IsNullOrEmpty(TalepNo))
+            //{
+            //    int deger = DistributedIdGeneratorHelper.Generate(Session.DataLayer, this.GetType().FullName, "MyServerPrefix");
+            //    TalepNo = string.Format("{0:D6}", deger);
+            //}
+            base.AfterConstruction();
+
+
+
+
+        }
+        [Appearance("RuleMethod", AppearanceItemType = "ViewItem", TargetItems = "*", Context = "ListView",
+     BackColor = "Yellow", FontColor = "Black")]
+
+        public bool RuleMethod()
+        {
+            if (SiparisVerildi == true && GelenKumas <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        [Appearance("RuleMethod2", AppearanceItemType = "ViewItem", TargetItems = "*", Context = "ListView",
+   BackColor = "ORANGE", FontColor = "Black")]
+        public bool RuleMethod2()
+        {
+            if (GelenKumas < SiparisEdilecek && GelenKumas > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        [Appearance("RuleMethod3", AppearanceItemType = "ViewItem", TargetItems = "*", Context = "ListView",
+   BackColor = "GREEN", FontColor = "Black")]
+        public bool RuleMethod3()
+        {
+
+            if (GelenKumas >= SiparisEdilecek && SiparisEdilecek>=1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private string bugun;
+        private string eskiTarih;
+        private DateTime bugunTarih;
+        private string yil;
+        private string ay;
+        private string gun;
+        private string trh;
+        private string dolarsatis;
+        private string EUROsatis;
+        private string sterlnsatis;
+        private XmlDocument xmlDocument;
+
+        private decimal s_kur = 0;
+        private string sbugun;
+        private string syil;
+        private string say;
+        private string sgun;
+        private string strh;
+        private string seskitarih;
+        private XmlDocument xmldosya ;
+        private string sdolarsatis;
+        private string sEUROsatis;
+        private string ssterlnsatis;
+        private decimal kur = 0;
+        protected override void OnSaved()
+        {
+          
+            RuleMethod();
+            RuleMethod2();
+            RuleMethod3();
+           
+            base.OnSaved();
+        }
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+            //try
+            //{
+            //    if (Kumas_Karti != null)
+            //    {
+            //        double kmsgrm = (Adet * Gramaj);
+            //        double kmsfr = (kmsgrm / 100) * FireOran;
+            //        Planlanan = (kmsfr + kmsgrm) / 1000;
+            //        T_Mlyt_Dvz = Planlanan * MaliyetFiyat;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+
+
+            //}
+
+
+            
+
+            //if (propertyName == "MaliyetKurTarih" || propertyName == "MaliyetParaBirimi")
+            //{
+            //    try
+            //    {
+            //        bugun = "https://www.tcmb.gov.tr/kurlar/today.xml";
+            //        yil = MaliyetKurTarih.ToString("yyyy");
+            //        ay = MaliyetKurTarih.ToString("MM");
+            //        gun = MaliyetKurTarih.ToString("dd");
+            //        trh = yil + ay + "/" + gun + ay + yil;
+            //        eskiTarih = "https://www.tcmb.gov.tr/kurlar/" + trh + ".xml";
+            //        xmlDocument = new XmlDocument();
+            //        bugunTarih = DateTime.Today;
+            //        if (bugunTarih.ToShortDateString() != DateTime.Parse("1.01.0001 00:00:00").ToShortDateString())
+            //        {
+
+
+            //            if (MaliyetKurTarih.Date.ToShortDateString() == bugunTarih.ToShortDateString())
+            //            {
+            //                xmlDocument.Load(bugun);
+            //            }
+            //            else
+            //            {
+            //                xmlDocument.Load(eskiTarih);
+            //            }
+
+            //            if (MaliyetParaBirimi!=null)
+            //            {
+
+                       
+            //            if (MaliyetParaBirimi.P_Birimi == "USD")
+            //            {
+            //                dolarsatis = xmlDocument.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
+            //                kur = decimal.Parse(dolarsatis, CultureInfo.InvariantCulture);
+
+            //            }
+            //            if (MaliyetParaBirimi.P_Birimi == "EUR")
+            //            {
+            //                EUROsatis = xmlDocument.SelectSingleNode("Tarih_Date/Currency[@Kod='EUR']/BanknoteBuying").InnerXml;
+            //                kur = decimal.Parse(EUROsatis, CultureInfo.InvariantCulture);
+            //            }
+            //            if (MaliyetParaBirimi.P_Birimi == "GBP")
+            //            {
+
+            //                sterlnsatis = xmlDocument.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
+            //                kur = decimal.Parse(sterlnsatis, CultureInfo.InvariantCulture);
+            //            }
+            //            if (MaliyetParaBirimi.P_Birimi == "TL")
+            //            {
+
+
+            //                kur = decimal.Parse("1");
+            //            }
+            //                //String.Format("{0}'C", dolarsatis.ToString());
+            //            }
+
+            //            MaliyetKuru = kur;
+            //        }
+            //    }
+            //    catch (Exception )
+            //    {
+                  
+            //        //System.Windows.Forms.MessageBox.Show("Resmi Tatil ve Hafta Sonları Sorgulama Yapılamaz.Lütfen Başka Bir Tarih Seçin");
+            //    }
+
+            //}
+          
+            //if (propertyName == "SatinAlmaKurTarihi" || propertyName == "S_ParaBirimi")
+            //{
+            //    try
+            //    {
+            //         sbugun = "https://www.tcmb.gov.tr/kurlar/today.xml";
+            //         syil = SatinAlmaKurTarihi.ToString("yyyy");
+            //         say = SatinAlmaKurTarihi.ToString("MM");
+            //         sgun = SatinAlmaKurTarihi.ToString("dd");
+            //         strh = yil + ay + "/" + gun + ay + yil;
+            //         seskitarih = "https://www.tcmb.gov.tr/kurlar/" + trh + ".xml";
+            //         xmldosya = new XmlDocument();
+
+            //        if (strh != "000101/01010001")
+            //        {
+
+
+            //            if (SatinAlmaKurTarihi.Date == DateTime.Today)
+            //            {
+            //                xmldosya.Load(sbugun);
+            //            }
+            //            else
+            //            {
+            //                xmldosya.Load(seskitarih);
+            //            }
+            //            if (S_ParaBirimi!=null)
+            //            {
+
+                      
+            //            if (S_ParaBirimi.P_Birimi == "USD")
+            //            {
+            //                 sdolarsatis = xmldosya.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
+            //                s_kur = decimal.Parse(sdolarsatis, CultureInfo.InvariantCulture);
+
+            //            }
+            //            if (S_ParaBirimi.P_Birimi == "EUR")
+            //            {
+            //                 sEUROsatis = xmldosya.SelectSingleNode("Tarih_Date/Currency[@Kod='EUR']/BanknoteBuying").InnerXml;
+            //                s_kur = decimal.Parse(sEUROsatis, CultureInfo.InvariantCulture);
+            //            }
+            //            if (S_ParaBirimi.P_Birimi == "GBP")
+            //            {
+
+            //                 ssterlnsatis = xmldosya.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
+            //                s_kur = decimal.Parse(ssterlnsatis, CultureInfo.InvariantCulture);
+            //            }
+            //            if (S_ParaBirimi.P_Birimi == "TL")
+            //            {
+
+
+            //                s_kur = decimal.Parse("1");
+            //            }
+            //            }
+            //            //String.Format("{0}'C", dolarsatis.ToString());
+            //            SatinAlmaKuru = s_kur;
+                      
+            //        }
+            //    }
+            //    catch (Exception )
+            //    {
+
+            //        System.Windows.Forms.MessageBox.Show("Resmi Tatil ve Hafta Sonları Sorgulama Yapılamaz.Lütfen Başka Bir Tarih Seçin");
+            //    }
+
+            //}
+            //if (SiparisKarti != null)
+            //{
+            //    try
+            //    {
+            //        if (SiparisKarti.Kumas_SatinAlmas.Count > 0)
+            //        {
+
+            //            SiparisKarti.P_KumasTutarTL = SiparisKarti.Kumas_SatinAlmas.Sum(x => x.T_Mlyt_TL);
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+
+
+            //    }
+
+            //}
+            //base.OnChanged(propertyName, oldValue, newValue);
+        }
+    }
+
+}

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel Id="BOModel">
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.SiparisKarti">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="Gonderilmemis" Caption="Gönderilmemiş" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views Id="Views">
+    <ListView Id="SiparisKarti_ListView_Prakende">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Gonderilmemis" PropertyName="Gonderilmemis" Index="22" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SiparisKarti_DetailView_Prakende">
+      <Items Id="Items">
+        <PropertyEditor Id="Gonderilmemis" PropertyName="Gonderilmemis" />
+      </Items>
+    </DetailView>
+    <ListView Id="SiparisFoy_SiparisKartis_ListView_Prakende">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Gonderilmemis" PropertyName="Gonderilmemis" Index="20" />
+      </Columns>
+    </ListView>
+    <ListView Id="SiparisKarti_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Gonderilmemis" Index="22" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

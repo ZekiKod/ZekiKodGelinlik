@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="SiparisKarti_DetailView_Prakende">
+      <Items Id="Items">
+        <PropertyEditor Id="Telefon" PropertyName="Telefon" />
+        <PropertyEditor Id="TC" PropertyName="TC" />
+        <PropertyEditor Id="AdSoyad" PropertyName="AdSoyad" />
+        <PropertyEditor Id="Adres" PropertyName="Adres" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

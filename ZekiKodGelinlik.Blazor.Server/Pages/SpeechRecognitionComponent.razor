@@ -1,0 +1,27 @@
+﻿@using Microsoft.JSInterop
+
+<div class="input-group mb-3">
+    <input @bind="InputText" class="form-control" placeholder="Metni buraya yazın" />
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" @onclick="StartListening">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+</div>
+
+<p>Tanınan Metin: @InputText</p>
+
+@code {
+    [Parameter] public string InputText { get; set; }
+    [Parameter] public EventCallback<string> InputTextChanged { get; set; }
+
+    [Inject]
+    private IJSRuntime JS { get; set; }
+
+    private async Task StartListening()
+    {
+        var recognizedText = await JS.InvokeAsync<string>("startListening");
+        InputText = recognizedText;
+        await InputTextChanged.InvokeAsync(InputText);
+    }
+}

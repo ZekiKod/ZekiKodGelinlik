@@ -1,0 +1,35 @@
+﻿using System;
+using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
+using DevExpress.Data.Filtering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+using DevExpress.Persistent.Base;
+using System.Windows.Forms;
+
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+
+    public partial class SiparisDetay
+    {
+        public SiparisDetay(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction();
+            FireOran = 5;
+        }
+        
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+
+           
+                ////fire =double.Parse( Sip_Adet.ToString()) / 100;
+                ////Plan_Adet = int.Parse(Sip_Adet + (fire * FireOran).ToString());
+            //Plan_Adet = Convert.ToInt32(Plan_Adet.ToString());
+           
+
+        }
+
+
+    }
+
+}

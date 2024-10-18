@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Kiralama_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Gelinlik.ModelKarti.OnResim" PropertyName="Gelinlik.ModelKarti.OnResim" />
+        <PropertyEditor Id="Gelinlik.ModelKarti.OnResimThumbPath" PropertyName="Gelinlik.ModelKarti.OnResimThumbPath" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="42.576687116564415">
+            <LayoutGroup Id="Kiralama" RelativeSize="100" Direction="Horizontal">
+              <LayoutGroup Id="Autofd604ab3-9bc5-41ee-a052-17f82c71206f" ShowCaption="False" Index="0" RelativeSize="50">
+                <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="10.38961038961039" />
+                <LayoutGroup Id="Kiralama_col1" ShowCaption="False" Index="1" RelativeSize="89.6103896103896">
+                  <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100">
+                    <LayoutItem Id="MusteriAdi" ViewItem="MusteriAdi" Index="0" RelativeSize="13.50210970464135" />
+                    <LayoutItem Id="Eposta" ViewItem="Eposta" Index="1" RelativeSize="10.126582278481013" />
+                    <LayoutItem Id="Telefonu" ViewItem="Telefonu" Index="2" RelativeSize="10.126582278481013" />
+                    <LayoutItem Id="Adresi" ViewItem="Adresi" Index="3" RelativeSize="22.78481012658228" />
+                    <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="4" RelativeSize="43.459915611814345">
+                      <LayoutGroup Id="Auto21f5c00e-8401-451e-ba8f-69ab87aa71bd" ShowCaption="False" Index="0" RelativeSize="67.61904761904762">
+                        <LayoutGroup Id="Auto90554918-b586-44d9-b6fa-80c7d0317c06" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="45.714285714285715">
+                          <LayoutItem Id="GelinlikKTarihi" ViewItem="GelinlikKTarihi" Index="0" RelativeSize="49.859154929577464" />
+                          <LayoutItem Id="GelinlikKBitisTarihi" ViewItem="GelinlikKBitisTarihi" Index="1" RelativeSize="50.140845070422536" />
+                        </LayoutGroup>
+                        <LayoutItem Id="Gelinlik" ViewItem="Gelinlik" Index="1" RelativeSize="54.285714285714285" />
+                      </LayoutGroup>
+                      <LayoutItem Id="Gelinlik.ModelKarti.OnResimThumbPath" ShowCaption="False" ViewItem="Gelinlik.ModelKarti.OnResimThumbPath" Index="1" RelativeSize="32.38095238095238" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Autof8254f15-f208-4bbc-8214-477f2230e74b" ShowCaption="False" Index="1" RelativeSize="50">
+                <LayoutItem Id="Aciklama" ViewItem="Aciklama" Index="0" RelativeSize="10.38961038961039" />
+                <LayoutGroup Id="Kiralama_col2" ShowCaption="False" Index="1" RelativeSize="89.6103896103896">
+                  <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="25.72463768115942">
+                    <LayoutItem Id="KiralayanYetkili" ViewItem="KiralayanYetkili" Index="0" RelativeSize="49.90859232175503" />
+                    <LayoutItem Id="iadeAlanYetkili" ViewItem="iadeAlanYetkili" Index="1" RelativeSize="50.09140767824497" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="32.2463768115942">
+                    <LayoutGroup Id="Auto24164783-6356-4475-91df-0a5f384435fe" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="50">
+                      <LayoutItem Id="NisanlikKTarihi" ViewItem="NisanlikKTarihi" Index="0" RelativeSize="49.90859232175503" />
+                      <LayoutItem Id="NisanlikKBitisTarihi" ViewItem="NisanlikKBitisTarihi" Index="1" RelativeSize="50.09140767824497" />
+                    </LayoutGroup>
+                    <LayoutItem Id="Nisanlik" ViewItem="Nisanlik" Index="1" RelativeSize="50" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="42.028985507246375">
+                    <LayoutGroup Id="Auto4eb86c30-4dcf-4516-b807-2c6ed5fbf754" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="38.55421686746988">
+                      <LayoutItem Id="KinalikKTarihi" ViewItem="KinalikKTarihi" Index="0" RelativeSize="49.90859232175503" />
+                      <LayoutItem Id="KinalikKBitisTarihi" ViewItem="KinalikKBitisTarihi" Index="1" RelativeSize="50.09140767824497" />
+                    </LayoutGroup>
+                    <LayoutItem Id="Kinalik" ViewItem="Kinalik" Index="1" RelativeSize="61.44578313253012" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_col1" RelativeSize="50" Removed="True">
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="64.33823529411765">
+                  <LayoutItem Id="MusteriAdi" ViewItem="MusteriAdi" Index="0" RelativeSize="22.535211267605632" />
+                  <LayoutItem Id="Eposta" ViewItem="Eposta" Index="1" RelativeSize="16.901408450704224" />
+                  <LayoutItem Id="Telefonu" ViewItem="Telefonu" Index="2" RelativeSize="16.901408450704224" />
+                  <LayoutItem Id="Adresi" ViewItem="Adresi" Index="3" RelativeSize="43.66197183098591" />
+                </LayoutGroup>
+                <LayoutItem Id="MusteriAdi" RelativeSize="15.92039800995025" Index="0" Removed="True" />
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="35.661764705882355">
+                  <LayoutGroup Id="Auto6794c56a-a255-43c2-bf1c-338ad02aae10" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="50">
+                    <LayoutItem Id="GelinlikKTarihi" ViewItem="GelinlikKTarihi" Index="0" RelativeSize="49.90859232175503" />
+                    <LayoutItem Id="GelinlikKBitisTarihi" ViewItem="GelinlikKBitisTarihi" Index="1" RelativeSize="50.09140767824497" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Gelinlik" ViewItem="Gelinlik" Index="1" RelativeSize="50" />
+                </LayoutGroup>
+                <LayoutItem Id="NisanlikKTarihi" RelativeSize="13.223140495867769" Index="2" Removed="True" />
+                <LayoutItem Id="Telefonu" RelativeSize="9.917355371900827" Index="2" Removed="True" />
+                <LayoutItem Id="GelinlikKBitisTarihi" RelativeSize="10.666666666666666" Index="4" Removed="True" />
+                <LayoutItem Id="Aciklama" Removed="True" />
+                <LayoutItem Id="Eposta" RelativeSize="9.917355371900827" Removed="True" />
+                <LayoutItem Id="Gelinlik" RelativeSize="17.391304347826086" Removed="True" />
+                <LayoutItem Id="GelinlikKTarihi" RelativeSize="10.666666666666666" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_col2" RelativeSize="50" Removed="True">
+                <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="26.83823529411765" Direction="Horizontal">
+                  <LayoutItem Id="KiralayanYetkili" ViewItem="KiralayanYetkili" Index="0" RelativeSize="49.90859232175503" />
+                  <LayoutItem Id="iadeAlanYetkili" ViewItem="iadeAlanYetkili" Index="1" RelativeSize="50.09140767824497" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="32.720588235294116">
+                  <LayoutGroup Id="Auto7024d40a-c428-4e76-9631-90f3ea9df3ec" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="50">
+                    <LayoutItem Id="NisanlikKTarihi" ViewItem="NisanlikKTarihi" Index="0" RelativeSize="49.90859232175503" />
+                    <LayoutItem Id="NisanlikKBitisTarihi" ViewItem="NisanlikKBitisTarihi" Index="1" RelativeSize="50.09140767824497" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Nisanlik" ViewItem="Nisanlik" Index="1" RelativeSize="50" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="40.44117647058823">
+                  <LayoutGroup Id="Auto8af563f6-2084-48e7-9149-baa42ff407a8" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="41.55844155844156">
+                    <LayoutItem Id="KinalikKTarihi" ViewItem="KinalikKTarihi" Index="0" RelativeSize="49.90859232175503" />
+                    <LayoutItem Id="KinalikKBitisTarihi" ViewItem="KinalikKBitisTarihi" Index="1" RelativeSize="50.09140767824497" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Kinalik" ViewItem="Kinalik" Index="1" RelativeSize="58.44155844155844" />
+                </LayoutGroup>
+                <LayoutItem Id="KinalikKBitisTarihi" RelativeSize="12.030075187969924" Index="4" Removed="True" />
+                <LayoutItem Id="iadeAlanYetkili" RelativeSize="8.480565371024735" Removed="True" />
+                <LayoutItem Id="Kinalik" RelativeSize="10.666666666666666" Removed="True" />
+                <LayoutItem Id="KinalikKTarihi" RelativeSize="9.022556390977444" Removed="True" />
+                <LayoutItem Id="KiralayanYetkili" RelativeSize="13.223140495867769" Removed="True" />
+                <LayoutItem Id="Nisanlik" RelativeSize="9.917355371900827" Removed="True" />
+                <LayoutItem Id="NisanlikKBitisTarihi" RelativeSize="9.63855421686747" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" RelativeSize="57.05128205128205" Removed="True">
+              <LayoutItem Id="Oid" RelativeSize="50" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="57.423312883435585">
+            <LayoutItem Id="Adresi" RelativeSize="93.08855291576674" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Kiralama_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Adresi" OwnerBand="@MusreiBilgileri" />
+        <ColumnInfo Id="MusteriAdi" Index="0" OwnerBand="@MusreiBilgileri" />
+        <ColumnInfo Id="Gelinlik" Index="1" OwnerBand="@Gelinlik" LookupProperty="ModelKarti.Model" />
+        <ColumnInfo Id="Nisanlik" Index="2" OwnerBand="@Nisanlik" />
+        <ColumnInfo Id="Telefonu" Index="3" OwnerBand="@MusreiBilgileri" />
+        <ColumnInfo Id="Eposta" Index="4" OwnerBand="@MusreiBilgileri" />
+        <ColumnInfo Id="GelinlikKTarihi" Index="5" OwnerBand="@Gelinlik" />
+        <ColumnInfo Id="GelinlikKBitisTarihi" Index="6" OwnerBand="@Gelinlik" />
+        <ColumnInfo Id="NisanlikKTarihi" Index="7" OwnerBand="@Nisanlik" />
+        <ColumnInfo Id="Aciklama" Index="8" />
+        <ColumnInfo Id="KiralayanYetkili" Index="9" OwnerBand="@Yetkililer" />
+        <ColumnInfo Id="iadeAlanYetkili" Index="10" OwnerBand="@Yetkililer" />
+        <ColumnInfo Id="Kinalik" Index="11" OwnerBand="@Kinalik" />
+        <ColumnInfo Id="KinalikKTarihi" Index="12" OwnerBand="@Kinalik" />
+        <ColumnInfo Id="NisanlikKBitisTarihi" Index="13" OwnerBand="@Nisanlik" />
+        <ColumnInfo Id="KinalikKBitisTarihi" Index="14" OwnerBand="@Kinalik" />
+      </Columns>
+      <BandsLayout Id="BandsLayout" Enable="True">
+        <Band Id="@MusreiBilgileri" Index="0" />
+        <Band Id="@Gelinlik" Index="1" />
+        <Band Id="@Nisanlik" Index="2" />
+        <Band Id="@Kinalik" Index="3" />
+        <Band Id="@Yetkililer" Index="4" />
+      </BandsLayout>
+    </ListView>
+  </Views>
+  <BOModel Id="BOModel">
+    <Class Name="ZekiKod.Module.BusinessObjects.ZekiKodDB.Kiralama">
+      <OwnMembers Id="OwnMembers">
+        <Member Name="Gelinlik" LookupProperty="ModelKarti.Model" />
+        <Member Name="Kinalik" LookupProperty="ModelKarti.Model" />
+        <Member Name="Nisanlik" LookupProperty="ModelKarti.Model" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="Kiralama_ListView" ViewId="Kiralama_ListView" />
+      <Item Id="Default">
+        <Items Id="Items">
+          <Item Id="Kiralama_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>

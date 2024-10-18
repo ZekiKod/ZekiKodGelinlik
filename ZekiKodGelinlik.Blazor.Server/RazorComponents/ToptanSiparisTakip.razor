@@ -1,0 +1,29 @@
+﻿@using Microsoft.JSInterop
+@using Microsoft.AspNetCore.Components.Web
+@using DevExpress.Blazor
+@using System.Net.Http;
+
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Editors
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using ZekiKodGelinlik.Module.Blazor.Editors
+@using ZekiKodGelinlik.Module.BusinessObjects
+@using ZekiKodGelinlik.Module.Blazor
+
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+@inject DevExpress.ExpressApp.Blazor.Services.IXafApplicationProvider ApplicationProvider
+<h3>ToptanSiparisTakip</h3>
+
+@code {
+    [Parameter]
+    public View View { get; set; }
+    private IObjectSpace objectSpace;
+
+
+    void IDisposable.Dispose()
+    {
+        objectSpace?.Dispose();
+    }
+    public static RenderFragment Create(View view) => @<ToptanSiparisTakip View=@view />;
+}

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ModelKarti_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="5.853658536585366">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="ModelKarti">
+              <LayoutGroup Id="ModelKarti_col2">
+                <LayoutItem Id="OnResim" RelativeSize="15" />
+                <LayoutItem Id="ArkaResim" RelativeSize="15" />
+                <LayoutItem Id="TeknikResim1" RelativeSize="15" />
+                <LayoutItem Id="TeknikResim2" RelativeSize="15" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="KumasKarti_LookupListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Resmi" Index="-1" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

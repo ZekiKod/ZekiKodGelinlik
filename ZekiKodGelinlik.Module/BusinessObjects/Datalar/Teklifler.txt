@@ -1,0 +1,32 @@
+using System;
+using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
+using DevExpress.Data.Filtering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+using DevExpress.Persistent.Base;
+using DevExpress.ExpressApp;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using ZekiKodGelinlik.Module.BusinessObjects;
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+    [DefaultClassOptions]
+    public partial class Teklifler
+    {
+        public Teklifler(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction();
+
+            // Oturum açan kullanıcının bilgilerini al ve Giseci alanına ata
+            if (SecuritySystem.CurrentUserId != null)
+            {
+                var currentUser = Session.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
+                if (currentUser != null)
+                {
+                    Temsilci = currentUser.kisi_kartlari_to;
+                }
+            }
+        }
+    }
+
+}

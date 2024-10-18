@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Kiralama_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="MusteriAdi" Caption="Musteri Adi Soyadı" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Kiralama">
+              <LayoutGroup Id="Autofd604ab3-9bc5-41ee-a052-17f82c71206f" Caption="">
+                <LayoutGroup Id="Kiralama_col1">
+                  <LayoutGroup Id="Item2" Caption="Müşteri Bilgileri">
+                    <LayoutGroup Id="Item1" Caption="Gelinlik Kiralama Bilgiler">
+                      <LayoutGroup Id="Auto21f5c00e-8401-451e-ba8f-69ab87aa71bd" Caption="">
+                        <LayoutGroup Id="Auto90554918-b586-44d9-b6fa-80c7d0317c06" Caption="" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Autof8254f15-f208-4bbc-8214-477f2230e74b" Caption="">
+                <LayoutGroup Id="Kiralama_col2">
+                  <LayoutGroup Id="Item5" Caption="Yetkililer" />
+                  <LayoutGroup Id="Item3" Caption="Nişanlık Kiralama Bilgiler">
+                    <LayoutGroup Id="Auto24164783-6356-4475-91df-0a5f384435fe" Caption="" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item4" Caption="Kınalık Kiralama Bilgiler">
+                    <LayoutGroup Id="Auto4eb86c30-4dcf-4516-b807-2c6ed5fbf754" Caption="" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_col1">
+                <LayoutGroup Id="Item2" Caption="Müşteri Bilgileri" />
+                <LayoutGroup Id="Item1" Caption="Gelinlik Kiralama Bilgiler">
+                  <LayoutGroup Id="Auto6794c56a-a255-43c2-bf1c-338ad02aae10" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Kiralama_col2">
+                <LayoutGroup Id="Item5" Caption="Yetkililer" />
+                <LayoutGroup Id="Item3" Caption="Nişanlık Kiralama Bilgiler">
+                  <LayoutGroup Id="Auto7024d40a-c428-4e76-9631-90f3ea9df3ec" Caption="" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item4" Caption="Kınalık Kiralama Bilgiler">
+                  <LayoutGroup Id="Auto8af563f6-2084-48e7-9149-baa42ff407a8" Caption="" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Adresi" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Kiralama_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Oid" Caption="FoyNo" />
+      </Columns>
+      <BandsLayout Id="BandsLayout">
+        <Band Id="@MusreiBilgileri" Caption="Müşteri Bilgileri" />
+        <Band Id="@Nisanlik" Caption="@Nişanlık" />
+        <Band Id="@Kinalik" Caption="@Kınalık" />
+      </BandsLayout>
+    </ListView>
+  </Views>
+</Application>

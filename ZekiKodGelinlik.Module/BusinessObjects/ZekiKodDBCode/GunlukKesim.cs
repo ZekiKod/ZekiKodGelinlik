@@ -1,0 +1,48 @@
+﻿using System;
+using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
+using DevExpress.Data.Filtering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
+using DevExpress.Persistent.Base;
+using System.Linq;
+
+namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
+{
+    [DefaultClassOptions]
+    public partial class GunlukKesim
+    {
+        public GunlukKesim(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+     
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+
+            try
+            {
+                
+                if (SiparisDetay_To  != null)
+                {
+
+
+                    //XXS_ = SiparisDetay_To.GunlukKesims.Sum(x => x.XXS);
+                    //SiparisDetay_To.Kesilen_Adet= XXS_;
+
+
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+            base.OnChanged(propertyName, oldValue, newValue);   
+        }
+
+    }
+
+}
