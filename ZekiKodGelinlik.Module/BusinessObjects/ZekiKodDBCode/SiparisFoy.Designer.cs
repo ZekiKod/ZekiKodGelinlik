@@ -182,6 +182,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fEuroSabitKur; }
             set { SetPropertyValue<decimal>(nameof(EuroSabitKur), ref fEuroSabitKur, value); }
         }
+        Firmalar fToptanMusteri;
+        public Firmalar ToptanMusteri
+        {
+            get { return fToptanMusteri; }
+            set { SetPropertyValue<Firmalar>(nameof(ToptanMusteri), ref fToptanMusteri, value); }
+        }
         [Association(@"SiparisKartiReferencesSiparisFoy"), Aggregated]
         public XPCollection<SiparisKarti> SiparisKartis { get { return GetCollection<SiparisKarti>(nameof(SiparisKartis)); } }
         [Association(@"FoyOdemePlaniReferencesSiparisFoy"), Aggregated]
