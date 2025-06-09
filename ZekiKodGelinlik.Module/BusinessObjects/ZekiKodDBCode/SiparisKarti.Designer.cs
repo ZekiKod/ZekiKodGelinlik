@@ -117,6 +117,9 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             set { SetPropertyValue<int>(nameof(DikimToplam), ref fDikimToplam, value); }
         }
         int fPaketToplam;
+        // TODO: PaketToplam update mechanism needs review and potential implementation.
+        // It should be automatically updated when related Paketleme (or equivalent) records change,
+        // similar to how KesimlenToplam and DikimToplam are planned to be updated.
         public int PaketToplam
         {
             get { return fPaketToplam; }
@@ -347,6 +350,21 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         public XPCollection<SiparisKesimTablosu> SiparisKesimTablosus { get { return GetCollection<SiparisKesimTablosu>(nameof(SiparisKesimTablosus)); } }
         [Association(@"SiparisEkResimlerReferencesSiparisKarti"), Aggregated]
         public XPCollection<SiparisEkResimler> SiparisEkResimlers { get { return GetCollection<SiparisEkResimler>(nameof(SiparisEkResimlers)); } }
+
+        int fInvoicedQuantityTotal;
+        public int InvoicedQuantityTotal
+        {
+            get { return fInvoicedQuantityTotal; }
+            set { SetPropertyValue<int>(nameof(InvoicedQuantityTotal), ref fInvoicedQuantityTotal, value); }
+        }
+
+        string fInvoicingStatus;
+        [Size(50)]
+        public string InvoicingStatus
+        {
+            get { return fInvoicingStatus; }
+            set { SetPropertyValue<string>(nameof(InvoicingStatus), ref fInvoicingStatus, value); }
+        }
     }
 
 }

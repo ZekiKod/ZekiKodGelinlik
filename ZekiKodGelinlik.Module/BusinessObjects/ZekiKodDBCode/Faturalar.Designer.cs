@@ -109,6 +109,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fSiparisKarti; }
             set { SetPropertyValue<SiparisKarti>(nameof(SiparisKarti), ref fSiparisKarti, value); }
         }
+        int fInvoicedQuantity;
+        public int InvoicedQuantity
+        {
+            get { return fInvoicedQuantity; }
+            set { SetPropertyValue<int>(nameof(InvoicedQuantity), ref fInvoicedQuantity, value); }
+        }
         [Association(@"FaturaNotlarReferencesFaturalar")]
         public XPCollection<FaturaNotlar> FaturaNotlars { get { return GetCollection<FaturaNotlar>(nameof(FaturaNotlars)); } }
         [Association(@"irsaliyelerReferencesFaturalar")]

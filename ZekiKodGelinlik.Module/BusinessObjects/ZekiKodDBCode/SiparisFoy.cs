@@ -6,130 +6,116 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base;
-using ZekiKodGelinlik.Module.BusinessObjects;
+using ZekiKodGelinlik.Module.BusinessObjects; // For ApplicationUser if used
 using DevExpress.ExpressApp;
-using Sirketiz.Module.BusinessObjects.Sirket_izDB;
-using Microsoft.JSInterop;
-using DevExpress.XtraSpellChecker.Native;
+using Sirketiz.Module.BusinessObjects.Sirket_izDB; // For kisi_kartlari if used
+using System.Linq; // For .Sum()
 
 namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 {
     [DefaultClassOptions]
     public partial class SiparisFoy : XPObject
     {
-        private IJSRuntime _jsRuntime;
-        
-        public SiparisFoy(Session session) : base(session)
-        {
+        // private Microsoft.JSInterop.IJSRuntime _jsRuntime; // Keep if still used, remove if not
 
+        public SiparisFoy(Session session) : base(session) { }
+
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            Tarih = DateTime.Now;
+            OtoSiparisEkle = true; // Assuming this is a desired default
+
+            // Example of setting Temsilci based on current user - re-enable if ApplicationUser and SecuritySystem are configured
+            // ApplicationUser currentUser = Session.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
+            // if (currentUser != null && currentUser.kisi_kartlari_to != null)
+            // {
+            //     Temsilci = Session.GetObjectByKey<kisi_kartlari>(currentUser.kisi_kartlari_to.Oid);
+            // }
+            UpdateFinancialTotals(); // Initialize totals
         }
 
-        //public void SetJSRuntime(IJSRuntime jsRuntime)
-        //{
-        //    _jsRuntime = jsRuntime;
-        //}
-        //protected override async void AfterChangeByXPPropertyDescriptor()
-        //{
-        //    base.AfterChangeByXPPropertyDescriptor();
+        public void UpdateFinancialTotals()
+        {
+            // Prevent calculations during object loading unless it's a new object where defaults might apply via collections.
+            if (Session.IsObjectsLoading && !Session.IsNewObject(this))
+                return;
 
-           
+            // Ensure collections are loaded before summing. This is crucial.
+            if (!SiparisKartis.IsLoaded) SiparisKartis.Load();
+            if (!FoyOdemePlanis.IsLoaded) FoyOdemePlanis.Load();
 
-        //        // JavaScript işlemleri için _jsRuntime kullanın
-        //        if (_jsRuntime != null)
-        //        {
-        //            try
-        //            {
-        //                await _jsRuntime.InvokeVoidAsync("JSFunctions.clearElementById", "ModelBarkod");
-        //                await _jsRuntime.InvokeVoidAsync("JSFunctions.focusElementById", "ModelBarkod");
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Tracing.Tracer.LogError($"JavaScript hatası: {ex.Message}");
-        //            }
-        //        }
+            // Calculate ToplamTutar from SiparisKarti items
+            ToplamTutar = SiparisKartis.Where(sk => sk != null && !sk.Session.IsObjectToDelete(sk)).Sum(sk => sk.ToplamTutar);
             
-        //}
+            decimal currentIskontoYuzde = iskontoYuzde < 0 ? 0 : iskontoYuzde; // Ensure non-negative
+            iskontoTutar = ToplamTutar * (currentIskontoYuzde / 100m);
 
+            if (KdvOranYuzde != null)
+            {
+                // Assuming KdvOranYuzde.Kdv holds the percentage value (e.g., 18 for 18%)
+                KdvTutar = ((ToplamTutar - iskontoTutar) / 100m) * KdvOranYuzde.Kdv;
+            }
+            else
+            {
+                KdvTutar = 0;
+            }
 
-        //public override void AfterConstruction()
-        //{
-        //    base.AfterConstruction();
-        //    Tarih = DateTime.Now;
-        //    OtoSiparisEkle = true;
+            GenelToplam = (ToplamTutar - iskontoTutar) + KdvTutar;
 
-        //    ApplicationUser currentUser = (ApplicationUser)SecuritySystem.CurrentUser;
-        //    if (currentUser != null && currentUser.kisi_kartlari_to != null)
-        //    {
-        //        kisi_kartlari kisiKartlariToInCurrentSession = Session.GetObjectByKey<kisi_kartlari>(currentUser.kisi_kartlari_to.Oid);
-        //        Temsilci = kisiKartlariToInCurrentSession;
-        //    }
+            KalanOdeme = GenelToplam - FoyOdemePlanis.Where(fop => fop != null && !fop.Session.IsObjectToDelete(fop)).Sum(fop => fop.Tutar);
+        }
 
-        //}
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+            base.OnChanged(propertyName, oldValue, newValue);
+            if (Session.IsObjectsLoading) return;
 
-        //protected override async void OnChanged(string propertyName, object oldValue, object newValue)
-        //{
-        //    if (!Session.IsObjectsLoading)
-        //    {
-        //        if (OtoSiparisEkle && !string.IsNullOrEmpty(ModelBarkod) && propertyName == "ModelBarkod")
-        //        {
-        //            // ModelBarkod'a karşılık gelen ModelNo'yu bul
-        //            ModelKarti modelKarti = Session.FindObject<ModelKarti>(CriteriaOperator.Parse("ModelNo == ?", ModelBarkod));
+            // Logic for adding SiparisKarti via ModelBarkod
+            if (propertyName == nameof(ModelBarkod) && OtoSiparisEkle && !string.IsNullOrEmpty(ModelBarkod))
+            {
+                ModelKarti modelKarti = Session.FindObject<ModelKarti>(CriteriaOperator.Parse("ModelNo == ?", ModelBarkod));
+                if (modelKarti != null)
+                {
+                    SiparisKarti yeniSiparis = new SiparisKarti(Session)
+                    {
+                        ModelKarti = modelKarti
+                        // Initialize other SiparisKarti properties as needed
+                    };
+                    SiparisKartis.Add(yeniSiparis);
+                    // After adding a new SiparisKarti, its own changes (like setting its ToplamTutar)
+                    // should trigger SiparisFoy.UpdateFinancialTotals via SiparisKarti's OnChanged method.
+                    // If not, uncomment the line below.
+                    // UpdateFinancialTotals();
+                    ModelBarkod = ""; // Clear ModelBarkod after processing
+                }
+            }
 
-        //            if (modelKarti != null)
-        //            {
-        //                // Yeni sipariş ekle
-        //                SiparisKarti yeniSiparis = new SiparisKarti(Session)
-        //                {
-        //                    ModelKarti = modelKarti
-        //                };
+            // Properties that directly affect financial totals of SiparisFoy itself
+            if (propertyName == nameof(iskontoYuzde) || propertyName == nameof(KdvOranYuzde))
+            {
+                UpdateFinancialTotals();
+            }
+            // ToplamTutar is an aggregate of SiparisKarti.ToplamTutar.
+            // KalanOdeme is an aggregate involving FoyOdemePlani.Tutar.
+            // These are updated when their respective child objects change and call UpdateFinancialTotals on the parent SiparisFoy.
+        }
 
-        //                SiparisKartis.Add(yeniSiparis);
+        protected override void OnSaving()
+        {
+            UpdateFinancialTotals(); // Ensure all totals are correct before saving
+            base.OnSaving();
+        }
 
-
-
-        //                ModelBarkod = "";
-                        
-        //                // ToplamTutar'ı güncelle
-        //                ToplamTutar = SiparisKartis.Sum(x => x.ToplamTutar);
-        //                //await _jsRuntime.InvokeVoidAsync("JSFunctions.clearElementById", "ModelBarkod");
-        //                //await _jsRuntime.InvokeVoidAsync("JSFunctions.focusElementById", "ModelBarkod");
-        //            }
-        //        }
-
-        //        // Diğer alanların hesaplamalarını güncelle
-        //        if (propertyName == nameof(ToplamTutar) || propertyName == nameof(iskontoYuzde) || propertyName == nameof(KdvOranYuzde))
-        //        {
-        //            KdvTutar = 0;
-        //            if (SiparisKartis != null && !Session.IsObjectsLoading)
-        //            {
-        //                iskontoTutar = SiparisKartis.Where(x => x.iskontoTutar == 0).Sum(x => x.ToplamTutar) * (iskontoYuzde / 100);
-        //                if (KdvOranYuzde != null)
-        //                {
-        //                    KdvTutar = ((ToplamTutar - iskontoTutar) / 100) * KdvOranYuzde.Kdv;
-        //                }
-
-        //                GenelToplam = (ToplamTutar - iskontoTutar) + KdvTutar;
-        //                KalanOdeme = GenelToplam - FoyOdemePlanis.Sum(x => x.Tutar);
-        //            }
-        //        }
-              
-        //        // Değişiklikleri kaydet
-        //        Session.Save(this);
-             
-        //        //// JavaScript kullanarak ModelBarkod alanını temizle ve odakla
-        //        //if (_jsRuntime != null)
-        //        //{
-        //        //    try
-        //        //    {
-        //        //        await _jsRuntime.InvokeVoidAsync("JSFunctions.clearElementById", "ModelBarkod");
-        //        //        await _jsRuntime.InvokeVoidAsync("JSFunctions.focusElementById", "ModelBarkod");
-        //        //    }
-        //        //    catch (Exception ex)
-        //        //    {
-        //        //        Tracing.Tracer.LogError($"JavaScript hatası: {ex.Message}");
-        //        //    }
-        //        //}
-        //    }
-        //}
+        // IJSRuntime related code, keep if used, remove if not.
+        // public void SetJSRuntime(Microsoft.JSInterop.IJSRuntime jsRuntime)
+        // {
+        //     _jsRuntime = jsRuntime;
+        // }
+        // protected override async void AfterChangeByXPPropertyDescriptor()
+        // {
+        //    base.AfterChangeByXPPropertyDescriptor();
+        //    if (_jsRuntime != null) { /* ... JSRuntime logic ... */ }
+        // }
     }
 }

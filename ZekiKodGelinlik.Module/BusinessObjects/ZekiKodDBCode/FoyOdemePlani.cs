@@ -18,16 +18,27 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         protected override void OnChanged(string propertyName, object oldValue, object newValue)
         {
             base.OnChanged(propertyName, oldValue, newValue);
-            if (propertyName == nameof(Tutar))
+            if (!Session.IsObjectsLoading) // Good practice to include this check
             {
-                if (SiparisFoy != null) { 
-                SiparisFoy.KalanOdeme = SiparisFoy.GenelToplam - SiparisFoy.FoyOdemePlanis.Sum(x => x.Tutar);
+                if (propertyName == nameof(Tutar))
+                {
+                    if (SiparisFoy != null)
+                    {
+                        SiparisFoy.UpdateFinancialTotals();
+                    }
                 }
-                base.OnChanged();
             }
         }
 
-
+        protected override void OnDeleting()
+        {
+            // Update SiparisFoy totals before this payment plan is removed from its collection by the deletion process.
+            if (SiparisFoy != null && !SiparisFoy.Session.IsObjectToDelete(SiparisFoy) && !this.Session.IsObjectToDelete(this))
+            {
+                SiparisFoy.UpdateFinancialTotals();
+            }
+            base.OnDeleting();
+        }
     }
 
 }
