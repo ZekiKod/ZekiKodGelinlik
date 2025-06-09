@@ -262,11 +262,10 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fSprDurumu; }
             set { SetPropertyValue<SiparisDurumu>(nameof(SprDurumu), ref fSprDurumu, value); }
         }
-        bool fToptan;
+        [DevExpress.Xpo.PersistentAlias("SiparisFoy.Toptan")] // Added full namespace for clarity for the worker
         public bool Toptan
         {
-            get { return fToptan; }
-            set { SetPropertyValue<bool>(nameof(Toptan), ref fToptan, value); }
+            get { return (bool)(EvaluateAlias(nameof(Toptan)) ?? false); }
         }
         string fAYNA;
         public string AYNA
