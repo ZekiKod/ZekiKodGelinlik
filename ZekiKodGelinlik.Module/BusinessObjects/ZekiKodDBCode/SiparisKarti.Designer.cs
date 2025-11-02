@@ -347,6 +347,17 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         public XPCollection<SiparisKesimTablosu> SiparisKesimTablosus { get { return GetCollection<SiparisKesimTablosu>(nameof(SiparisKesimTablosus)); } }
         [Association(@"SiparisEkResimlerReferencesSiparisKarti"), Aggregated]
         public XPCollection<SiparisEkResimler> SiparisEkResimlers { get { return GetCollection<SiparisEkResimler>(nameof(SiparisEkResimlers)); } }
+        [Association("SiparisKarti-UretimBandi")]
+        public XPCollection<UretimBandi> UretimBandiItems
+        {
+            get { return GetCollection<UretimBandi>(nameof(UretimBandiItems)); }
+        }
+
+        [Association("SiparisKarti-Sevkiyat"), Aggregated]
+        public XPCollection<Sevkiyat> Sevkiyatlar
+        {
+            get { return GetCollection<Sevkiyat>(nameof(Sevkiyatlar)); }
+        }
     }
 
 }

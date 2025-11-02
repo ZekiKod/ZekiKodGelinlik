@@ -256,6 +256,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fSatinAlmaAciklama; }
             set { SetPropertyValue<string>(nameof(SatinAlmaAciklama), ref fSatinAlmaAciklama, value); }
         }
+        DepoKart fDepo;
+        public DepoKart Depo
+        {
+            get { return fDepo; }
+            set { SetPropertyValue<DepoKart>(nameof(Depo), ref fDepo, value); }
+        }
         [PersistentAlias("[Planlanan] * [MaliyetFiyat] * [MaliyetKuru]")]
         public double T_Mlyt_TL
         {

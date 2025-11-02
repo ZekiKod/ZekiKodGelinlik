@@ -43,6 +43,15 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             }
         }
 
+        protected override void OnSaving()
+        {
+            base.OnSaving();
+            if (Sevkiyatlar.Any(s => !string.IsNullOrEmpty(s.TakipNumarasi)))
+            {
+                SprDurumu = Session.FindObject<SiparisDurumu>(CriteriaOperator.Parse("Durumu = 'Kargolandı'"));
+            }
+        }
+
         protected override void OnChanged(string propertyName, object oldValue, object newValue)
         {
             base.OnChanged(propertyName, oldValue, newValue);
