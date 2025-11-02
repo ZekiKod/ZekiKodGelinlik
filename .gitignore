@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# AutoGen service configuration file
+autogen_service/OAI_CONFIG_LIST.json
