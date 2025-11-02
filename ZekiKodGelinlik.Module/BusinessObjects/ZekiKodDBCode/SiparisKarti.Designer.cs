@@ -358,6 +358,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         {
             get { return GetCollection<Sevkiyat>(nameof(Sevkiyatlar)); }
         }
+
+        [Association("SiparisKarti-SiparisOperasyon"), Aggregated]
+        public XPCollection<SiparisOperasyon> SiparisOperasyonlar
+        {
+            get { return GetCollection<SiparisOperasyon>(nameof(SiparisOperasyonlar)); }
+        }
     }
 
 }

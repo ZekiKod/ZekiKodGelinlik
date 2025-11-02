@@ -55,7 +55,7 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         protected override void OnChanged(string propertyName, object oldValue, object newValue)
         {
             base.OnChanged(propertyName, oldValue, newValue);
-            if (propertyName == nameof(ModelKarti))
+            if (propertyName == nameof(ModelKarti) && newValue != null)
             {
                 if (ModelKarti != null && ModelKarti.Model_Maliyets != null)
                 {
@@ -65,11 +65,29 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
                         Fiyat = (decimal)OnaylanmısModel.TeklifEdilenTL;
                     }
                 }
+                CreateSiparisOperasyonlar();
             }
 
             if (propertyName == nameof(SiparisAdet) || propertyName == nameof(Fiyat) || propertyName == nameof(iskontoYuzde))
             {
                 UpdateTotals();
+            }
+        }
+
+        private void CreateSiparisOperasyonlar()
+        {
+            if (ModelKarti == null || Session.IsObjectsLoading) return;
+
+            // Mevcut operasyonları temizle
+            Session.Delete(SiparisOperasyonlar);
+
+            foreach (var modelOp in ModelKarti.ModelOperasyons.OrderBy(op => op.islemSirasi).ThenBy(op => op.ParalelGrup))
+            {
+                var siparisOp = new SiparisOperasyon(Session);
+                siparisOp.SiparisKarti = this;
+                siparisOp.ModelOperasyon = modelOp;
+                siparisOp.Durum = OperasyonDurumu.Planlandi;
+                SiparisOperasyonlar.Add(siparisOp);
             }
         }
     }
