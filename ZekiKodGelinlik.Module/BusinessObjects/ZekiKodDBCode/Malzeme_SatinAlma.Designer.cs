@@ -46,5 +46,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fDepo; }
             set { SetPropertyValue(nameof(Depo), ref fDepo, value); }
         }
+
+        double fSiparisEdilecekMiktar;
+        public double SiparisEdilecekMiktar
+        {
+            get { return fSiparisEdilecekMiktar; }
+            set { SetPropertyValue(nameof(SiparisEdilecekMiktar), ref fSiparisEdilecekMiktar, value); }
+        }
     }
 }

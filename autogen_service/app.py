@@ -69,11 +69,25 @@ def get_satin_alma_onerisi(siparis_no: str) -> str:
     except Exception as e:
         return json.dumps({"error": str(e)})
 
+def create_satin_alma_talep(siparis_no: str, malzemeler: list) -> str:
+    """
+    Belirtilen sipariş numarası için verilen malzeme listesine göre satın alma talepleri oluşturur.
+    """
+    try:
+        payload = {"SiparisNo": siparis_no, "Malzemeler": malzemeler}
+        response = requests.post("http://localhost:5000/api/SatinAlmaTalepOlustur", json=payload)
+        if response.status_code == 200:
+            return json.dumps(response.json())
+        else:
+            return json.dumps({"error": f"API hatası: {response.status_code}", "details": response.text})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
 # Ajanların tanımlanması
 assistant = autogen.AssistantAgent(
     name="Asistan",
     llm_config=llm_config,
-    system_message="Sen bir sipariş, stok ve satın alma asistanısın. Kullanıcının sorusunu analiz ederek sipariş durumu, stok durumu veya satın alma önerisi mi sorduğunu anlarsın. Soruya göre 'get_siparis_durumu', 'get_stok_durumu' veya 'get_satin_alma_onerisi' araçlarından uygun olanı kullanırsın. Aldığın JSON sonucunu kullanıcıya anlamlı bir cümle veya liste ile özetlersin.",
+    system_message="Sen proaktif bir sipariş, stok ve satın alma asistanısın. Kullanıcının sorusunu analiz ederek doğru aracı ('get_siparis_durumu', 'get_stok_durumu', 'get_satin_alma_onerisi') kullanırsın. Özellikle, 'get_satin_alma_onerisi' aracını kullandıktan sonra, çıkan öneri listesini kullanıcıya sunar ve 'Bu malzemeler için satın alma taleplerini sistemde oluşturayım mı?' diye sorarsın. Kullanıcı 'evet' veya benzeri bir onay verirse, 'create_satin_alma_talep' aracını, ilk sorgudaki sipariş numarasını ve öneri listesindeki malzemeleri kullanarak çalıştırırsın. Sonucu kullanıcıya bildirirsin.",
 )
 
 user_proxy = autogen.UserProxyAgent(
@@ -90,7 +104,8 @@ user_proxy.register_function(
     function_map={
         "get_siparis_durumu": get_siparis_durumu,
         "get_stok_durumu": get_stok_durumu,
-        "get_satin_alma_onerisi": get_satin_alma_onerisi
+        "get_satin_alma_onerisi": get_satin_alma_onerisi,
+        "create_satin_alma_talep": create_satin_alma_talep
     }
 )
 
