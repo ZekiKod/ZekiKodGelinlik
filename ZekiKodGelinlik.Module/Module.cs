@@ -67,4 +67,31 @@ public sealed class ZekiKodGelinlikModule : ModuleBase {
         base.CustomizeTypesInfo(typesInfo);
         CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
     }
+
+    public override void ExtendModelInterfaces(ModelInterfaceExtenders extenders)
+    {
+        base.ExtendModelInterfaces(extenders);
+    }
+
+    public override void AddGeneratorUpdaters(ModelNodeGeneratorUpdaters updaters)
+    {
+        base.AddGeneratorUpdaters(updaters);
+    }
+    public override void Setup(ApplicationModulesManager moduleManager)
+    {
+        base.Setup(moduleManager);
+    }
+    public override void UpdateModel(IModelApplication aplication)
+    {
+        base.UpdateModel(aplication);
+        // Navigasyon menüsüne "Prova Takvimi" sayfasını ekle
+        var navigation = aplication.NavigationItems;
+        var provaYonetimi = navigation.Items.AddNode<IModelNavigationItem>("ProvaYonetimi");
+        provaYonetimi.Caption = "Prova Yönetimi";
+        var takvimItem = provaYonetimi.Items.AddNode<IModelNavigationItem>("ProvaTakvimi");
+        takvimItem.Caption = "Prova Takvimi";
+        takvimItem.View = aplication.Views.AddNode<IModelDashboardView>("ProvaTakvimi_Dashboard");
+        takvimItem.View.Id = "ProvaTakvimi";
+        (takvimItem.View as IModelDashboardView).Url = "provatakvimi";
+    }
 }

@@ -1,0 +1,94 @@
+@page "/provatakvimi"
+@using DevExpress.Blazor
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.ExpressApp.Blazor
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor.Services
+@inject IObjectSpaceFactory ObjectSpaceFactory
+@inject IXafApplicationProvider ApplicationProvider
+
+<h3 class="mb-3">Prova Takvimi</h3>
+
+@if (Appointments != null)
+{
+    <DxScheduler DataStorage="@DataStorage"
+                 AppointmentFormShowing="@OnAppointmentFormShowing"
+                 ActiveViewType="SchedulerViewType.Month">
+        <DxSchedulerWeekView WorkDays="WeekDays.Monday | WeekDays.Tuesday | WeekDays.Wednesday | WeekDays.Thursday | WeekDays.Friday | WeekDays.Saturday" />
+        <DxSchedulerMonthView />
+        <DxSchedulerDayView />
+        <DxSchedulerTimelineView />
+    </DxScheduler>
+}
+else
+{
+    <p><em>Yükleniyor...</em></p>
+}
+
+@code {
+    private IObjectSpace objectSpace;
+    private ISchedulerDataStorage DataStorage { get; set; }
+    private IEnumerable<ProvaRandevu> Appointments { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(ProvaRandevu));
+        Appointments = objectSpace.GetObjects<ProvaRandevu>();
+
+        var dataStorage = new DxSchedulerDataStorage();
+        dataStorage.AppointmentsSource = Appointments;
+        dataStorage.AppointmentMappings = new DxSchedulerAppointmentMappings
+        {
+            Start = nameof(ProvaRandevu.StartTime),
+            End = nameof(ProvaRandevu.EndTime),
+            Subject = nameof(ProvaRandevu.Subject),
+            Description = nameof(ProvaRandevu.Description),
+            Location = nameof(ProvaRandevu.Location),
+            AllDay = nameof(ProvaRandevu.AllDay),
+            LabelId = nameof(ProvaRandevu.Label),
+            StatusId = nameof(ProvaRandevu.Status),
+            Type = nameof(ProvaRandevu.Oid) // Benzersiz bir kimlik alanı olarak Oid kullanıyoruz
+        };
+        DataStorage = dataStorage;
+    }
+
+    // Yeni randevu oluşturma veya mevcut randevuyu düzenleme işlemini XAF'in DetailView'i ile yap
+    async Task OnAppointmentFormShowing(SchedulerAppointmentFormEventArgs e)
+    {
+        e.Cancel = true;
+        var application = ApplicationProvider.GetApplication();
+        var appointmentId = e.Appointment.Id;
+
+        IObjectSpace newObjectSpace = application.CreateObjectSpace(typeof(ProvaRandevu));
+        object targetObject;
+
+        if (appointmentId == null)
+        {
+            // Yeni bir randevu oluştur
+            targetObject = newObjectSpace.CreateObject<ProvaRandevu>();
+            ((ProvaRandevu)targetObject).StartTime = e.Appointment.Start;
+            ((ProvaRandevu)targetObject).EndTime = e.Appointment.End;
+        }
+        else
+        {
+            // Mevcut randevuyu düzenle
+            targetObject = newObjectSpace.GetObjectByKey<ProvaRandevu>(Guid.Parse(appointmentId.ToString()));
+        }
+
+        var detailView = application.CreateDetailView(newObjectSpace, targetObject);
+        var showViewParameters = new ShowViewParameters(detailView);
+        showViewParameters.TargetWindow = TargetWindow.NewModalWindow;
+        application.ShowViewStrategy.ShowView(showViewParameters, new ShowViewSource(null, null));
+
+        // Değişiklikleri yansıtmak için verileri yeniden yükle
+        detailView.Closed += (s, a) =>
+        {
+            objectSpace.Refresh();
+            Appointments = objectSpace.GetObjects<ProvaRandevu>();
+            (DataStorage as DxSchedulerDataStorage).AppointmentsSource = Appointments;
+            StateHasChanged();
+        };
+    }
+
+}
