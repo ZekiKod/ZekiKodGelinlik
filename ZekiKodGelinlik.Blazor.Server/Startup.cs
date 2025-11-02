@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using ZekiKodGelinlik.Blazor.Server.Controllers;
 using ZekiKodGelinlik.Blazor.Server.Services;
+using ZekiKodGelinlik.Module.BusinessObjects.ZekiKodDB;
 using ZekiKodGelinlik.WebApi.JWT;
 
 namespace ZekiKodGelinlik.Blazor.Server
@@ -31,6 +32,8 @@ namespace ZekiKodGelinlik.Blazor.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AppSettingsProvider.ExchangeRateProviderUrl = Configuration["ExchangeRateProvider:Url"];
+
             services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
 
             services.AddRazorPages();

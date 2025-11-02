@@ -10,9 +10,15 @@ using System.Xml;
 using DevExpress.Persistent.BaseImpl;
 using Task = System.Threading.Tasks.Task;
 using DevExpress.Persistent.Base;
+using System.Diagnostics;
 
 namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 {
+    public static class AppSettingsProvider
+    {
+        public static string ExchangeRateProviderUrl { get; set; }
+    }
+
     [DefaultClassOptions]
     public partial class Model_Maliyet
     {
@@ -45,17 +51,24 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 
             if (!Equals(oldValue, newValue)) // Gereksiz çalışmayı önlemek için kontrol
             {
-                if (propertyName == "Tarih")
+                try
                 {
-                    await FetchExchangeRatesAsync();
-                }
+                    if (propertyName == "Tarih")
+                    {
+                        await FetchExchangeRatesAsync();
+                    }
 
-                if (propertyName == nameof(SabitEuroKuru))
+                    if (propertyName == nameof(SabitEuroKuru))
+                    {
+                        UpdateMaliyetKumas();
+                    }
+
+                    await UpdateMaliyetHesaplamalariAsync(); // Asenkron güncelleme
+                }
+                catch (Exception ex)
                 {
-                    UpdateMaliyetKumas();
+                    Trace.TraceError("OnChanged içerisinde hata oluştu: " + ex.Message);
                 }
-
-                await UpdateMaliyetHesaplamalariAsync(); // Asenkron güncelleme
             }
         }
 
@@ -71,9 +84,10 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             {
                 lastFetchTime = DateTime.Now;
 
+                string baseUrl = AppSettingsProvider.ExchangeRateProviderUrl;
                 string url = Tarih.Date == DateTime.Today
-                    ? "https://www.tcmb.gov.tr/kurlar/today.xml"
-                    : $"https://www.tcmb.gov.tr/kurlar/{Tarih:yyyyMM}/{Tarih:ddMMyyyy}.xml";
+                    ? baseUrl + "today.xml"
+                    : $"{baseUrl}{Tarih:yyyyMM}/{Tarih:ddMMyyyy}.xml";
 
                 using var httpClient = new HttpClient();
                 var xmlString = await httpClient.GetStringAsync(url);
@@ -90,9 +104,9 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
                 EuroKuru = eurokur;
                 SterlinKuru = gbpkur;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // Hata yönetimi burada ele alınabilir
+                Trace.TraceError("Döviz kurları alınırken hata oluştu: " + ex.Message);
             }
 
             return; // async metotta sadece return kullanılır
@@ -137,19 +151,19 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             var kullanilanKur = GetKullanilanKur(ParaBirimi.P_Birimi);
             if (kullanilanKur > 0)
             {
-                KumasTutarDoviz = KumasTutarTL / (double)kullanilanKur;
-                iscilikDoviz = iscilikTL / (double)kullanilanKur;
-                BaskiNakisTasDvz = BaskiNakisTasTL / (double)kullanilanKur;
-                YikamaDvz = YikamaTL / (double)kullanilanKur;
-                NavlunDvz = NavlunTL / (double)kullanilanKur;
-                TestDvz = TestTL / (double)kullanilanKur;
-                MalzemeDvz = MalzemeTL / (double)kullanilanKur;
-                GenelGiderDvz = GenelGiderTL / (double)kullanilanKur;
-                MaliyetTutariDvz = MaliyetTutariTL / (double)kullanilanKur;
-                FinansBedeliDvz = FinansBedeliTL / (double)kullanilanKur;
-                KazancBdlDvz = KazancBdlTL / (double)kullanilanKur;
-                KomisyonBdlDvz = KomisyonBdlTL / (double)kullanilanKur;
-                ToplamTutarDoviz = ToplamTutarTL / (double)kullanilanKur;
+                KumasTutarDoviz = DovizeCevir(KumasTutarTL, kullanilanKur);
+                iscilikDoviz = DovizeCevir(iscilikTL, kullanilanKur);
+                BaskiNakisTasDvz = DovizeCevir(BaskiNakisTasTL, kullanilanKur);
+                YikamaDvz = DovizeCevir(YikamaTL, kullanilanKur);
+                NavlunDvz = DovizeCevir(NavlunTL, kullanilanKur);
+                TestDvz = DovizeCevir(TestTL, kullanilanKur);
+                MalzemeDvz = DovizeCevir(MalzemeTL, kullanilanKur);
+                GenelGiderDvz = DovizeCevir(GenelGiderTL, kullanilanKur);
+                MaliyetTutariDvz = DovizeCevir(MaliyetTutariTL, kullanilanKur);
+                FinansBedeliDvz = DovizeCevir(FinansBedeliTL, kullanilanKur);
+                KazancBdlDvz = DovizeCevir(KazancBdlTL, kullanilanKur);
+                KomisyonBdlDvz = DovizeCevir(KomisyonBdlTL, kullanilanKur);
+                ToplamTutarDoviz = DovizeCevir(ToplamTutarTL, kullanilanKur);
                 TeklifEdilenTL = TeklifEdilenDoviz * (double)kullanilanKur;
             }
         }
@@ -163,6 +177,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
                 "GBP" => SabitSterlinKuru <= 0 ? SterlinKuru : SabitSterlinKuru,
                 _ => 0
             };
+        }
+
+        private double DovizeCevir(double tutar, decimal kur)
+        {
+            if (kur <= 0) return 0;
+            return tutar / (double)kur;
         }
     }
 }
