@@ -40,6 +40,36 @@ else
             {
                 <p>@ajanYaniti</p>
             }
+        @if (ajanGorselYaniti != null)
+        {
+            @switch (ajanGorselYaniti.response_type)
+            {
+                case "image":
+                    <img src="@ajanGorselYaniti.data.GetProperty("imageUrl").GetString()" style="max-width: 300px; border-radius: 8px;" />
+                    break;
+                case "material_list":
+                    <table class="table">
+                        <thead>
+                            <tr><th>Malzeme Türü</th><th>Malzeme Adı</th><th>Miktar</th><th>Birim</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ajanGorselYaniti.data.EnumerateArray())
+                            {
+                                <tr>
+                                    <td>@item.GetProperty("MalzemeTuru").GetString()</td>
+                                    <td>@item.GetProperty("MalzemeAdi").GetString()</td>
+                                    <td>@item.GetProperty("Miktar").GetDouble()</td>
+                                    <td>@item.GetProperty("Birim").GetString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    break;
+                default:
+                    <p>@ajanGorselYaniti.data.ToString()</p>
+                    break;
+            }
+        }
         </div>
         <div class="chat-input">
             <input @bind="kullaniciSorusu" placeholder="Asistana bir soru sorun (örn: '101 nolu siparişin durumu nedir?' veya '102 için ne almalıyız?')" />
@@ -125,6 +155,7 @@ else
 
     private string kullaniciSorusu;
     private string ajanYaniti;
+    private GorselYanit ajanGorselYaniti;
 
     private async Task SoruSor()
     {
@@ -139,12 +170,27 @@ else
 
         if (response.IsSuccessStatusCode)
         {
-            var result = await response.Content.ReadFromJsonAsync<SoruYaniti>();
-            ajanYaniti = result?.yanit;
+            var rawJson = await response.Content.ReadAsStringAsync();
+            try
+            {
+                var result = System.Text.Json.JsonSerializer.Deserialize<SoruYaniti>(rawJson);
+                // Gelen yanıtın içindeki 'yanit' alanı da bir JSON string'i olabilir, onu da parse et.
+                var innerResult = System.Text.Json.JsonSerializer.Deserialize<GorselYanit>(result.yanit);
+                ajanGorselYaniti = innerResult;
+                ajanYaniti = null;
+            }
+            catch (System.Text.Json.JsonException)
+            {
+                // Eğer iç JSON parse edilemezse, düz metin olarak kabul et.
+                var result = System.Text.Json.JsonSerializer.Deserialize<SoruYaniti>(rawJson);
+                ajanGorselYaniti = new GorselYanit { response_type = "text", data = new System.Text.Json.JsonElement() };
+                ajanYaniti = result.yanit;
+            }
         }
         else
         {
             ajanYaniti = "Ajan servisinden bir hata yanıtı alındı.";
+            ajanGorselYaniti = null;
         }
 
         kullaniciSorusu = "";
@@ -154,5 +200,11 @@ else
     public class SoruYaniti
     {
         public string yanit { get; set; }
+    }
+
+    public class GorselYanit
+    {
+        public string response_type { get; set; }
+        public System.Text.Json.JsonElement data { get; set; }
     }
 }

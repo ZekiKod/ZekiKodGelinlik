@@ -115,11 +115,33 @@ def send_bildirim(kime: str, mesaj: str) -> str:
     except Exception as e:
         return json.dumps({"error": str(e)})
 
+def get_model_resim(model_no: str) -> str:
+    """
+    Belirtilen model numarasına ait resmin URL'sini C# API'ından alır.
+    """
+    try:
+        response = requests.get(f"http://localhost:5000/api/ModelResim/{model_no}")
+        return json.dumps(response.json()) if response.status_code == 200 else json.dumps({"error": f"API hatası: {response.status_code}"})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
 # Ajanların tanımlanması
 assistant = autogen.AssistantAgent(
     name="Asistan",
     llm_config=llm_config,
-    system_message="Sen proaktif bir sipariş, stok ve satın alma asistanısın. Kullanıcının sorusunu analiz ederek doğru aracı ('get_siparis_durumu', 'get_stok_durumu', 'get_satin_alma_onerisi') kullanırsın. Özellikle, 'get_satin_alma_onerisi' aracını kullandıktan sonra, çıkan öneri listesini kullanıcıya sunar ve 'Bu malzemeler için satın alma taleplerini sistemde oluşturayım mı?' diye sorarsın. Kullanıcı 'evet' veya benzeri bir onay verirse, 'create_satin_alma_talep' aracını, ilk sorgudaki sipariş numarasını ve öneri listesindeki malzemeleri kullanarak çalıştırırsın. Sonucu kullanıcıya bildirirsin.",
+    system_message="""Sen proaktif bir sipariş, stok ve satın alma asistanısın.
+Kullanıcının sorusunu analiz ederek doğru aracı ('get_siparis_durumu', 'get_stok_durumu', 'get_satin_alma_onerisi', 'get_model_resim') kullanırsın.
+Tüm yanıtlarını MUTLAKA aşağıdaki JSON formatında vermelisin:
+{
+  "response_type": "text | material_list | image",
+  "data": "yanıt metni | malzeme listesi (JSON) | resim URL'si"
+}
+Örneğin, 'get_model_resim' aracını kullandıktan sonra, yanıtın şöyle olmalı:
+{"response_type": "image", "data": {"imageUrl": "KumasResim/IPEKBRODE-123.jpg"}}
+'get_satin_alma_onerisi' aracını kullandığında, yanıtın şöyle olmalı:
+{"response_type": "material_list", "data": [{"MalzemeTuru": "Kumaş", "MalzemeAdi": "İpek", "Miktar": 10.0, "Birim": "Metre"}]}
+Diğer tüm metin bazlı yanıtlar için 'text' response_type'ını kullan.
+Satın alma önerilerini sunduktan sonra, proaktif olarak 'Bu talepleri oluşturayım mı?' diye sor. Kullanıcı onaylarsa, 'create_satin_alma_talep' aracını çalıştır.""",
 )
 
 ustasi_agent = autogen.AssistantAgent(
@@ -147,7 +169,8 @@ user_proxy.register_function(
         "create_satin_alma_talep": create_satin_alma_talep,
         "get_aktif_operasyonlar": get_aktif_operasyonlar,
         "update_operasyon_durumu": update_operasyon_durumu,
-        "send_bildirim": send_bildirim
+        "send_bildirim": send_bildirim,
+        "get_model_resim": get_model_resim
     }
 )
 
