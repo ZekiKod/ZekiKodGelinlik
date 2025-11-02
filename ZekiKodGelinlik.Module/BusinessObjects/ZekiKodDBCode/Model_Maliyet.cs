@@ -17,6 +17,7 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
     public static class AppSettingsProvider
     {
         public static string ExchangeRateProviderUrl { get; set; }
+        public static string AgentServiceUrl { get; set; }
     }
 
     [DefaultClassOptions]

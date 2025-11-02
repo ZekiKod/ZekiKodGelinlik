@@ -364,6 +364,12 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         {
             get { return GetCollection<SiparisOperasyon>(nameof(SiparisOperasyonlar)); }
         }
+
+        [Association("SiparisKarti-Malzeme_SatinAlma"), Aggregated]
+        public XPCollection<Malzeme_SatinAlma> MalzemeSatinAlmalar
+        {
+            get { return GetCollection<Malzeme_SatinAlma>(nameof(MalzemeSatinAlmalar)); }
+        }
     }
 
 }

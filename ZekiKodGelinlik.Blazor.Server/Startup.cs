@@ -33,6 +33,7 @@ namespace ZekiKodGelinlik.Blazor.Server
         public void ConfigureServices(IServiceCollection services)
         {
             AppSettingsProvider.ExchangeRateProviderUrl = Configuration["ExchangeRateProvider:Url"];
+            AppSettingsProvider.AgentServiceUrl = Configuration["AgentService:Url"];
 
             services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
 

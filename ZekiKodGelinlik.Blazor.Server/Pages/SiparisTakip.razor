@@ -42,7 +42,7 @@ else
             }
         </div>
         <div class="chat-input">
-            <input @bind="kullaniciSorusu" placeholder="Sipariş veya stok hakkında bir soru sorun..." />
+            <input @bind="kullaniciSorusu" placeholder="Sipariş, stok veya satın alma hakkında bir soru sorun..." />
             <button @onclick="SoruSor">Gönder</button>
         </div>
     </div>
@@ -133,8 +133,9 @@ else
         ajanYaniti = "Düşünüyorum...";
         StateHasChanged();
 
+        var agentUrl = ZekiKod.Module.BusinessObjects.ZekiKodDB.AppSettingsProvider.AgentServiceUrl;
         var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { soru = kullaniciSorusu }), System.Text.Encoding.UTF8, "application/json");
-        var response = await Http.PostAsync("http://localhost:5001/soru", content);
+        var response = await Http.PostAsync(agentUrl, content);
 
         if (response.IsSuccessStatusCode)
         {
