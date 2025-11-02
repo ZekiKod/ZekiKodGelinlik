@@ -20,7 +20,7 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
     {
         byte[] fResim;
         [MemberDesignTimeVisibility(true)]
-        [DevExpress.Persistent.Base.VisibleInListView(true)]
+        [DevExpress.Persistent.Base.VisibleInListView(false)]
         [DevExpress.Persistent.Base.ImageEditor(ListViewImageEditorMode = DevExpress.Persistent.Base.ImageEditorMode.PictureEdit,
     DetailViewImageEditorMode = DevExpress.Persistent.Base.ImageEditorMode.PictureEdit,
     ListViewImageEditorCustomHeight = 40)]
@@ -28,6 +28,14 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         {
             get { return fResim; }
             set { SetPropertyValue<byte[]>(nameof(Resim), ref fResim, value); }
+        }
+        byte[] fResimThumb;
+        [VisibleInListView(true)]
+        [ImageEditor(ListViewImageEditorMode = ImageEditorMode.PictureEdit, DetailViewImageEditorMode = ImageEditorMode.PictureEdit, ListViewImageEditorCustomHeight = 40)]
+        public byte[] ResimThumb
+        {
+            get { return fResimThumb; }
+            set { SetPropertyValue<byte[]>(nameof(ResimThumb), ref fResimThumb, value); }
         }
         string fAciklama;
         [Size(SizeAttribute.Unlimited)]

@@ -15,6 +15,11 @@ using System.ComponentModel;
 using System.Reflection;
 namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 {
+    public enum IslemYeri
+    {
+        FirmaIci,
+        Fason
+    }
 
     public partial class ModelOperasyon : XPObject
     {
@@ -25,12 +30,27 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fModelKarti; }
             set { SetPropertyValue<ModelKarti>(nameof(ModelKarti), ref fModelKarti, value); }
         }
-        string fislemSirasi;
-        public string islemSirasi
+        int fislemSirasi;
+        public int islemSirasi
         {
             get { return fislemSirasi; }
-            set { SetPropertyValue<string>(nameof(islemSirasi), ref fislemSirasi, value); }
+            set { SetPropertyValue<int>(nameof(islemSirasi), ref fislemSirasi, value); }
         }
+
+        int fParalelGrup;
+        public int ParalelGrup
+        {
+            get { return fParalelGrup; }
+            set { SetPropertyValue<int>(nameof(ParalelGrup), ref fParalelGrup, value); }
+        }
+
+        IslemYeri fIslemYeri;
+        public IslemYeri IslemYeri
+        {
+            get { return fIslemYeri; }
+            set { SetPropertyValue<IslemYeri>(nameof(IslemYeri), ref fIslemYeri, value); }
+        }
+
         Makinalar fMakina;
         public Makinalar Makina
         {
@@ -43,11 +63,11 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fOperasyon; }
             set { SetPropertyValue<Operasyonlar>(nameof(Operasyon), ref fOperasyon, value); }
         }
-        string fSure;
-        public string Sure
+        decimal fSure;
+        public decimal Sure
         {
             get { return fSure; }
-            set { SetPropertyValue<string>(nameof(Sure), ref fSure, value); }
+            set { SetPropertyValue<decimal>(nameof(Sure), ref fSure, value); }
         }
     }
 

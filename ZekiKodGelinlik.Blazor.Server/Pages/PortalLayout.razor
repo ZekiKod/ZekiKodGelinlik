@@ -1,0 +1,61 @@
+@inherits LayoutComponentBase
+@using DevExpress.ExpressApp.Blazor.Components
+@using DevExpress.ExpressApp.Blazor.Services
+@inject IComponent ਰਾਜProvider Component ਰਾਜProvider
+@inject NavigationManager NavigationManager
+@inject IXafApplicationProvider ApplicationProvider
+
+<div class="portal-layout">
+    <header class="portal-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="logo">Müşteri Portalı</h1>
+            <div class="user-info">
+                <span>Hoş geldiniz, @GetUserName()</span>
+                <button class="btn btn-sm btn-outline-secondary ms-2" @onclick="Logout">Çıkış Yap</button>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex">
+        <nav class="portal-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/portal/anasayfa">Ana Sayfa</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/portal/siparislerim">Siparişlerim</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/portal/cari">Cari Ekstrem</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/portal/destek">Destek Taleplerim</NavLink>
+                </li>
+            </ul>
+        </nav>
+        <main class="portal-content flex-grow-1 p-4">
+            @Body
+        </main>
+    </div>
+</div>
+
+@code {
+    private string GetUserName()
+    {
+        var security = ApplicationProvider.GetApplication().Security;
+        if (security.IsAuthenticated)
+        {
+            return security.UserName;
+        }
+        return "Misafir";
+    }
+
+    private void Logout()
+    {
+        var security = ApplicationProvider.GetApplication().Security as IAuthenticationStandardLogoff;
+        if (security != null)
+        {
+            security.Logoff();
+            NavigationManager.NavigateTo("/portal/login", true);
+        }
+    }
+}

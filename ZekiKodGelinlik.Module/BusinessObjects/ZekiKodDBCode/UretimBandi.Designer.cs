@@ -49,6 +49,14 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
             get { return fPersonel; }
             set { SetPropertyValue<Sirketiz.Module.BusinessObjects.Sirket_izDB.kisi_kartlari>(nameof(Personel), ref fPersonel, value); }
         }
+
+        SiparisKarti fSiparis;
+        [Association("SiparisKarti-UretimBandi")]
+        public SiparisKarti Siparis
+        {
+            get { return fSiparis; }
+            set { SetPropertyValue(nameof(Siparis), ref fSiparis, value); }
+        }
     }
 
 }

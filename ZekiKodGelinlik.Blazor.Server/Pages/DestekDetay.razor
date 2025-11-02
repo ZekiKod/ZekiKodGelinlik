@@ -1,0 +1,99 @@
+@page "/portal/destek/{TalepID:guid}"
+@layout PortalLayout
+@using Microsoft.AspNetCore.Authorization
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor.Services
+@using System.Linq
+@inject IObjectSpaceFactory ObjectSpaceFactory
+@attribute [Authorize]
+
+@if (talep == null)
+{
+    <p><em>Destek talebi yükleniyor...</em></p>
+}
+else
+{
+    <h3>Konu: @talep.Konu</h3>
+    <p><strong>Durum:</strong> <span class="badge bg-@GetDurumClass(talep.Durum)">@talep.Durum</span></p>
+    <hr />
+
+    <div class="chat-container">
+        @foreach (var mesaj in talep.Mesajlar.OrderBy(m => m.GonderimTarihi))
+        {
+            <div class="chat-message @(mesaj.Gonderen == SecuritySystem.CurrentUserName ? "sent" : "received")">
+                <div class="message-bubble">
+                    <div class="message-sender"><strong>@mesaj.Gonderen</strong></div>
+                    <div class="message-content">@mesaj.Mesaj</div>
+                    <div class="message-time">@mesaj.GonderimTarihi.ToString("g")</div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Cevap Yaz</h5>
+            <EditForm Model="@yeniMesaj" OnValidSubmit="MesajGonder">
+                <DataAnnotationsValidator />
+                <div class="mb-3">
+                    <InputTextArea class="form-control" @bind-Value="yeniMesaj.Mesaj" rows="5" />
+                    <ValidationMessage For="@(() => yeniMesaj.Mesaj)" />
+                </div>
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public Guid TalepID { get; set; }
+
+    private IObjectSpace objectSpace;
+    private MusteriDestekTalebi talep;
+    private YeniMesajModel yeniMesaj = new YeniMesajModel();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(MusteriDestekTalebi));
+        talep = objectSpace.GetObjectByKey<MusteriDestekTalebi>(TalepID);
+    }
+
+    private void MesajGonder()
+    {
+        var mesaj = objectSpace.CreateObject<DestekMesaji>();
+        mesaj.Mesaj = yeniMesaj.Mesaj;
+        talep.Mesajlar.Add(mesaj);
+
+        // Personel cevap yazdığında durumu "Cevaplandı", müşteri yazdığında "Açık" yapabiliriz.
+        // Şimdilik, yeni bir mesaj geldiğinde talebi tekrar "Açık" yapalım.
+        talep.Durum = DestekTalebiDurumu.Acik;
+
+        objectSpace.CommitChanges();
+
+        yeniMesaj = new YeniMesajModel();
+        StateHasChanged();
+    }
+
+    private string GetDurumClass(DestekTalebiDurumu durum)
+    {
+        return durum switch
+        {
+            DestekTalebiDurumu.Acik => "primary",
+            DestekTalebiDurumu.Cevaplandi => "success",
+            DestekTalebiDurumu.Kapandi => "secondary",
+            _ => "light"
+        };
+    }
+
+    public class YeniMesajModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Mesaj alanı boş bırakılamaz.")]
+        public string Mesaj { get; set; }
+    }
+}

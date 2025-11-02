@@ -1,4 +1,4 @@
-﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.Updating;
@@ -11,64 +11,62 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using ZekiKodGelinlik.Module.BusinessObjects;
 using Microsoft.Extensions.DependencyInjection;
+using ZekiKod.Module.BusinessObjects.ZekiKodDB;
 
 namespace ZekiKodGelinlik.Module.DatabaseUpdate;
 
-// For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Updating.ModuleUpdater
 public class Updater : ModuleUpdater {
     public Updater(IObjectSpace objectSpace, Version currentDBVersion) :
         base(objectSpace, currentDBVersion) {
     }
     public override void UpdateDatabaseAfterUpdateSchema() {
         base.UpdateDatabaseAfterUpdateSchema();
-        //string name = "MyName";
-        //DomainObject1 theObject = ObjectSpace.FirstOrDefault<DomainObject1>(u => u.Name == name);
-        //if(theObject == null) {
-        //    theObject = ObjectSpace.CreateObject<DomainObject1>();
-        //    theObject.Name = name;
-        //}
 
-
-
-        // The code below creates users and roles for testing purposes only.
-        // In production code, you can create users and assign roles to them automatically, as described in the following help topic:
-        // https://docs.devexpress.com/eXpressAppFramework/119064/data-security-and-safety/security-system/authentication
 #if !RELEASE
-        // If a role doesn't exist in the database, create this role
         var defaultRole = CreateDefaultRole();
         var adminRole = CreateAdminRole();
+        var portalRole = CreatePortalUserRole(); // Portal rolünü oluştur
 
-        ObjectSpace.CommitChanges(); //This line persists created object(s).
+        ObjectSpace.CommitChanges();
 
         UserManager userManager = ObjectSpace.ServiceProvider.GetRequiredService<UserManager>();
-        // If a user named 'User' doesn't exist in the database, create this user
         if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "User") == null) {
-            // Set a password if the standard authentication type is used
             string EmptyPassword = "";
             _ = userManager.CreateUser<ApplicationUser>(ObjectSpace, "User", EmptyPassword, (user) => {
-                // Add the Users role to the user
                 user.Roles.Add(defaultRole);
             });
         }
 
-        // If a user named 'Admin' doesn't exist in the database, create this user
         if(userManager.FindUserByName<ApplicationUser>(ObjectSpace, "Admin") == null) {
-            // Set a password if the standard authentication type is used
             string EmptyPassword = "";
             _ = userManager.CreateUser<ApplicationUser>(ObjectSpace, "Admin", EmptyPassword, (user) => {
-                // Add the Administrators role to the user
                 user.Roles.Add(adminRole);
             });
         }
 
-        ObjectSpace.CommitChanges(); //This line persists created object(s).
+        // Test için bir müşteri ve portal kullanıcısı oluştur
+        if(userManager.FindUserByName<PortalUser>(ObjectSpace, "portaluser") == null)
+        {
+            Musteriler testMusteri = ObjectSpace.FirstOrDefault<Musteriler>(m => m.MusteriAdi == "Test Müşterisi");
+            if(testMusteri == null)
+            {
+                testMusteri = ObjectSpace.CreateObject<Musteriler>();
+                testMusteri.MusteriAdi = "Test Müşterisi";
+                testMusteri.CariKodu = "TEST001";
+            }
+
+            string EmptyPassword = "";
+             _ = userManager.CreateUser<PortalUser>(ObjectSpace, "portaluser", EmptyPassword, (user) => {
+                user.Musteri = testMusteri;
+                user.Roles.Add(portalRole);
+            });
+        }
+
+        ObjectSpace.CommitChanges();
 #endif
     }
     public override void UpdateDatabaseBeforeUpdateSchema() {
         base.UpdateDatabaseBeforeUpdateSchema();
-        //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
-        //    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
-        //}
     }
     private PermissionPolicyRole CreateAdminRole() {
         PermissionPolicyRole adminRole = ObjectSpace.FirstOrDefault<PermissionPolicyRole>(r => r.Name == "Administrators");
@@ -79,6 +77,34 @@ public class Updater : ModuleUpdater {
         }
         return adminRole;
     }
+
+    private PermissionPolicyRole CreatePortalUserRole() {
+        PortalUserRole portalRole = ObjectSpace.FirstOrDefault<PortalUserRole>(r => r.Name == "Portal Kullanıcısı");
+        if(portalRole == null) {
+            portalRole = ObjectSpace.CreateObject<PortalUserRole>();
+            portalRole.Name = "Portal Kullanıcısı";
+
+            // Sadece kendi müşteri kartını görme izni
+            portalRole.AddObjectPermission<Musteriler>(SecurityOperations.Read, "[Oid] = CurrentUser.Musteri.Oid", SecurityPermissionState.Allow);
+
+            // Sadece kendi siparişlerini görme, oluşturma ve düzenleme izni
+            portalRole.AddObjectPermission<SiparisKarti>(SecurityOperations.CRUDAccess, "[Musteri.Oid] = CurrentUser.Musteri.Oid", SecurityPermissionState.Allow);
+
+            // Sadece kendi faturalarını görme izni
+            // Faturalar nesnesinde Müşteri ilişkisi olduğunu varsayıyoruz. Eğer yoksa bu kural çalışmaz.
+            // portalRole.AddObjectPermission<Faturalar>(SecurityOperations.Read, "[Musteri.Oid] = CurrentUser.Musteri.Oid", SecurityPermissionState.Allow);
+
+            // Sadece kendi destek taleplerini görme ve oluşturma izni
+            // portalRole.AddObjectPermission<MusteriDestekTalebi>(SecurityOperations.CRUDAccess, "[Musteri.Oid] = CurrentUser.Musteri.Oid", SecurityPermissionState.Allow);
+
+            // Diğer tüm verilere erişimi engelle
+            portalRole.AddTypePermission<ApplicationUser>(SecurityOperations.Read, SecurityPermissionState.Deny);
+            portalRole.AddTypePermission<PortalUser>(SecurityOperations.Read, SecurityPermissionState.Deny);
+            portalRole.AddObjectPermission<PortalUser>(SecurityOperations.Read, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow); // Kendi profilini görebilir
+        }
+        return portalRole;
+    }
+
     private PermissionPolicyRole CreateDefaultRole() {
         PermissionPolicyRole defaultRole = ObjectSpace.FirstOrDefault<PermissionPolicyRole>(role => role.Name == "Default");
         if(defaultRole == null) {

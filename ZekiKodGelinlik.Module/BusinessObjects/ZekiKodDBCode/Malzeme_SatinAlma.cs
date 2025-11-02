@@ -9,35 +9,35 @@ using System.Reflection;
 namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 {
 
-    public partial class Kumas_SatinAlma
+    public partial class Malzeme_SatinAlma
     {
-        public Kumas_SatinAlma(Session session) : base(session) { }
+        public Malzeme_SatinAlma(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
         protected override void OnChanged(string propertyName, object oldValue, object newValue)
         {
             base.OnChanged(propertyName, oldValue, newValue);
-            if (propertyName == nameof(GelenKumas) && newValue != null && (double)newValue > 0)
+            if (propertyName == nameof(GelenMiktar) && newValue != null && (double)newValue > 0)
             {
-                UpdateKumasStok((double)newValue - (double)oldValue);
+                UpdateMalzemeStok((double)newValue - (double)oldValue);
             }
         }
 
-        private void UpdateKumasStok(double changeAmount)
+        private void UpdateMalzemeStok(double changeAmount)
         {
-            if (Kumas_Karti == null || Depo == null)
+            if (Malzeme == null || Depo == null)
             {
                 return;
             }
 
-            KumasStok stok = Session.FindObject<KumasStok>(
-                CriteriaOperator.Parse("Kumas = ? AND Depo = ?", Kumas_Karti.Oid, Depo.DepoAdi));
+            MalzemeStok stok = Session.FindObject<MalzemeStok>(
+                CriteriaOperator.Parse("Malzeme = ? AND Depo = ?", Malzeme.Oid, Depo.Oid));
 
             if (stok == null)
             {
-                stok = new KumasStok(Session);
-                stok.Kumas = Kumas_Karti;
-                stok.Depo = Depo.DepoAdi;
+                stok = new MalzemeStok(Session);
+                stok.Malzeme = Malzeme;
+                stok.Depo = Depo;
             }
 
             stok.Stok += changeAmount;

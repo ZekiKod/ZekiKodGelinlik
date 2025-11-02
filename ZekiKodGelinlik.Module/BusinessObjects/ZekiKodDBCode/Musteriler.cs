@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
+
 namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
 {
     [DefaultClassOptions]
@@ -13,6 +15,13 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
     {
         public Musteriler(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
+
+        [RuleRequiredField(DefaultContexts.Save)]
+        public string MusteriAdi
+        {
+            get { return fMusteriAdi; }
+            set { SetPropertyValue<string>(nameof(MusteriAdi), ref fMusteriAdi, value); }
+        }
     }
 
 }

@@ -40,6 +40,30 @@ namespace ZekiKod.Module.BusinessObjects.ZekiKodDB
         public XPCollection<SiparisFoy> SiparisFoys { get { return GetCollection<SiparisFoy>(nameof(SiparisFoys)); } }
         [Association(@"SubelerReferencesMusteriler"), Aggregated]
         public XPCollection<Subeler> Subelers { get { return GetCollection<Subeler>(nameof(Subelers)); } }
+
+        [Association("Musteri-PortalKullanicilari")]
+        public XPCollection<PortalUser> PortalKullanicilari
+        {
+            get { return GetCollection<PortalUser>(nameof(PortalKullanicilari)); }
+        }
+
+        [Association("Musteri-CariHareketler"), DevExpress.Xpo.Aggregated]
+        public XPCollection<CariHareket> CariHareketler
+        {
+            get { return GetCollection<CariHareket>(nameof(CariHareketler)); }
+        }
+
+        [PersistentAlias("CariHareketler.Sum(Borc) - CariHareketler.Sum(Alacak)")]
+        public decimal Bakiye
+        {
+            get { return (decimal)(EvaluateAlias(nameof(Bakiye)) ?? 0m); }
+        }
+
+        [Association("Musteri-DestekTalepleri"), DevExpress.Xpo.Aggregated]
+        public XPCollection<MusteriDestekTalebi> DestekTalepleri
+        {
+            get { return GetCollection<MusteriDestekTalebi>(nameof(DestekTalepleri)); }
+        }
     }
 
 }
