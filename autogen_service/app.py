@@ -39,11 +39,26 @@ def get_siparis_durumu(siparis_no: str) -> str:
     except Exception as e:
         return json.dumps({"error": str(e)})
 
+def get_stok_durumu(urun_adi: str) -> str:
+    """
+    Belirtilen ürün adının stok durumunu C# API'ından alır.
+    """
+    try:
+        response = requests.get(f"http://localhost:5000/api/StokDurumu/{urun_adi}")
+        if response.status_code == 200:
+            return json.dumps(response.json())
+        elif response.status_code == 404:
+            return json.dumps({"error": "Ürün stokta bulunamadı."})
+        else:
+            return json.dumps({"error": f"API hatası: {response.status_code}"})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
 # Ajanların tanımlanması
 assistant = autogen.AssistantAgent(
-    name="SiparisAsistani",
+    name="Asistan",
     llm_config=llm_config,
-    system_message="Sen bir sipariş takip asistanısın. Kullanıcının sorduğu siparişin durumunu özetlersin. get_siparis_durumu aracını kullanarak sipariş detaylarını almalı ve sonucu kullanıcıya anlamlı bir cümle ile sunmalısın.",
+    system_message="Sen bir sipariş ve stok takip asistanısın. Kullanıcının sorusunu analiz ederek sipariş durumu mu yoksa stok durumu mu sorduğunu anlarsın. Eğer siparişle ilgiliyse 'get_siparis_durumu' aracını, stokla ilgiliyse 'get_stok_durumu' aracını kullanırsın. Aldığın JSON sonucunu kullanıcıya anlamlı bir cümle ile özetlersin.",
 )
 
 user_proxy = autogen.UserProxyAgent(
@@ -55,10 +70,11 @@ user_proxy = autogen.UserProxyAgent(
     llm_config=llm_config,
 )
 
-# Fonksiyonu ajana tanıtma
+# Fonksiyonları ajana tanıtma
 user_proxy.register_function(
     function_map={
-        "get_siparis_durumu": get_siparis_durumu
+        "get_siparis_durumu": get_siparis_durumu,
+        "get_stok_durumu": get_stok_durumu
     }
 )
 
@@ -74,7 +90,7 @@ def soru_sor():
     # AutoGen sohbetini başlatma
     user_proxy.initiate_chat(
         assistant,
-        message=f"Lütfen '{soru}' sorusunu analiz et, sipariş numarasını bul ve get_siparis_durumu aracını kullanarak bu siparişin durumunu öğren. Sonucu bana özetle.",
+        message=f"Lütfen aşağıdaki soruyu yanıtlamak için uygun aracı kullan: '{soru}'",
     )
 
     # Son mesajı alıp döndürme
