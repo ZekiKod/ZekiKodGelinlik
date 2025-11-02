@@ -1,0 +1,92 @@
+@page "/siparis-takip/{SiparisId:int}"
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor
+
+<h3>Sipariş Takip</h3>
+
+@if (siparis == null)
+{
+    <p>Sipariş yükleniyor...</p>
+}
+else
+{
+    <h4>Sipariş No: @siparis.icSiparisNo</h4>
+    <div class="workflow-container">
+        @if (gruplanmisOperasyonlar != null)
+        {
+            foreach (var sira in gruplanmisOperasyonlar.Keys.OrderBy(k => k))
+            {
+                <div class="workflow-step">
+                    @foreach (var operasyon in gruplanmisOperasyonlar[sira])
+                    {
+                        <div class="workflow-card @GetStatusClass(operasyon.Durum)">
+                            <strong>@operasyon.ModelOperasyon.Operasyon.OperasyonAdi</strong>
+                            <small>Durum: @operasyon.Durum</small>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+}
+
+<style>
+    .workflow-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .workflow-step {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+    }
+    .workflow-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        min-width: 150px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .status-planlandi { background-color: #e0e0e0; }
+    .status-basladi { background-color: #fffbe3; }
+    .status-tamamlandi { background-color: #e8f5e9; }
+    .status-beklemede { background-color: #fce4ec; }
+</style>
+
+@code {
+    [Parameter]
+    public int SiparisId { get; set; }
+
+    private SiparisKarti siparis;
+    private Dictionary<int, List<SiparisOperasyon>> gruplanmisOperasyonlar;
+
+    [Inject]
+    private IObjectSpaceFactory ObjectSpaceFactory { get; set; }
+
+    private IObjectSpace objectSpace;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(SiparisKarti));
+        siparis = objectSpace.GetObjectByKey<SiparisKarti>(SiparisId);
+
+        if (siparis != null)
+        {
+            gruplanmisOperasyonlar = siparis.SiparisOperasyonlar
+                .OrderBy(op => op.ModelOperasyon.islemSirasi)
+                .ThenBy(op => op.ModelOperasyon.ParalelGrup)
+                .GroupBy(op => op.ModelOperasyon.islemSirasi)
+                .ToDictionary(g => g.Key, g => g.ToList());
+        }
+    }
+
+    private string GetStatusClass(OperasyonDurumu durum)
+    {
+        return "status-" + durum.ToString().ToLower();
+    }
+}
