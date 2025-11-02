@@ -72,7 +72,7 @@ else
         }
         </div>
         <div class="chat-input">
-            <input @bind="kullaniciSorusu" placeholder="Asistana bir soru sorun (örn: '101 nolu siparişin durumu nedir?' veya '102 için ne almalıyız?')" />
+            <input @bind="kullaniciSorusu" placeholder="Karmaşık bir fiyat teklifi isteyin (örn: '2200-5 modelinin maliyetini bul, %25 kar ekle ve USD kuruna çevir')" />
             <button @onclick="SoruSor">Gönder</button>
         </div>
     </div>
@@ -162,35 +162,20 @@ else
         if (string.IsNullOrWhiteSpace(kullaniciSorusu)) return;
 
         ajanYaniti = "Düşünüyorum...";
+        ajanGorselYaniti = null; // Önceki görsel yanıtı temizle
         StateHasChanged();
 
-        var agentUrl = ZekiKod.Module.BusinessObjects.ZekiKodDB.AppSettingsProvider.AgentServiceUrl;
         var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { soru = kullaniciSorusu }), System.Text.Encoding.UTF8, "application/json");
-        var response = await Http.PostAsync(agentUrl, content);
+        var response = await Http.PostAsync("http://localhost:5001/fiyat-teklifi", content);
 
         if (response.IsSuccessStatusCode)
         {
-            var rawJson = await response.Content.ReadAsStringAsync();
-            try
-            {
-                var result = System.Text.Json.JsonSerializer.Deserialize<SoruYaniti>(rawJson);
-                // Gelen yanıtın içindeki 'yanit' alanı da bir JSON string'i olabilir, onu da parse et.
-                var innerResult = System.Text.Json.JsonSerializer.Deserialize<GorselYanit>(result.yanit);
-                ajanGorselYaniti = innerResult;
-                ajanYaniti = null;
-            }
-            catch (System.Text.Json.JsonException)
-            {
-                // Eğer iç JSON parse edilemezse, düz metin olarak kabul et.
-                var result = System.Text.Json.JsonSerializer.Deserialize<SoruYaniti>(rawJson);
-                ajanGorselYaniti = new GorselYanit { response_type = "text", data = new System.Text.Json.JsonElement() };
-                ajanYaniti = result.yanit;
-            }
+            var result = await response.Content.ReadFromJsonAsync<SoruYaniti>();
+            ajanYaniti = result?.yanit;
         }
         else
         {
-            ajanYaniti = "Ajan servisinden bir hata yanıtı alındı.";
-            ajanGorselYaniti = null;
+            ajanYaniti = "Semantic Kernel servisinden bir hata yanıtı alındı.";
         }
 
         kullaniciSorusu = "";

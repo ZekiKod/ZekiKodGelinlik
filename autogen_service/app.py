@@ -3,6 +3,10 @@ import autogen
 import requests
 import json
 import os
+import semantic_kernel as sk
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+from semantic_kernel.planning.basic_planner import BasicPlanner
+from plugins.fiyat_teklifi_plugin.main import FiyatTeklifiPlugin
 
 app = Flask(__name__)
 
@@ -213,6 +217,30 @@ def background_worker():
 
         # 5 dakika bekle
         time.sleep(300)
+
+# Semantic Kernel'i başlat
+kernel = sk.Kernel()
+api_key = os.environ.get("OPENAI_API_KEY")
+kernel.add_chat_service("chat-gpt", OpenAIChatCompletion("gpt-3.5-turbo", api_key))
+kernel.import_skill(FiyatTeklifiPlugin(), "FiyatTeklifiPlugin")
+
+planner = BasicPlanner()
+
+@app.route("/fiyat-teklifi", methods=["POST"])
+async def fiyat_teklifi_sor():
+    data = request.get_json()
+    soru = data.get("soru")
+
+    if not soru:
+        return jsonify({"error": "Soru alanı boş olamaz."}), 400
+
+    try:
+        plan = await planner.create_plan_async(soru, kernel)
+        result = await plan.invoke_async(kernel)
+        return jsonify({"yanit": str(result)})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
     # Arka plan görevini bir thread olarak başlat
