@@ -83,11 +83,49 @@ def create_satin_alma_talep(siparis_no: str, malzemeler: list) -> str:
     except Exception as e:
         return json.dumps({"error": str(e)})
 
+def get_aktif_operasyonlar() -> str:
+    """
+    Henüz tamamlanmamış tüm üretim operasyonlarının bir listesini C# API'ından alır.
+    """
+    try:
+        response = requests.get("http://localhost:5000/api/UretimTakip/AktifOperasyonlar")
+        return json.dumps(response.json()) if response.status_code == 200 else json.dumps({"error": f"API hatası: {response.status_code}"})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
+def update_operasyon_durumu(operasyon_id: int, yeni_durum: str) -> str:
+    """
+    Belirtilen operasyonun durumunu günceller.
+    """
+    try:
+        payload = {"OperasyonId": operasyon_id, "YeniDurum": yeni_durum}
+        response = requests.post("http://localhost:5000/api/UretimTakip/OperasyonDurumGuncelle", json=payload)
+        return json.dumps(response.json()) if response.status_code == 200 else json.dumps({"error": f"API hatası: {response.status_code}", "details": response.text})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
+def send_bildirim(kime: str, mesaj: str) -> str:
+    """
+    Belirtilen kişiye veya departmana bir bildirim gönderir.
+    """
+    try:
+        payload = {"Kime": kime, "Mesaj": mesaj}
+        response = requests.post("http://localhost:5000/api/UretimTakip/BildirimGonder", json=payload)
+        return json.dumps(response.json()) if response.status_code == 200 else json.dumps({"error": f"API hatası: {response.status_code}", "details": response.text})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
 # Ajanların tanımlanması
 assistant = autogen.AssistantAgent(
     name="Asistan",
     llm_config=llm_config,
     system_message="Sen proaktif bir sipariş, stok ve satın alma asistanısın. Kullanıcının sorusunu analiz ederek doğru aracı ('get_siparis_durumu', 'get_stok_durumu', 'get_satin_alma_onerisi') kullanırsın. Özellikle, 'get_satin_alma_onerisi' aracını kullandıktan sonra, çıkan öneri listesini kullanıcıya sunar ve 'Bu malzemeler için satın alma taleplerini sistemde oluşturayım mı?' diye sorarsın. Kullanıcı 'evet' veya benzeri bir onay verirse, 'create_satin_alma_talep' aracını, ilk sorgudaki sipariş numarasını ve öneri listesindeki malzemeleri kullanarak çalıştırırsın. Sonucu kullanıcıya bildirirsin.",
+)
+
+ustasi_agent = autogen.AssistantAgent(
+    name="UstasiAgent",
+    llm_config=llm_config,
+    system_message="Sen otonom bir üretim takip ustasısın. Görevin, 'get_aktif_operasyonlar' aracını kullanarak tüm aktif üretim operasyonlarını kontrol etmektir. Tamamlanmış bir operasyondan sonraki sıradaki operasyonları bulur, durumlarını 'Beklemede' olarak ayarlamak için 'update_operasyon_durumu' aracını kullanırsın. Eğer bir sonraki adım fason işlemi ise, 'send_bildirim' aracını kullanarak ilgili departmanı bilgilendirirsin. Ayrıca, başlaması gerekip de başlamamış gecikmiş operasyonları tespit eder ve yöneticilere bildirirsin. Tüm bu adımları kendi kendine, proaktif olarak gerçekleştirirsin.",
 )
 
 user_proxy = autogen.UserProxyAgent(
@@ -97,6 +135,7 @@ user_proxy = autogen.UserProxyAgent(
     is_termination_msg=lambda x: x.get("content", "").rstrip().endswith("TERMINATE"),
     code_execution_config=False,
     llm_config=llm_config,
+    system_message="Bir yönetici. Sohbeti başlatır, görevi açıklar ve ajanların sonuçlarını özetler. 'Tüm üretimi kontrol et' komutu aldığında, bu görevi 'UstasiAgent'a devretmelisin.",
 )
 
 # Fonksiyonları ajana tanıtma
@@ -105,7 +144,10 @@ user_proxy.register_function(
         "get_siparis_durumu": get_siparis_durumu,
         "get_stok_durumu": get_stok_durumu,
         "get_satin_alma_onerisi": get_satin_alma_onerisi,
-        "create_satin_alma_talep": create_satin_alma_talep
+        "create_satin_alma_talep": create_satin_alma_talep,
+        "get_aktif_operasyonlar": get_aktif_operasyonlar,
+        "update_operasyon_durumu": update_operasyon_durumu,
+        "send_bildirim": send_bildirim
     }
 )
 
@@ -128,5 +170,31 @@ def soru_sor():
     yanit = user_proxy.last_message()["content"]
     return jsonify({"yanit": yanit})
 
+import threading
+import time
+
+def background_worker():
+    """
+    Arka planda periyodik olarak UstasiAgent'ı tetikler.
+    """
+    while True:
+        print("Üretim takip ajanı periyodik kontrolü başlatıyor...")
+        try:
+            user_proxy.initiate_chat(
+                ustasi_agent,
+                message="Tüm üretimi kontrol et ve gerekeni yap.",
+            )
+            print("Periyodik kontrol tamamlandı.")
+        except Exception as e:
+            print(f"Arka plan görevinde hata oluştu: {e}")
+
+        # 5 dakika bekle
+        time.sleep(300)
+
 if __name__ == "__main__":
+    # Arka plan görevini bir thread olarak başlat
+    worker_thread = threading.Thread(target=background_worker, daemon=True)
+    worker_thread.start()
+
+    # Flask uygulamasını çalıştır
     app.run(port=5001, debug=True)
