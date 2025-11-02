@@ -1,0 +1,22 @@
+@page "/portal/anasayfa"
+@layout PortalLayout
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<div class="container">
+    <h3>Müşteri Portalına Hoş Geldiniz!</h3>
+    <hr />
+    <p>
+        Bu portal üzerinden siparişlerinizi takip edebilir, cari hesap ekstrenizi görüntüleyebilir ve
+        destek talepleri oluşturabilirsiniz.
+    </p>
+    <p>
+        Lütfen sol taraftaki menüyü kullanarak işlem yapmak istediğiniz alanı seçiniz.
+    </p>
+</div>
+
+@code {
+    // Bu sayfanın gelecekte daha fazla dinamik içerik barındırması için
+    // kod bloğu şimdiden eklendi. Örneğin, son siparişlerin bir özeti
+    // veya ödenmemiş faturalar burada gösterilebilir.
+}

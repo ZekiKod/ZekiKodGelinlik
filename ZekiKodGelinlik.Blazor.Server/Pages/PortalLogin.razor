@@ -1,0 +1,63 @@
+@page "/portal/login"
+@layout EmptyLayout
+@using DevExpress.ExpressApp.Blazor.Security
+@using DevExpress.ExpressApp.Security
+@inject AuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Müşteri Portalı Girişi</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@loginParameters" OnValidSubmit="Login">
+                        <DataAnnotationsValidator />
+                        <div class="form-group">
+                            <label for="username">Kullanıcı Adı</label>
+                            <InputText id="username" class="form-control" @bind-Value="loginParameters.UserName" />
+                            <ValidationMessage For="@(() => loginParameters.UserName)" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Şifre</label>
+                            <InputText id="password" type="password" class="form-control" @bind-Value="loginParameters.Password" />
+                            <ValidationMessage For="@(() => loginParameters.Password)" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Giriş Yap</button>
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger mt-3" role="alert">
+                                @errorMessage
+                            </div>
+                        }
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginParameters loginParameters = new LoginParameters();
+    private string errorMessage;
+
+    private async Task Login()
+    {
+        try
+        {
+            // Sadece PortalUser tipinde kimlik doğrulama yapmayı dene
+            await AuthenticationService.Logon(loginParameters);
+
+            // Başarılı girişten sonra yönlendir
+            NavigationManager.NavigateTo("/portal/anasayfa");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Giriş başarısız. Lütfen kullanıcı adı ve şifrenizi kontrol edin.";
+            // Geliştirme ortamında hatayı loglamak faydalı olabilir
+            Console.WriteLine(ex.Message);
+        }
+    }
+}

@@ -1,0 +1,105 @@
+@page "/portal/destek"
+@layout PortalLayout
+@using Microsoft.AspNetCore.Authorization
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.Blazor
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor.Services
+@using System.Linq
+@using DevExpress.ExpressApp.Security
+@inject IObjectSpaceFactory ObjectSpaceFactory
+@inject NavigationManager NavigationManager
+@attribute [Authorize]
+
+<h3>Destek Taleplerim</h3>
+
+<div class="card my-4">
+    <div class="card-header">Yeni Destek Talebi Oluştur</div>
+    <div class="card-body">
+        <EditForm Model="@yeniTalep" OnValidSubmit="TalepOlustur">
+            <DataAnnotationsValidator />
+            <div class="mb-3">
+                <label for="konu" class="form-label">Konu</label>
+                <InputText id="konu" class="form-control" @bind-Value="yeniTalep.Konu" />
+                <ValidationMessage For="@(() => yeniTalep.Konu)" />
+            </div>
+            <div class="mb-3">
+                <label for="mesaj" class="form-label">Mesajınız</label>
+                <InputTextArea id="mesaj" class="form-control" @bind-Value="yeniTalep.IlkMesaj" rows="4" />
+                <ValidationMessage For="@(() => yeniTalep.IlkMesaj)" />
+            </div>
+            <button type="submit" class="btn btn-primary">Talep Oluştur</button>
+        </EditForm>
+    </div>
+</div>
+
+<h5>Mevcut Talepleriniz</h5>
+@if (destekTalepleri == null)
+{
+    <p><em>Yükleniyor...</em></p>
+}
+else
+{
+    <DxDataGrid Data="@destekTalepleri"
+                PageSize="10">
+        <Columns>
+            <DxDataGridDateEditColumn Field="@nameof(MusteriDestekTalebi.OlusturmaTarihi)" Caption="Tarih" />
+            <DxDataGridColumn Field="@nameof(MusteriDestekTalebi.Konu)" Caption="Konu" />
+            <DxDataGridComboBoxColumn Field="@nameof(MusteriDestekTalebi.Durum)" Caption="Durum" />
+            <DxDataGridColumn>
+                <CellDisplayTemplate>
+                    <a href="@($"/portal/destek/{((MusteriDestekTalebi)context.DataItem).Oid}")" class="btn btn-sm btn-info">Görüntüle</a>
+                </CellDisplayTemplate>
+            </DxDataGridColumn>
+        </Columns>
+    </DxDataGrid>
+}
+
+@code {
+    private IObjectSpace objectSpace;
+    private IEnumerable<MusteriDestekTalebi> destekTalepleri;
+    private YeniTalepModel yeniTalep = new YeniTalepModel();
+    private Musteriler musteri;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(MusteriDestekTalebi));
+
+        var currentUser = (PortalUser)SecuritySystem.CurrentUser;
+        if (currentUser != null && currentUser.Musteri != null)
+        {
+            musteri = objectSpace.GetObjectByKey<Musteriler>(currentUser.Musteri.Oid);
+            if(musteri != null)
+            {
+                destekTalepleri = musteri.DestekTalepleri.OrderByDescending(t => t.OlusturmaTarihi).ToList();
+            }
+        }
+    }
+
+    private void TalepOlustur()
+    {
+        var talep = objectSpace.CreateObject<MusteriDestekTalebi>();
+        talep.Musteri = musteri;
+        talep.Konu = yeniTalep.Konu;
+
+        var mesaj = objectSpace.CreateObject<DestekMesaji>();
+        mesaj.Mesaj = yeniTalep.IlkMesaj;
+        talep.Mesajlar.Add(mesaj);
+
+        objectSpace.CommitChanges();
+
+        // Formu temizle ve listeyi yenile
+        yeniTalep = new YeniTalepModel();
+        destekTalepleri = musteri.DestekTalepleri.OrderByDescending(t => t.OlusturmaTarihi).ToList();
+        StateHasChanged();
+    }
+
+    public class YeniTalepModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Konu alanı zorunludur.")]
+        public string Konu { get; set; }
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Mesaj alanı zorunludur.")]
+        public string IlkMesaj { get; set; }
+    }
+}

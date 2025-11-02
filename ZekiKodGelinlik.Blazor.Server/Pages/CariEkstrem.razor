@@ -1,0 +1,62 @@
+@page "/portal/cari"
+@layout PortalLayout
+@using Microsoft.AspNetCore.Authorization
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.Blazor
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor.Services
+@using System.Linq
+@using DevExpress.ExpressApp.Security
+@inject IObjectSpaceFactory ObjectSpaceFactory
+@inject IXafApplicationProvider ApplicationProvider
+@attribute [Authorize]
+
+<h3>Cari Ekstrem</h3>
+
+@if (musteri == null)
+{
+    <p><em>Yükleniyor...</em></p>
+}
+else
+{
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Güncel Bakiye</h5>
+            <p class="card-text display-4 @(musteri.Bakiye >= 0 ? "text-success" : "text-danger")">
+                @musteri.Bakiye.ToString("c")
+            </p>
+        </div>
+    </div>
+
+    <h5>Hesap Hareketleri</h5>
+    <DxDataGrid Data="@musteri.CariHareketler.OrderByDescending(h => h.Tarih)"
+                ShowFilterRow="true"
+                PageSize="15">
+        <Columns>
+            <DxDataGridDateEditColumn Field="@nameof(CariHareket.Tarih)" Caption="İşlem Tarihi" />
+            <DxDataGridComboBoxColumn Field="@nameof(CariHareket.HareketTipi)" Caption="İşlem Tipi" />
+            <DxDataGridColumn Field="@nameof(CariHareket.Aciklama)" Caption="Açıklama" />
+            <DxDataGridColumn Field="@nameof(CariHareket.Borc)" Caption="Borç" DisplayFormat="c" />
+            <DxDataGridColumn Field="@nameof(CariHareket.Alacak)" Caption="Alacak" DisplayFormat="c" />
+        </Columns>
+    </DxDataGrid>
+}
+
+@code {
+    private IObjectSpace objectSpace;
+    private Musteriler musteri;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(Musteriler));
+
+        // Giriş yapmış olan portal kullanıcısını bul
+        var currentUser = (PortalUser)SecuritySystem.CurrentUser;
+        if (currentUser != null && currentUser.Musteri != null)
+        {
+            // O kullanıcının ilişkili olduğu Müşteri nesnesini yükle
+            musteri = objectSpace.GetObjectByKey<Musteriler>(currentUser.Musteri.Oid);
+        }
+    }
+}

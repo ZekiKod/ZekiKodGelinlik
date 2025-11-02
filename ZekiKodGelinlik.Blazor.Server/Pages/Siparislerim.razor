@@ -1,0 +1,54 @@
+@page "/portal/siparislerim"
+@layout PortalLayout
+@using Microsoft.AspNetCore.Authorization
+@using ZekiKod.Module.BusinessObjects.ZekiKodDB
+@using DevExpress.Blazor
+@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Blazor.Services
+@using System.Linq
+@inject IObjectSpaceFactory ObjectSpaceFactory
+@attribute [Authorize]
+
+<h3>Siparişlerim</h3>
+
+@if (siparisler == null)
+{
+    <p><em>Siparişleriniz yükleniyor...</em></p>
+}
+else
+{
+    <DxDataGrid Data="@siparisler"
+                ShowFilterRow="true"
+                PageSize="10">
+        <Columns>
+            <DxDataGridColumn Field="@nameof(SiparisKarti.MusteriSiparisNo)" Caption="Sipariş No" />
+            <DxDataGridDateEditColumn Field="@nameof(SiparisKarti.MusteriTermin)" Caption="Termin Tarihi" />
+            <DxDataGridColumn Field="@nameof(SiparisKarti.SiparisAdet)" Caption="Adet" />
+            <DxDataGridColumn Field="@nameof(SiparisKarti.ToplamTutar)" Caption="Tutar" DisplayFormat="c" />
+            <DxDataGridColumn Field="@nameof(SiparisKarti.ParaBirimi.BirimAdi)" Caption="Para Birimi" />
+            <DxDataGridColumn Field="@nameof(SiparisKarti.SprDurumu.DurumAdi)" Caption="Sipariş Durumu" />
+            <DxDataGridColumn>
+                <CellDisplayTemplate>
+                    <a href="@($"/portal/siparis/{((SiparisKarti)context.DataItem).Oid}")" class="btn btn-sm btn-info">Detay</a>
+                </CellDisplayTemplate>
+            </DxDataGridColumn>
+        </Columns>
+    </DxDataGrid>
+}
+
+@code {
+    private IObjectSpace objectSpace;
+    private IEnumerable<SiparisKarti> siparisler;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        objectSpace = ObjectSpaceFactory.CreateObjectSpace(typeof(SiparisKarti));
+
+        // Güvenlik kuralları burada devreye girecek.
+        // GetObjects<T> metodu, mevcut kullanıcı için tanımlanmış
+        // güvenlik kurallarını otomatik olarak uygular.
+        // Bu nedenle, burada ek bir filtreleme yapmaya gerek yoktur.
+        siparisler = objectSpace.GetObjects<SiparisKarti>().ToList();
+    }
+}

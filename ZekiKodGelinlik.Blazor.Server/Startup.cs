@@ -1,4 +1,4 @@
-﻿using DevExpress.ExpressApp.ApplicationBuilder;
+using DevExpress.ExpressApp.ApplicationBuilder;
 using DevExpress.ExpressApp.Blazor.ApplicationBuilder;
 using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Security;
@@ -15,7 +15,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using ZekiKodGelinlik.Blazor.Server.Controllers;
 using ZekiKodGelinlik.Blazor.Server.Services;
-using ZekiKodGelinlik.Module.BusinessObjects.ZekiKodDB;
+using ZekiKod.Module.BusinessObjects.ZekiKodDB;
 using ZekiKodGelinlik.WebApi.JWT;
 
 namespace ZekiKodGelinlik.Blazor.Server
@@ -29,51 +29,33 @@ namespace ZekiKodGelinlik.Blazor.Server
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             AppSettingsProvider.ExchangeRateProviderUrl = Configuration["ExchangeRateProvider:Url"];
             AppSettingsProvider.AgentServiceUrl = Configuration["AgentService:Url"];
-
             services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
-
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHttpContextAccessor();
-            services.AddHttpClient(); // HttpClient servisi eklendi
+            services.AddHttpClient();
             services.AddSingleton<IFileService, FileService>();
-
-            // Custom services
             services.AddScoped<IAuthenticationTokenProvider, JwtTokenProviderService>();
             services.AddScoped<CircuitHandler, CircuitHandlerProxy>();
-
-            // SpeechCommandController'ı scoped olarak ekle
             services.AddScoped<SpeechCommandController>();
 
-            // XAF Configuration
             services.AddXaf(Configuration, builder =>
             {
                 builder.UseApplication<ZekiKodGelinlikBlazorApplication>();
-
                 builder.AddXafWebApi(webApiBuilder =>
                 {
                     webApiBuilder.AddXpoServices();
-
-                    webApiBuilder.ConfigureOptions(options =>
-                    {
-                        // İş nesneleriniz için GET, POST, PUT, DELETE HTTP yöntemlerini oluşturun.
-                        // options.BusinessObject<YourBusinessObject>();
-                    });
+                    webApiBuilder.ConfigureOptions(options => { });
                 });
-
                 builder.Modules
                     .AddAuditTrailXpo()
                     .AddCloningXpo()
                     .AddConditionalAppearance()
-                    .AddDashboards(options =>
-                    {
-                        options.DashboardDataType = typeof(DevExpress.Persistent.BaseImpl.DashboardData);
-                    })
+                    .AddDashboards(options => { options.DashboardDataType = typeof(DevExpress.Persistent.BaseImpl.DashboardData); })
                     .AddFileAttachments()
                     .AddOffice()
                     .AddReports(options =>
@@ -84,22 +66,15 @@ namespace ZekiKodGelinlik.Blazor.Server
                         options.ShowAdditionalNavigation = true;
                     })
                     .AddScheduler()
-                    .AddValidation(options =>
-                    {
-                        options.AllowValidationDetailsAccess = false;
-                    })
+                    .AddValidation(options => { options.AllowValidationDetailsAccess = false; })
                     .AddViewVariants()
                     .Add<ZekiKodGelinlik.Module.ZekiKodGelinlikModule>()
                     .Add<ZekiKodGelinlikBlazorModule>();
 
-                // Object Space Providers
                 builder.ObjectSpaceProviders
                     .AddSecuredXpo((serviceProvider, options) =>
                     {
                         string connectionString = Configuration.GetConnectionString("ConnectionString");
-#if EASYTEST
-                        connectionString = Configuration.GetConnectionString("EasyTestConnectionString") ?? connectionString;
-#endif
                         ArgumentNullException.ThrowIfNull(connectionString);
                         options.ConnectionString = connectionString;
                         options.ThreadSafe = true;
@@ -107,19 +82,15 @@ namespace ZekiKodGelinlik.Blazor.Server
                     })
                     .AddNonPersistent();
 
-                // Security
                 builder.Security
-                    .UseIntegratedMode(options =>
+                    .UseAuthenticationStandard(options =>
                     {
-                        options.Lockout.Enabled = true;
                         options.RoleType = typeof(PermissionPolicyRole);
-                        options.UserType = typeof(ZekiKodGelinlik.Module.BusinessObjects.ApplicationUser);
                         options.UserLoginInfoType = typeof(ZekiKodGelinlik.Module.BusinessObjects.ApplicationUserLoginInfo);
-                        options.UseXpoPermissionsCaching();
-                        options.Events.OnSecurityStrategyCreated += securityStrategy =>
-                        {
-                            ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.NoCache;
-                        };
+
+                        // Birden fazla kullanıcı tipini destekle
+                        options.UserTypes.Add(new UserType(typeof(ZekiKodGelinlik.Module.BusinessObjects.ApplicationUser)));
+                        options.UserTypes.Add(new UserType(typeof(PortalUser)));
                     })
                     .AddPasswordAuthentication(options =>
                     {
@@ -127,13 +98,9 @@ namespace ZekiKodGelinlik.Blazor.Server
                     });
             });
 
-            // Authentication Configuration
             var authentication = services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
             authentication
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/LoginPage";
-                })
+                .AddCookie(options => { options.LoginPath = "/LoginPage"; })
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -145,7 +112,6 @@ namespace ZekiKodGelinlik.Blazor.Server
                     };
                 });
 
-            // Authorization Configuration
             services.AddAuthorization(options =>
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
@@ -154,7 +120,6 @@ namespace ZekiKodGelinlik.Blazor.Server
                     .Build();
             });
 
-            // OData Configuration
             services.AddControllers()
                 .AddOData((options, serviceProvider) =>
                 {
@@ -163,65 +128,30 @@ namespace ZekiKodGelinlik.Blazor.Server
                         .EnableQueryFeatures(100);
                 });
 
-            // Swagger Configuration
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "ZekiKodGelinlik API",
-                    Version = "v1",
-                    Description = @"Use AddXafWebApi(options) in the ZekiKodGelinlik.Blazor.Server\Startup.cs file to make Business Objects available in the Web API."
-                });
-                c.AddSecurityDefinition("JWT", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.Http,
-                    Name = "Bearer",
-                    Scheme = "bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "JWT"
-                            }
-                        },
-                        new string[0]
-                    }
-                });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ZekiKodGelinlik API", Version = "v1" });
+                c.AddSecurityDefinition("JWT", new OpenApiSecurityScheme { Type = SecuritySchemeType.Http, Name = "Bearer", Scheme = "bearer", BearerFormat = "JWT", In = ParameterLocation.Header });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement { { new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "JWT" } }, new string[0] } });
             });
 
-            // JSON Options Configuration
-            services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(o =>
-            {
-                o.JsonSerializerOptions.PropertyNamingPolicy = null;
-            });
+            services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(o => { o.JsonSerializerOptions.PropertyNamingPolicy = null; });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SpeechCommandController speechCommandController)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ZekiKodGelinlik WebApi v1");
-                });
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ZekiKodGelinlik WebApi v1"); });
             }
             else
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseRequestLocalization();
             app.UseStaticFiles();
@@ -236,9 +166,6 @@ namespace ZekiKodGelinlik.Blazor.Server
                 endpoints.MapFallbackToPage("/_Host");
                 endpoints.MapControllers();
             });
-
-            //// CommandProcessor'ı initialize et
-            //CommandProcessor.Initialize(speechCommandController); // speechCommandController burada initialize ediliyor
         }
     }
 }
